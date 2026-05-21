@@ -22,7 +22,7 @@ export const collections = [
     label: 'MFit® My Caroline® Collection',
     shortLabel: 'MFit® My Caroline®',
     tagline: 'Romantic. Feminine. Forever.',
-    subline: 'Explore the Mia® My Caroline® Collection',
+    subline: 'Explore the MFit® My Caroline® Collection',
     image: 'https://www.crownring.com/b2b/images/homeBanners/b2b_MFIT2023_Us.jpg',
     logo: 'https://www.crownring.com/b2b/images/homeBanners/b2b_MFIT2023_Us.jpg',
   },

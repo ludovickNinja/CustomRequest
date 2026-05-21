@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Gem } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function CollectionCard({ collection, onChoose }) {
   return (
@@ -8,7 +8,7 @@ export default function CollectionCard({ collection, onChoose }) {
       onClick={() => onChoose?.(collection.id)}
       className="card-panel group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gold-500/40"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-stone-100">
+      <div className="relative aspect-[310/380] w-full overflow-hidden bg-stone-100">
         <img
           src={collection.image}
           alt=""
@@ -17,9 +17,6 @@ export default function CollectionCard({ collection, onChoose }) {
             e.currentTarget.style.display = 'none';
           }}
         />
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-stone-300">
-          <Gem className="h-16 w-16" strokeWidth={1} />
-        </div>
       </div>
       <div className="flex flex-1 flex-col p-6 text-center">
         <h3 className="font-serif text-2xl text-stone-900">{collection.shortLabel}</h3>
