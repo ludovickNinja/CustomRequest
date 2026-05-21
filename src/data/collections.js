@@ -5,8 +5,8 @@ export const collections = [
     shortLabel: 'CrownRing Collection',
     tagline: 'Modern. Bold. Distinctive.',
     subline: 'Explore CrownRing, Bleu Royale, Carlex & Torque',
-    image: '/images/crownring-hero.jpg',
-    logo: '/images/crownring-logo.svg',
+    image: 'https://www.crownring.com/b2b/images/homeBanners/b2b_CX2023_Us.jpg',
+    logo: 'https://www.crownring.com/b2b/images/homeBanners/b2b_CX2023_Us.jpg',
   },
   {
     id: 'noam-carver',
@@ -14,8 +14,8 @@ export const collections = [
     shortLabel: 'Noam Carver Collection',
     tagline: 'Timeless. Elegant. Refined.',
     subline: 'Explore the Noam Carver Collection',
-    image: '/images/noam-carver-hero.jpg',
-    logo: '/images/noam-carver-logo.svg',
+    image: 'https://www.crownring.com/b2b/images/homeBanners/b2b_NC2023_Us.jpg',
+    logo: 'https://www.crownring.com/b2b/images/homeBanners/b2b_NC2023_Us.jpg',
   },
   {
     id: 'mia-my-caroline',
@@ -23,8 +23,8 @@ export const collections = [
     shortLabel: 'MFit® My Caroline®',
     tagline: 'Romantic. Feminine. Forever.',
     subline: 'Explore the Mia® My Caroline® Collection',
-    image: '/images/mia-hero.jpg',
-    logo: '/images/mia-logo.svg',
+    image: 'https://www.crownring.com/b2b/images/homeBanners/b2b_MFIT2023_Us.jpg',
+    logo: 'https://www.crownring.com/b2b/images/homeBanners/b2b_MFIT2023_Us.jpg',
   },
 ];
 
