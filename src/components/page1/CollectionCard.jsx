@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Gem } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export default function CollectionCard({ collection, onChoose }) {
   return (
@@ -17,9 +17,6 @@ export default function CollectionCard({ collection, onChoose }) {
             e.currentTarget.style.display = 'none';
           }}
         />
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center text-stone-300">
-          <Gem className="h-16 w-16" strokeWidth={1} />
-        </div>
       </div>
       <div className="flex flex-1 flex-col p-6 text-center">
         <h3 className="font-serif text-2xl text-stone-900">{collection.shortLabel}</h3>
