@@ -21,7 +21,86 @@ function Select({ field, value, options, onChange, error }) {
 
 export default function CenterStoneSection({ value, onChange, errors = {} }) {
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_320px]">
+    <div className="space-y-6">
+      <div className="space-y-3">
+        <fieldset>
+          <legend className="label-base">Who is providing the center stone?</legend>
+          <label className="flex items-center gap-2 text-sm">
+            <input
+              type="radio"
+              name="provideStone"
+              checked={value.provideStone === 'yes'}
+              onChange={() => onChange({ provideStone: 'yes' })}
+              className="accent-gold-500"
+            />
+            Crown Ring will provide the center stone
+          </label>
+          <label className="mt-1 flex items-center gap-2 text-sm">
+            <input
+              type="radio"
+              name="provideStone"
+              checked={value.provideStone === 'no'}
+              onChange={() => onChange({ provideStone: 'no' })}
+              className="accent-gold-500"
+            />
+            I will provide the center stone
+          </label>
+        </fieldset>
+        {value.provideStone === 'yes' && (
+          <div className="rounded-xl border border-gold-200 bg-gold-50/60 p-4">
+            <p className="text-sm font-medium text-stone-800">
+              Will the center stone be certified?
+            </p>
+            <label className="mt-2 flex items-center gap-2 text-sm">
+              <input
+                type="radio"
+                name="certified"
+                checked={value.certified === 'yes'}
+                onChange={() => onChange({ certified: 'yes' })}
+                className="accent-gold-500"
+              />
+              Yes, certified
+            </label>
+            <label className="mt-1 flex items-center gap-2 text-sm">
+              <input
+                type="radio"
+                name="certified"
+                checked={value.certified === 'no'}
+                onChange={() => onChange({ certified: 'no' })}
+                className="accent-gold-500"
+              />
+              No, not certified
+            </label>
+          </div>
+        )}
+        {value.provideStone === 'no' && (
+          <div className="rounded-xl border border-gold-200 bg-gold-50/60 p-4">
+            <p className="text-sm font-medium text-stone-800">
+              Would you like us to set the stone?
+            </p>
+            <label className="mt-2 flex items-center gap-2 text-sm">
+              <input
+                type="radio"
+                name="setStone"
+                checked={value.setStone === 'yes'}
+                onChange={() => onChange({ setStone: 'yes' })}
+                className="accent-gold-500"
+              />
+              Yes, please set the stone
+            </label>
+            <label className="mt-1 flex items-center gap-2 text-sm">
+              <input
+                type="radio"
+                name="setStone"
+                checked={value.setStone === 'no'}
+                onChange={() => onChange({ setStone: 'no' })}
+                className="accent-gold-500"
+              />
+              No, I will set it myself
+            </label>
+          </div>
+        )}
+      </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <FieldRow label="Stone Type" error={errors.type}>
           <Select field="type" value={value.type} options={STONE_TYPES} onChange={onChange} error={errors.type} />
@@ -92,58 +171,6 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
             <p className="mt-2 text-xs text-red-600">All measurements required.</p>
           )}
         </div>
-      </div>
-      <div className="space-y-4">
-        <fieldset>
-          <legend className="label-base">Would you like us to provide the center stone?</legend>
-          <label className="flex items-center gap-2 text-sm">
-            <input
-              type="radio"
-              name="provideStone"
-              checked={value.provideStone === 'yes'}
-              onChange={() => onChange({ provideStone: 'yes' })}
-              className="accent-gold-500"
-            />
-            Yes, please provide the center stone
-          </label>
-          <label className="mt-1 flex items-center gap-2 text-sm">
-            <input
-              type="radio"
-              name="provideStone"
-              checked={value.provideStone === 'no'}
-              onChange={() => onChange({ provideStone: 'no' })}
-              className="accent-gold-500"
-            />
-            No, I will provide the center stone
-          </label>
-        </fieldset>
-        {value.provideStone === 'yes' && (
-          <div className="rounded-xl border border-gold-200 bg-gold-50/60 p-4">
-            <p className="text-sm font-medium text-stone-800">
-              If yes, will the center stone be certified?
-            </p>
-            <label className="mt-2 flex items-center gap-2 text-sm">
-              <input
-                type="radio"
-                name="certified"
-                checked={value.certified === 'yes'}
-                onChange={() => onChange({ certified: 'yes' })}
-                className="accent-gold-500"
-              />
-              Yes, certified
-            </label>
-            <label className="mt-1 flex items-center gap-2 text-sm">
-              <input
-                type="radio"
-                name="certified"
-                checked={value.certified === 'no'}
-                onChange={() => onChange({ certified: 'no' })}
-                className="accent-gold-500"
-              />
-              No, not certified
-            </label>
-          </div>
-        )}
       </div>
     </div>
   );

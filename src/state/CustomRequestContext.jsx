@@ -38,6 +38,7 @@ const defaultDesign = {
     depth: '',
     provideStone: 'yes',
     certified: 'yes',
+    setStone: 'yes',
   },
   accentStones: {
     enabled: 'yes',
