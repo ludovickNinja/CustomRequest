@@ -39,6 +39,7 @@ const defaultDesign = {
     provideStone: 'yes',
     certified: 'yes',
     setStone: 'yes',
+    uploads: [],
   },
   accentStones: {
     enabled: 'yes',
@@ -68,7 +69,11 @@ function loadInitial() {
       design: {
         ...defaultDesign,
         ...(parsed.design || {}),
-        centerStone: { ...defaultDesign.centerStone, ...((parsed.design || {}).centerStone || {}) },
+        centerStone: {
+          ...defaultDesign.centerStone,
+          ...((parsed.design || {}).centerStone || {}),
+          uploads: (((parsed.design || {}).centerStone || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
+        },
         accentStones: { ...defaultDesign.accentStones, ...((parsed.design || {}).accentStones || {}) },
         uploads: ((parsed.design || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
       },
@@ -96,6 +101,10 @@ export function CustomRequestProvider({ children }) {
         design: {
           ...state.design,
           uploads: state.design.uploads.map(({ id, name, size, type }) => ({ id, name, size, type })),
+          centerStone: {
+            ...state.design.centerStone,
+            uploads: state.design.centerStone.uploads.map(({ id, name, size, type }) => ({ id, name, size, type })),
+          },
         },
       };
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(persistable));

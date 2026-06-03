@@ -4,7 +4,7 @@ import { Upload, X, FileText, Plus } from 'lucide-react';
 const ACCEPT = 'image/jpeg,image/png,application/pdf';
 const MAX_BYTES = 10 * 1024 * 1024;
 
-export default function ReferenceImagesUploader({ value, onChange }) {
+export default function ReferenceImagesUploader({ value, onChange, label = 'Upload Reference Images (Optional)' }) {
   const fileInput = useRef(null);
   const [error, setError] = useState('');
   const [dragOver, setDragOver] = useState(false);
@@ -49,7 +49,7 @@ export default function ReferenceImagesUploader({ value, onChange }) {
 
   return (
     <div>
-      <p className="label-base">Upload Reference Images (Optional)</p>
+      <p className="label-base">{label}</p>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1.5fr_repeat(3,_minmax(0,_1fr))_auto]">
         <label
           onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}

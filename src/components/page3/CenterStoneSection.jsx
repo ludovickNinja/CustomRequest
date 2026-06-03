@@ -1,4 +1,5 @@
 import FieldRow from '../shared/FieldRow.jsx';
+import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
 
 const STONE_TYPES = ['Diamond', 'Moissanite', 'Lab-Grown Diamond', 'Gemstones'];
 const SHAPES = ['Round', 'Oval', 'Princess', 'Cushion', 'Emerald', 'Pear', 'Marquise', 'Radiant', 'Asscher', 'Heart'];
@@ -98,6 +99,15 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
               />
               No, I will set it myself
             </label>
+          </div>
+        )}
+        {value.provideStone === 'no' && (
+          <div className="rounded-xl border border-stone-200 bg-stone-50/60 p-4">
+            <ReferenceImagesUploader
+              value={value.uploads}
+              onChange={(uploads) => onChange({ uploads })}
+              label="Upload photos of the stone (Optional)"
+            />
           </div>
         )}
       </div>
