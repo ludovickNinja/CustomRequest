@@ -1,8 +1,9 @@
 import FieldRow from '../shared/FieldRow.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
+import NotesTextarea from '../page2/NotesTextarea.jsx';
 
 const STONE_TYPES = ['Diamond', 'Lab-Grown Diamond', 'Moissanite', 'Gemstone'];
-const SHAPES = ['Round', 'Oval', 'Princess', 'Cushion', 'Emerald', 'Pear', 'Marquise', 'Radiant', 'Asscher', 'Heart'];
+const SHAPES = ['Round', 'Oval', 'Princess', 'Cushion', 'Emerald', 'Pear', 'Marquise', 'Radiant', 'Asscher', 'Heart', 'Other'];
 const COLORS = ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'N/A'];
 const CLARITIES = ['FL', 'IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1', 'N/A'];
 
@@ -182,6 +183,13 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
           )}
         </div>
       </div>
+      <NotesTextarea
+        label="Additional Information (Optional)"
+        value={value.notes}
+        onChange={(notes) => onChange({ notes })}
+        placeholder="Anything else we should know about the center stone?"
+        eyebrowStyle={false}
+      />
     </div>
   );
 }
