@@ -40,6 +40,7 @@ const defaultDesign = {
     certified: 'yes',
     setStone: 'yes',
     uploads: [],
+    notes: '',
   },
   accentStones: {
     enabled: 'yes',
