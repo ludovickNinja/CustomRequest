@@ -25,12 +25,15 @@ function validate(design) {
   if (!cs.type) csErrors.type = 'Required.';
   else if (cs.type === 'Gemstone' && !cs.typeOther.trim()) csErrors.typeOther = 'Please specify the gemstone.';
   if (!cs.shape) csErrors.shape = 'Required.';
+  else if (cs.shape === 'Other' && !cs.shapeOther.trim()) csErrors.shapeOther = 'Please specify the shape.';
   if (!cs.carat || parseFloat(cs.carat) <= 0) csErrors.carat = 'Required.';
   if (!cs.color) csErrors.color = 'Required.';
   if (!cs.clarity) csErrors.clarity = 'Required.';
-  if (!cs.length || parseFloat(cs.length) <= 0) csErrors.length = 'Required.';
-  if (!cs.width || parseFloat(cs.width) <= 0) csErrors.width = 'Required.';
-  if (!cs.depth || parseFloat(cs.depth) <= 0) csErrors.depth = 'Required.';
+  if (cs.provideStone === 'no') {
+    if (!cs.length || parseFloat(cs.length) <= 0) csErrors.length = 'Required.';
+    if (!cs.width || parseFloat(cs.width) <= 0) csErrors.width = 'Required.';
+    if (!cs.depth || parseFloat(cs.depth) <= 0) csErrors.depth = 'Required.';
+  }
   if (Object.keys(csErrors).length) e.centerStone = csErrors;
 
   return e;

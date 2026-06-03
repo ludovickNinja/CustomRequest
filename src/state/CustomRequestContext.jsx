@@ -33,6 +33,7 @@ const defaultDesign = {
     type: 'Diamond',
     typeOther: '',
     shape: 'Round',
+    shapeOther: '',
     carat: '',
     caratUnit: 'ct',
     color: 'G',
