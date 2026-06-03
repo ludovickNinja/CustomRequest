@@ -42,13 +42,6 @@ const defaultDesign = {
     uploads: [],
     notes: '',
   },
-  accentStones: {
-    enabled: 'yes',
-    type: 'Diamond',
-    typeOther: '',
-    totalCarat: '',
-    placement: '',
-  },
   notes: '',
   uploads: [],
 };
@@ -76,7 +69,6 @@ function loadInitial() {
           ...((parsed.design || {}).centerStone || {}),
           uploads: (((parsed.design || {}).centerStone || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
         },
-        accentStones: { ...defaultDesign.accentStones, ...((parsed.design || {}).accentStones || {}) },
         uploads: ((parsed.design || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
       },
     };
@@ -131,11 +123,6 @@ export function CustomRequestProvider({ children }) {
       setState((s) => ({
         ...s,
         design: { ...s.design, centerStone: { ...s.design.centerStone, ...patch } },
-      })),
-    setAccentStones: (patch) =>
-      setState((s) => ({
-        ...s,
-        design: { ...s.design, accentStones: { ...s.design.accentStones, ...patch } },
       })),
     resetAll: () => setState(defaultState),
   }), [state]);
