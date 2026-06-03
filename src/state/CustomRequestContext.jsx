@@ -44,6 +44,7 @@ const defaultDesign = {
   accentStones: {
     enabled: 'yes',
     type: 'Diamond',
+    typeOther: '',
     totalCarat: '',
     placement: '',
   },

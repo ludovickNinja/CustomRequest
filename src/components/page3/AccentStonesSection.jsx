@@ -1,6 +1,6 @@
 import FieldRow from '../shared/FieldRow.jsx';
 
-const TYPES = ['Diamond', 'Moissanite', 'Sapphire', 'Ruby', 'Other'];
+const TYPES = ['Diamond', 'Lab-Grown Diamond', 'Moissanite', 'Gemstone'];
 
 export default function AccentStonesSection({ value, onChange, errors = {} }) {
   return (
@@ -40,6 +40,16 @@ export default function AccentStonesSection({ value, onChange, errors = {} }) {
                 <option key={t} value={t}>{t}</option>
               ))}
             </select>
+            {value.type === 'Gemstone' && (
+              <input
+                type="text"
+                value={value.typeOther}
+                onChange={(e) => onChange({ typeOther: e.target.value })}
+                placeholder="Please specify"
+                maxLength={100}
+                className={'input-base mt-2 ' + (errors.typeOther ? 'input-error' : '')}
+              />
+            )}
           </FieldRow>
           <FieldRow label="Total Carat Weight" required error={errors.totalCarat}>
             <input
