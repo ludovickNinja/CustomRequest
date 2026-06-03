@@ -15,6 +15,7 @@ const defaultContact = {
   appointmentTime: '',
   preferredContact: 'email',
   projectType: '',
+  projectTypeOther: '',
   notes: '',
 };
 

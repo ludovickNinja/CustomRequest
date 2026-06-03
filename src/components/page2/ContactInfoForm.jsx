@@ -177,7 +177,12 @@ export default function ContactInfoForm() {
             </label>
           ))}
         </div>
-        <ProjectTypeSelect value={contact.projectType} onChange={(v) => update('projectType', v)} />
+        <ProjectTypeSelect
+          value={contact.projectType}
+          onChange={(v) => update('projectType', v)}
+          otherValue={contact.projectTypeOther}
+          onOtherChange={(v) => update('projectTypeOther', v)}
+        />
         <NotesTextarea value={contact.notes} onChange={(v) => update('notes', v)} />
       </div>
 
