@@ -21,7 +21,7 @@ function validate(design) {
   const cs = design.centerStone;
   const csErrors = {};
   if (!cs.type) csErrors.type = 'Required.';
-  else if (cs.type === 'Gemstones' && !cs.typeOther.trim()) csErrors.typeOther = 'Please specify the gemstone.';
+  else if (cs.type === 'Gemstone' && !cs.typeOther.trim()) csErrors.typeOther = 'Please specify the gemstone.';
   if (!cs.shape) csErrors.shape = 'Required.';
   if (!cs.carat || parseFloat(cs.carat) <= 0) csErrors.carat = 'Required.';
   if (!cs.color) csErrors.color = 'Required.';
@@ -35,6 +35,7 @@ function validate(design) {
   if (as.enabled === 'yes') {
     const asErrors = {};
     if (!as.type) asErrors.type = 'Required.';
+    else if (as.type === 'Gemstone' && !as.typeOther.trim()) asErrors.typeOther = 'Please specify the gemstone.';
     if (!as.totalCarat || parseFloat(as.totalCarat) <= 0) asErrors.totalCarat = 'Required.';
     if (Object.keys(asErrors).length) e.accentStones = asErrors;
   }

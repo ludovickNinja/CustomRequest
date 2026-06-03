@@ -1,7 +1,7 @@
 import FieldRow from '../shared/FieldRow.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
 
-const STONE_TYPES = ['Diamond', 'Moissanite', 'Lab-Grown Diamond', 'Gemstones'];
+const STONE_TYPES = ['Diamond', 'Lab-Grown Diamond', 'Moissanite', 'Gemstone'];
 const SHAPES = ['Round', 'Oval', 'Princess', 'Cushion', 'Emerald', 'Pear', 'Marquise', 'Radiant', 'Asscher', 'Heart'];
 const COLORS = ['D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'N/A'];
 const CLARITIES = ['FL', 'IF', 'VVS1', 'VVS2', 'VS1', 'VS2', 'SI1', 'SI2', 'I1', 'N/A'];
@@ -114,7 +114,7 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <FieldRow label="Stone Type" error={errors.type}>
           <Select field="type" value={value.type} options={STONE_TYPES} onChange={onChange} error={errors.type} />
-          {value.type === 'Gemstones' && (
+          {value.type === 'Gemstone' && (
             <input
               type="text"
               value={value.typeOther}
