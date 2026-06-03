@@ -6,7 +6,6 @@ import SkuChipInput from './SkuChipInput.jsx';
 import MetalGrid from './MetalGrid.jsx';
 import FingerSizeField from './FingerSizeField.jsx';
 import CenterStoneSection from './CenterStoneSection.jsx';
-import AccentStonesSection from './AccentStonesSection.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
 import NotesTextarea from '../page2/NotesTextarea.jsx';
 import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
@@ -21,6 +20,7 @@ function validate(design) {
   const cs = design.centerStone;
   const csErrors = {};
   if (!cs.type) csErrors.type = 'Required.';
+  else if (cs.type === 'Gemstone' && !cs.typeOther.trim()) csErrors.typeOther = 'Please specify the gemstone.';
   if (!cs.shape) csErrors.shape = 'Required.';
   if (!cs.carat || parseFloat(cs.carat) <= 0) csErrors.carat = 'Required.';
   if (!cs.color) csErrors.color = 'Required.';
@@ -30,20 +30,13 @@ function validate(design) {
   if (!cs.depth || parseFloat(cs.depth) <= 0) csErrors.depth = 'Required.';
   if (Object.keys(csErrors).length) e.centerStone = csErrors;
 
-  const as = design.accentStones;
-  if (as.enabled === 'yes') {
-    const asErrors = {};
-    if (!as.type) asErrors.type = 'Required.';
-    if (!as.totalCarat || parseFloat(as.totalCarat) <= 0) asErrors.totalCarat = 'Required.';
-    if (Object.keys(asErrors).length) e.accentStones = asErrors;
-  }
   return e;
 }
 
 export default function DesignDetailsForm() {
   const { collection } = useParams();
   const navigate = useNavigate();
-  const { state, setDesign, setCenterStone, setAccentStones } = useCustomRequest();
+  const { state, setDesign, setCenterStone } = useCustomRequest();
   const design = state.design;
   const [showErrors, setShowErrors] = useState(false);
 
@@ -108,16 +101,8 @@ export default function DesignDetailsForm() {
         />
       </NumberedSection>
 
-      <NumberedSection number={5} title="Accent Stones">
-        <AccentStonesSection
-          value={design.accentStones}
-          onChange={(patch) => setAccentStones(patch)}
-          errors={liveErrors.accentStones || {}}
-        />
-      </NumberedSection>
-
       <NumberedSection
-        number={6}
+        number={5}
         title="Details / Additional Information"
         helper="Share any additional details about your design, inspiration, setting style, band width, engraving, etc."
       >

@@ -27,6 +27,7 @@ const defaultDesign = {
   fingerSizeSystem: 'US',
   centerStone: {
     type: 'Diamond',
+    typeOther: '',
     shape: 'Round',
     carat: '',
     caratUnit: 'ct',
@@ -37,12 +38,9 @@ const defaultDesign = {
     depth: '',
     provideStone: 'yes',
     certified: 'yes',
-  },
-  accentStones: {
-    enabled: 'yes',
-    type: 'Diamond',
-    totalCarat: '',
-    placement: '',
+    setStone: 'yes',
+    uploads: [],
+    notes: '',
   },
   notes: '',
   uploads: [],
@@ -66,8 +64,11 @@ function loadInitial() {
       design: {
         ...defaultDesign,
         ...(parsed.design || {}),
-        centerStone: { ...defaultDesign.centerStone, ...((parsed.design || {}).centerStone || {}) },
-        accentStones: { ...defaultDesign.accentStones, ...((parsed.design || {}).accentStones || {}) },
+        centerStone: {
+          ...defaultDesign.centerStone,
+          ...((parsed.design || {}).centerStone || {}),
+          uploads: (((parsed.design || {}).centerStone || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
+        },
         uploads: ((parsed.design || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
       },
     };
@@ -94,6 +95,10 @@ export function CustomRequestProvider({ children }) {
         design: {
           ...state.design,
           uploads: state.design.uploads.map(({ id, name, size, type }) => ({ id, name, size, type })),
+          centerStone: {
+            ...state.design.centerStone,
+            uploads: state.design.centerStone.uploads.map(({ id, name, size, type }) => ({ id, name, size, type })),
+          },
         },
       };
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(persistable));
@@ -118,11 +123,6 @@ export function CustomRequestProvider({ children }) {
       setState((s) => ({
         ...s,
         design: { ...s.design, centerStone: { ...s.design.centerStone, ...patch } },
-      })),
-    setAccentStones: (patch) =>
-      setState((s) => ({
-        ...s,
-        design: { ...s.design, accentStones: { ...s.design.accentStones, ...patch } },
       })),
     resetAll: () => setState(defaultState),
   }), [state]);
