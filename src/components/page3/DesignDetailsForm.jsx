@@ -21,6 +21,7 @@ function validate(design) {
   const cs = design.centerStone;
   const csErrors = {};
   if (!cs.type) csErrors.type = 'Required.';
+  else if (cs.type === 'Gemstones' && !cs.typeOther.trim()) csErrors.typeOther = 'Please specify the gemstone.';
   if (!cs.shape) csErrors.shape = 'Required.';
   if (!cs.carat || parseFloat(cs.carat) <= 0) csErrors.carat = 'Required.';
   if (!cs.color) csErrors.color = 'Required.';

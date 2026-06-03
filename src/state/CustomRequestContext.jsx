@@ -27,6 +27,7 @@ const defaultDesign = {
   fingerSizeSystem: 'US',
   centerStone: {
     type: 'Diamond',
+    typeOther: '',
     shape: 'Round',
     carat: '',
     caratUnit: 'ct',
