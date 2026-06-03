@@ -8,7 +8,7 @@ const TYPES = [
   'Other',
 ];
 
-export default function ProjectTypeSelect({ value, onChange }) {
+export default function ProjectTypeSelect({ value, onChange, otherValue, onOtherChange }) {
   return (
     <div>
       <p className="eyebrow mb-1.5">Project Type</p>
@@ -25,6 +25,16 @@ export default function ProjectTypeSelect({ value, onChange }) {
           ))}
         </select>
       </div>
+      {value === 'Other' && (
+        <input
+          type="text"
+          value={otherValue}
+          onChange={(e) => onOtherChange(e.target.value)}
+          placeholder="Please specify"
+          className="input-base mt-2"
+          maxLength={100}
+        />
+      )}
     </div>
   );
 }
