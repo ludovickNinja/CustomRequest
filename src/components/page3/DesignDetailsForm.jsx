@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import NumberedSection from './NumberedSection.jsx';
 import SkuChipInput from './SkuChipInput.jsx';
-import MetalGrid from './MetalGrid.jsx';
+import MetalSection from './MetalSection.jsx';
 import FingerSizeField from './FingerSizeField.jsx';
 import CenterStoneSection from './CenterStoneSection.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
@@ -13,8 +13,11 @@ import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
 function validate(design) {
   const e = {};
   if (!design.skus.length) e.skus = 'Add at least one SKU.';
-  if (!design.metal) e.metal = 'Choose a metal.';
-  else if (design.metal === 'other' && !design.otherMetal) e.metal = 'Select a specific metal.';
+  const m = design.metal;
+  if (!m.karat) e.metal = 'Choose a karat.';
+  else if (m.karat === 'Other' && !m.karatOther.trim()) e.metal = 'Please specify the karat.';
+  else if (m.tone === 'two-tone' && m.colors.length !== 2) e.metal = 'Choose two colors for two-tone.';
+  else if (m.tone === 'single' && m.colors.length !== 1) e.metal = 'Choose a color.';
   if (!design.fingerSize) e.fingerSize = 'Required.';
 
   const cs = design.centerStone;
@@ -73,12 +76,10 @@ export default function DesignDetailsForm() {
         />
       </NumberedSection>
 
-      <NumberedSection number={2} title="Metal" helper="Select the primary metal for your ring.">
-        <MetalGrid
+      <NumberedSection number={2} title="Metal" helper="Choose the tone, karat, and color for your ring.">
+        <MetalSection
           value={design.metal}
-          otherValue={design.otherMetal}
-          onChange={(v) => setDesign({ metal: v })}
-          onOtherChange={(v) => setDesign({ otherMetal: v })}
+          onChange={(patch) => setDesign({ metal: { ...design.metal, ...patch } })}
           error={liveErrors.metal}
         />
       </NumberedSection>
