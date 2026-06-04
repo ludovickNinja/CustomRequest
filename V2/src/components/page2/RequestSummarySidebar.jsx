@@ -19,7 +19,7 @@ export default function RequestSummarySidebar({ collectionId }) {
         <div className="mt-5 text-center">
           <p className="eyebrow">Selected Collection</p>
           <div className="mt-3 overflow-hidden rounded-xl bg-white shadow-sm">
-            <div className="relative aspect-[4/3] w-full bg-stone-100">
+            <div className="relative aspect-[310/380] w-full bg-stone-100">
               {collection?.image && (
                 <img
                   src={collection.image}
