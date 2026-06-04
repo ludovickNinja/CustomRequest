@@ -1,3 +1,20 @@
+/**
+ * One design card on the Design Details page.
+ *
+ * Each design lives inside a collapsible <section>. The header shows a
+ * one-line summary (metal + size + stone) so the customer can tell what
+ * they entered without expanding the card. Clicking the header toggles
+ * the full form (SKUs, Metal, Finger Size, Center Stone, Notes).
+ *
+ * The remove control (trash icon) only renders when the form holds
+ * more than one design — we never let the customer end up with zero.
+ *
+ * Center Stone visibility:
+ *   - If the chosen project type is Engagement Ring (or unset), the
+ *     center stone section is always shown.
+ *   - For any other project type the section is hidden behind an
+ *     opt-in toggle stored in `design.includeCenterStone`.
+ */
 import { ChevronDown, Gem, Trash2 } from 'lucide-react';
 import NumberedSection from './NumberedSection.jsx';
 import SkuChipInput from './SkuChipInput.jsx';

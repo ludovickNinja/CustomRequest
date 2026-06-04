@@ -1,3 +1,17 @@
+/**
+ * Step 4 of the customer flow — Review & Submit.
+ *
+ * Shows a read-only summary of everything the customer entered across
+ * steps 1–3: chosen collection, contact info, and every design (with
+ * the center stone section conditionally surfaced). Each section has
+ * an Edit link that jumps back to the right step so the customer can
+ * fix anything before submitting.
+ *
+ * Submitting hands the final payload to `submissionsStore.createSubmission`,
+ * which assigns an id, stamps `submittedAt`, and persists the record.
+ * We then swap the page into a confirmation view with a "Start a new
+ * request" action that resets the form context.
+ */
 import { useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, Pencil, Send } from 'lucide-react';

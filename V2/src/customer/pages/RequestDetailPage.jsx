@@ -1,3 +1,18 @@
+/**
+ * Detail view for a single submitted request.
+ *
+ * Two-column layout on desktop:
+ *   - Left column: contact info, one summary card per design, and the
+ *     comments thread (post-only — the customer adds comments; the team
+ *     will reply once we have a real backend).
+ *   - Right column (sticky): a Quote sidebar that currently shows a
+ *     "Pending review" placeholder. When a real quote field is added to
+ *     the submission record (probably via the admin tool), the
+ *     placeholder gets replaced with the live quote.
+ *
+ * All reads/writes go through `submissionsStore`. If the route id
+ * doesn't match a stored submission we redirect back to the list.
+ */
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { MessageSquare, Clock, FileText, Hourglass, Send } from 'lucide-react';

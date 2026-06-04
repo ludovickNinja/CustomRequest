@@ -1,3 +1,19 @@
+/**
+ * Static collection catalogue.
+ *
+ * Each entry powers a card on the collection picker (step 1) and is
+ * referenced by `findCollection(id)` later in the flow when a page
+ * needs to display the chosen collection's name, tagline, or image.
+ *
+ * - `id`            short slug used in URLs (`/design/:collection`).
+ * - `label`         long form name shown on the picker card.
+ * - `shortLabel`    used in summaries on later steps.
+ * - `tagline`       one-line marketing line.
+ * - `image`         path under `public/images/` for the hero photo.
+ *
+ * `fullCustom` is a separate export because the Full Custom request
+ * banner on the picker is its own component (not a regular card).
+ */
 export const collections = [
   {
     id: 'crownring',

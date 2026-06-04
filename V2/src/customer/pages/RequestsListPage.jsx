@@ -1,3 +1,13 @@
+/**
+ * "View Ongoing Requests" — list of every submission for this customer.
+ *
+ * Data comes from `submissionsStore.listSubmissions`, which today reads
+ * localStorage. A search input and a sort dropdown drive the same
+ * helper. Two empty states: first-time visitor (no submissions yet)
+ * vs. no-match for the current search query.
+ *
+ * Each row links to `/requests/:id` for the detail view.
+ */
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, ArrowLeft, FileText } from 'lucide-react';

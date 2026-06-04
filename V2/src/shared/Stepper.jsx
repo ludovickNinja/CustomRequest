@@ -1,3 +1,15 @@
+/**
+ * Top-of-page progress indicator used on every customer flow page.
+ *
+ * The caller passes `currentStep` (1-based). Earlier steps render as
+ * "complete" (gold + checkmark), the current step as "active" (gold +
+ * number), and later steps as "upcoming" (muted).
+ *
+ * Each step gets an equal-width column so the bubbles sit at 1/8, 3/8,
+ * 5/8, 7/8 across the row. The connector lines are absolutely
+ * positioned between adjacent bubble centers with a small gap so the
+ * line stops cleanly at the bubble edge.
+ */
 import { Check } from 'lucide-react';
 
 const STEPS = [
