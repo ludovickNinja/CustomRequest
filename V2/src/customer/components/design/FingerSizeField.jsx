@@ -1,4 +1,4 @@
-import { ringSizes, convertSize } from '../../data/ringSizes.js';
+import { ringSizes, convertSize } from '../../../data/ringSizes.js';
 
 const SYSTEMS = ['US', 'UK', 'EU'];
 

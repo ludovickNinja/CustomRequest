@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Plus } from 'lucide-react';
 import DesignCard from './DesignCard.jsx';
 import { colorsNeeded } from './MetalSection.jsx';
-import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
+import { useCustomRequest } from '../../../state/CustomRequestContext.jsx';
 
 function validateDesign(design, projectType) {
   const centerStoneRequired = !projectType || projectType === 'Engagement Ring';

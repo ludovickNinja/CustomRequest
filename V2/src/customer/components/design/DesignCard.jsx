@@ -5,7 +5,7 @@ import MetalSection, { metalSummary } from './MetalSection.jsx';
 import FingerSizeField from './FingerSizeField.jsx';
 import CenterStoneSection from './CenterStoneSection.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
-import NotesTextarea from '../page2/NotesTextarea.jsx';
+import NotesTextarea from '../contact/NotesTextarea.jsx';
 
 function summarize(design) {
   const parts = [];

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import TopBar from '../components/shared/TopBar.jsx';
-import Stepper from '../components/shared/Stepper.jsx';
-import PageFooter from '../components/shared/PageFooter.jsx';
-import DesignDetailsForm from '../components/page3/DesignDetailsForm.jsx';
-import { findCollection } from '../data/collections.js';
-import { useCustomRequest } from '../state/CustomRequestContext.jsx';
+import TopBar from '../../shared/TopBar.jsx';
+import Stepper from '../../shared/Stepper.jsx';
+import PageFooter from '../../shared/PageFooter.jsx';
+import DesignDetailsForm from '../components/design/DesignDetailsForm.jsx';
+import { findCollection } from '../../data/collections.js';
+import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
 
 export default function DesignDetailsPage() {
   const { collection } = useParams();

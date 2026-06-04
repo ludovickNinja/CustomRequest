@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import TopBar from '../components/shared/TopBar.jsx';
-import Stepper from '../components/shared/Stepper.jsx';
-import PageFooter from '../components/shared/PageFooter.jsx';
-import ContactInfoForm from '../components/page2/ContactInfoForm.jsx';
-import RequestSummarySidebar from '../components/page2/RequestSummarySidebar.jsx';
-import { findCollection } from '../data/collections.js';
-import { useCustomRequest } from '../state/CustomRequestContext.jsx';
+import TopBar from '../../shared/TopBar.jsx';
+import Stepper from '../../shared/Stepper.jsx';
+import PageFooter from '../../shared/PageFooter.jsx';
+import ContactInfoForm from '../components/contact/ContactInfoForm.jsx';
+import RequestSummarySidebar from '../components/contact/RequestSummarySidebar.jsx';
+import { findCollection } from '../../data/collections.js';
+import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
 
 export default function ContactInfoPage() {
   const { collection } = useParams();

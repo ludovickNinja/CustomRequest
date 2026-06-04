@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, Pencil, Send } from 'lucide-react';
-import TopBar from '../components/shared/TopBar.jsx';
-import Stepper from '../components/shared/Stepper.jsx';
-import PageFooter from '../components/shared/PageFooter.jsx';
-import { findCollection } from '../data/collections.js';
-import { useCustomRequest } from '../state/CustomRequestContext.jsx';
-import { metalSummary } from '../components/page3/MetalSection.jsx';
+import TopBar from '../../shared/TopBar.jsx';
+import Stepper from '../../shared/Stepper.jsx';
+import PageFooter from '../../shared/PageFooter.jsx';
+import { findCollection } from '../../data/collections.js';
+import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
+import { createSubmission } from '../../services/submissionsStore.js';
+import { metalSummary } from '../components/design/MetalSection.jsx';
 
 function Row({ label, value }) {
   if (value === undefined || value === null || value === '' || (Array.isArray(value) && value.length === 0)) return null;
@@ -133,25 +134,13 @@ export default function ReviewSubmitPage() {
 
   function submit() {
     setSubmitting(true);
-    const submittedAt = new Date().toISOString();
     markSubmitted();
-    const payload = {
-      submittedAt,
+    const record = createSubmission({
       collection: collectionId,
       contact,
       designs,
-    };
-    if (typeof window !== 'undefined') {
-      try {
-        const key = 'customrequest:submissions';
-        const prior = JSON.parse(window.localStorage.getItem(key) || '[]');
-        prior.push(payload);
-        window.localStorage.setItem(key, JSON.stringify(prior));
-      } catch {
-        // ignore quota errors
-      }
-    }
-    setConfirmation(payload);
+    });
+    setConfirmation(record);
     setSubmitting(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

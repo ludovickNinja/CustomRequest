@@ -1,9 +1,9 @@
-import PageHeader from '../components/page1/PageHeader.jsx';
-import CollectionCard from '../components/page1/CollectionCard.jsx';
-import FullCustomBanner from '../components/page1/FullCustomBanner.jsx';
-import TrustFooter from '../components/page1/TrustFooter.jsx';
-import { collections } from '../data/collections.js';
-import { useCustomRequest } from '../state/CustomRequestContext.jsx';
+import PageHeader from '../components/collection/PageHeader.jsx';
+import CollectionCard from '../components/collection/CollectionCard.jsx';
+import FullCustomBanner from '../components/collection/FullCustomBanner.jsx';
+import TrustFooter from '../components/collection/TrustFooter.jsx';
+import { collections } from '../../data/collections.js';
+import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
 
 export default function CustomRequestPage() {
   const { setCollection } = useCustomRequest();
