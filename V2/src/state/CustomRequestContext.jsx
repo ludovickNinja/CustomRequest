@@ -7,6 +7,7 @@ const defaultContact = {
   contactName: '',
   email: '',
   cc: [],
+  poReference: '',
   phoneCountry: 'US',
   phone: '',
   quoteType: 'quote-only',

@@ -84,7 +84,7 @@ export default function ReviewSubmitPage() {
   const cs = design.centerStone;
   const csSummary = useMemo(() => centerStoneSummary(cs), [cs]);
 
-  const incomplete = !contact.email || !contact.contactName || !design.skus.length || !design.fingerSize;
+  const incomplete = !contact.email || !contact.contactName || !contact.poReference || !design.skus.length || !design.fingerSize;
 
   function submit() {
     setSubmitting(true);
@@ -176,6 +176,7 @@ export default function ReviewSubmitPage() {
           <SectionCard title="Contact Information" editTo={`/design/${collectionId}`}>
             <Row label="Account / Company" value={contact.accountName} />
             <Row label="Contact Name" value={contact.contactName} />
+            <Row label="PO# / Reference / Client Name" value={contact.poReference} />
             <Row label="Email" value={contact.email} />
             {contact.cc?.length > 0 && <Row label="CC" value={contact.cc.join(', ')} />}
             <Row label="Phone" value={contact.phone ? `${contact.phoneCountry || ''} ${contact.phone}`.trim() : ''} />

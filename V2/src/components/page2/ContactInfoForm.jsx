@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Building2, User, Mail, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Building2, User, Mail, Hash, ArrowLeft, ArrowRight } from 'lucide-react';
 import FieldRow from '../shared/FieldRow.jsx';
 import CcChipInput from './CcChipInput.jsx';
 import PhoneInput from './PhoneInput.jsx';
@@ -18,6 +18,7 @@ function validate(contact) {
   if (!contact.contactName.trim()) e.contactName = 'Required.';
   if (!contact.email.trim()) e.email = 'Required.';
   else if (!EMAIL_RE.test(contact.email)) e.email = 'Enter a valid email.';
+  if (!contact.poReference.trim()) e.poReference = 'Required — enter a PO#, reference, or client name.';
   const digits = contact.phone.replace(/\D/g, '');
   if (!digits) e.phone = 'Required.';
   else if (digits.length < 7) e.phone = 'Please enter a complete phone number.';
@@ -47,8 +48,8 @@ export default function ContactInfoForm() {
     const v = validate(contact);
     setErrors(v);
     setTouched({
-      accountName: true, contactName: true, email: true, phone: true,
-      quoteType: true, appointmentDate: true,
+      accountName: true, contactName: true, email: true, poReference: true,
+      phone: true, quoteType: true, appointmentDate: true,
     });
     if (Object.keys(v).length === 0) {
       navigate(`/design/${collection}/details`);
@@ -124,6 +125,30 @@ export default function ContactInfoForm() {
 
         <div className="mt-4">
           <CcChipInput value={contact.cc} onChange={(v) => update('cc', v)} />
+        </div>
+
+        <div className="mt-4">
+          <FieldRow
+            label="PO# / Reference / Client Name"
+            required
+            htmlFor="poReference"
+            error={liveErrors.poReference}
+            hint="Enter any one — used to identify this request in our system."
+          >
+            <div className="relative">
+              <Hash className="pointer-events-none absolute left-3 top-3 h-4 w-4 text-stone-400" />
+              <input
+                id="poReference"
+                type="text"
+                value={contact.poReference}
+                onChange={(e) => update('poReference', e.target.value)}
+                onBlur={() => touch('poReference')}
+                placeholder="e.g. PO-12345, REF-9876, or Smith Wedding"
+                maxLength={120}
+                className={'input-base pl-9 ' + (liveErrors.poReference ? 'input-error' : '')}
+              />
+            </div>
+          </FieldRow>
         </div>
 
         <div className="mt-4">
