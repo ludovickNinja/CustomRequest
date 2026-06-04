@@ -1,16 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ChevronDown, Gem } from 'lucide-react';
-import NumberedSection from './NumberedSection.jsx';
-import SkuChipInput from './SkuChipInput.jsx';
-import MetalSection, { colorsNeeded } from './MetalSection.jsx';
-import FingerSizeField from './FingerSizeField.jsx';
-import CenterStoneSection from './CenterStoneSection.jsx';
-import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
-import NotesTextarea from '../page2/NotesTextarea.jsx';
+import { ArrowLeft, ArrowRight, Plus } from 'lucide-react';
+import DesignCard from './DesignCard.jsx';
+import { colorsNeeded } from './MetalSection.jsx';
 import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
 
-function validate(design, includeCenterStone) {
+function validateDesign(design, projectType) {
+  const centerStoneRequired = !projectType || projectType === 'Engagement Ring';
+  const includeCenterStone = centerStoneRequired || design.includeCenterStone;
   const e = {};
   if (!design.skus.length) e.skus = 'Add at least one SKU.';
   const m = design.metal;
@@ -50,136 +47,121 @@ function validate(design, includeCenterStone) {
 export default function DesignDetailsForm() {
   const { collection } = useParams();
   const navigate = useNavigate();
-  const { state, setDesign, setCenterStone, setDesignField } = useCustomRequest();
-  const design = state.design;
+  const {
+    state,
+    updateDesign,
+    updateCenterStone,
+    addDesign,
+    removeDesign,
+  } = useCustomRequest();
+  const designs = state.designs;
   const projectType = state.contact.projectType;
   const centerStoneRequired = !projectType || projectType === 'Engagement Ring';
-  const [includeCenterStone, setIncludeCenterStone] = useState(centerStoneRequired);
   const [showErrors, setShowErrors] = useState(false);
+  const [expanded, setExpanded] = useState(() => designs.map((_, i) => i === designs.length - 1));
 
-  const effectiveInclude = centerStoneRequired || includeCenterStone;
-  const errors = validate(design, effectiveInclude);
-  const allValid = Object.keys(errors).length === 0;
+  // Keep `expanded` in sync if designs are added/removed externally.
+  useEffect(() => {
+    setExpanded((prev) => {
+      if (prev.length === designs.length) return prev;
+      if (prev.length < designs.length) {
+        return [
+          ...prev.map(() => false),
+          ...Array(designs.length - prev.length).fill(true),
+        ];
+      }
+      return prev.slice(0, designs.length);
+    });
+  }, [designs.length]);
+
+  const errorsPerDesign = designs.map((d) => validateDesign(d, projectType));
+  const allValid = errorsPerDesign.every((e) => Object.keys(e).length === 0);
 
   function handleSubmit(e) {
     e.preventDefault();
     if (!allValid) {
       setShowErrors(true);
-      const firstErrorEl = document.querySelector('.input-error, [data-error="true"]');
-      if (firstErrorEl) firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Expand the first design with errors so the user can see them.
+      const firstBad = errorsPerDesign.findIndex((err) => Object.keys(err).length > 0);
+      if (firstBad >= 0) {
+        setExpanded((prev) => prev.map((_, i) => i === firstBad));
+      }
+      requestAnimationFrame(() => {
+        const firstErrorEl = document.querySelector('.input-error, [data-error="true"]');
+        if (firstErrorEl) firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
       return;
     }
-    setDesignField('includeCenterStone', effectiveInclude);
     navigate(`/design/${collection}/review`);
   }
 
-  const liveErrors = showErrors ? errors : {};
+  function handleAddDesign() {
+    if (!allValid) {
+      setShowErrors(true);
+      const firstBad = errorsPerDesign.findIndex((err) => Object.keys(err).length > 0);
+      if (firstBad >= 0) {
+        setExpanded((prev) => prev.map((_, i) => i === firstBad));
+      }
+      requestAnimationFrame(() => {
+        const firstErrorEl = document.querySelector('.input-error, [data-error="true"]');
+        if (firstErrorEl) firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      return;
+    }
+    addDesign();
+    // The new design becomes the last; collapse others, expand new.
+    setExpanded(designs.map(() => false).concat([true]));
+    requestAnimationFrame(() => {
+      const cards = document.querySelectorAll('[data-design-card]');
+      cards[cards.length - 1]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function toggleExpanded(i) {
+    setExpanded((prev) => prev.map((v, idx) => (idx === i ? !v : v)));
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       <div className="px-1">
-        <h2 className="font-serif text-4xl text-stone-900">Tell Us About Your Ring</h2>
+        <h2 className="font-serif text-4xl text-stone-900">
+          {designs.length > 1 ? 'Tell Us About Your Rings' : 'Tell Us About Your Ring'}
+        </h2>
         <p className="mt-2 text-sm text-stone-500">
           Please provide the details below so we can create an accurate quote and renderings.
+          {designs.length === 1
+            ? ' You can add additional designs at the bottom of this page.'
+            : ` ${designs.length} designs in this request.`}
         </p>
       </div>
 
-      <NumberedSection number={1} title="SKU(s)" helper="Add one or more SKUs related to this request.">
-        <SkuChipInput
-          value={design.skus}
-          onChange={(v) => setDesign({ skus: v })}
-          error={liveErrors.skus}
-        />
-      </NumberedSection>
-
-      <NumberedSection number={2} title="Metal" helper="Choose the tone, karat, and color for your ring.">
-        <MetalSection
-          value={design.metal}
-          onChange={(patch) => setDesign({ metal: { ...design.metal, ...patch } })}
-          error={liveErrors.metal}
-        />
-      </NumberedSection>
-
-      <NumberedSection number={3} title="Finger Size" helper="Select the ring size.">
-        <FingerSizeField
-          system={design.fingerSizeSystem}
-          size={design.fingerSize}
-          onSystemChange={(v) => setDesign({ fingerSizeSystem: v })}
-          onSizeChange={(v) => setDesign({ fingerSize: v })}
-          error={liveErrors.fingerSize}
-        />
-      </NumberedSection>
-
-      <NumberedSection number={4} title="Center Stone">
-        {centerStoneRequired ? (
-          <CenterStoneSection
-            value={design.centerStone}
-            onChange={(patch) => setCenterStone(patch)}
-            errors={liveErrors.centerStone || {}}
-          />
-        ) : (
-          <div className="space-y-4">
-            <button
-              type="button"
-              onClick={() => setIncludeCenterStone((v) => !v)}
-              aria-expanded={includeCenterStone}
-              className={
-                'flex w-full items-center justify-between gap-3 rounded-2xl border p-4 text-left transition ' +
-                (includeCenterStone
-                  ? 'border-gold-300 bg-gold-50/60'
-                  : 'border-stone-300 bg-white hover:border-stone-400')
-              }
-            >
-              <span className="flex items-center gap-3">
-                <Gem className="h-5 w-5 text-gold-700" />
-                <span>
-                  <span className="block text-sm font-semibold text-stone-900">
-                    Add a center stone to this design
-                  </span>
-                  <span className="block text-xs text-stone-500">
-                    Optional for {projectType.toLowerCase()}s — open this section only if you want to specify a center stone.
-                  </span>
-                </span>
-              </span>
-              <ChevronDown
-                className={
-                  'h-5 w-5 shrink-0 text-stone-500 transition-transform ' +
-                  (includeCenterStone ? 'rotate-180' : '')
-                }
-              />
-            </button>
-            {includeCenterStone && (
-              <CenterStoneSection
-                value={design.centerStone}
-                onChange={(patch) => setCenterStone(patch)}
-                errors={liveErrors.centerStone || {}}
-              />
-            )}
+      <div className="space-y-4">
+        {designs.map((design, i) => (
+          <div key={i} data-design-card>
+            <DesignCard
+              index={i}
+              design={design}
+              errors={showErrors ? errorsPerDesign[i] : undefined}
+              projectType={projectType}
+              canRemove={designs.length > 1}
+              onUpdate={(patch) => updateDesign(i, patch)}
+              onUpdateCenterStone={(patch) => updateCenterStone(i, patch)}
+              onRemove={() => removeDesign(i)}
+              isExpanded={expanded[i] ?? false}
+              onToggle={() => toggleExpanded(i)}
+            />
           </div>
-        )}
-      </NumberedSection>
+        ))}
+      </div>
 
-      <NumberedSection
-        number={5}
-        title="Details / Additional Information"
-        helper="Share any additional details about your design, inspiration, setting style, band width, engraving, etc."
+      <button
+        type="button"
+        onClick={handleAddDesign}
+        className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-300 bg-white px-6 py-4 text-sm font-medium text-stone-600 transition hover:border-gold-400 hover:text-gold-700"
       >
-        <NotesTextarea
-          value={design.notes}
-          onChange={(v) => setDesign({ notes: v })}
-          maxLength={1000}
-          rows={4}
-          label=""
-          eyebrowStyle={false}
-          placeholder="Your notes here…"
-        />
-        <div className="mt-4">
-          <ReferenceImagesUploader
-            value={design.uploads}
-            onChange={(v) => setDesign({ uploads: v })}
-          />
-        </div>
-      </NumberedSection>
+        <Plus className="h-4 w-4" />
+        Add Another Design
+      </button>
 
       <div className="flex items-center justify-between pt-2">
         <button

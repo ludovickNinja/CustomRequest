@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, Pencil, Send } from 'lucide-react';
 import TopBar from '../components/shared/TopBar.jsx';
@@ -18,11 +18,14 @@ function Row({ label, value }) {
   );
 }
 
-function SectionCard({ title, editTo, children }) {
+function SectionCard({ title, subtitle, editTo, children }) {
   return (
     <section className="card-panel p-6">
       <header className="flex items-center justify-between gap-3">
-        <h3 className="font-serif text-xl text-stone-900">{title}</h3>
+        <div>
+          <h3 className="font-serif text-xl text-stone-900">{title}</h3>
+          {subtitle && <p className="mt-0.5 text-xs text-stone-500">{subtitle}</p>}
+        </div>
         {editTo && (
           <Link
             to={editTo}
@@ -71,33 +74,73 @@ function centerStoneSummary(cs) {
   return { typeLabel, shapeLabel };
 }
 
+function DesignReview({ design, designNumber, editTo, includeCenterStone }) {
+  const cs = design.centerStone;
+  const csSummary = centerStoneSummary(cs);
+  return (
+    <>
+      <SectionCard
+        title={`Design ${designNumber}`}
+        subtitle={metalSummary(design.metal)}
+        editTo={editTo}
+      >
+        <Row label="SKU(s)" value={design.skus.join(', ')} />
+        <Row label="Metal" value={metalSummary(design.metal)} />
+        <Row label="Finger Size" value={design.fingerSize ? `${design.fingerSize} (${design.fingerSizeSystem})` : ''} />
+        <Row label="Notes" value={design.notes} />
+        {design.uploads?.length > 0 && (
+          <Row label="Reference Files" value={`${design.uploads.length} file${design.uploads.length === 1 ? '' : 's'} attached`} />
+        )}
+      </SectionCard>
+
+      {includeCenterStone && (
+        <SectionCard title={`Design ${designNumber} — Center Stone`} editTo={editTo}>
+          <Row label="Provided By" value={cs.provideStone === 'yes' ? 'Crown Ring' : 'Customer'} />
+          {cs.provideStone === 'yes' && <Row label="Certification" value={cs.certified === 'yes' ? 'Certified' : 'Not certified'} />}
+          {cs.provideStone === 'no' && <Row label="Setting" value={cs.setStone === 'yes' ? 'Crown Ring will set the stone' : 'Customer will set'} />}
+          <Row label="Stone Type" value={csSummary.typeLabel} />
+          <Row label="Shape" value={csSummary.shapeLabel} />
+          <Row label="Carat Weight" value={cs.carat ? `${cs.carat} ${cs.caratUnit || 'ct'}` : ''} />
+          <Row label="Color" value={cs.color} />
+          <Row label="Clarity" value={cs.clarity} />
+          {cs.provideStone === 'no' && (
+            <Row label="Measurements" value={[cs.length, cs.width, cs.depth].every(Boolean) ? `${cs.length} × ${cs.width} × ${cs.depth} mm` : ''} />
+          )}
+          <Row label="Notes" value={cs.notes} />
+          {cs.uploads?.length > 0 && (
+            <Row label="Stone Photos" value={`${cs.uploads.length} file${cs.uploads.length === 1 ? '' : 's'} attached`} />
+          )}
+        </SectionCard>
+      )}
+    </>
+  );
+}
+
 export default function ReviewSubmitPage() {
   const { collection: collectionId } = useParams();
   const navigate = useNavigate();
-  const { state, setDesignField, resetAll } = useCustomRequest();
+  const { state, markSubmitted, resetAll } = useCustomRequest();
   const collection = findCollection(collectionId);
   const [submitting, setSubmitting] = useState(false);
   const [confirmation, setConfirmation] = useState(null);
 
   const contact = state.contact;
-  const design = state.design;
-  const cs = design.centerStone;
-  const csSummary = useMemo(() => centerStoneSummary(cs), [cs]);
+  const designs = state.designs;
+  const centerStoneRequired = !contact.projectType || contact.projectType === 'Engagement Ring';
 
-  const incomplete = !contact.email || !contact.contactName || !contact.poReference || !design.skus.length || !design.fingerSize;
+  const designIncomplete = designs.some((d) => !d.skus.length || !d.fingerSize);
+  const incomplete = !contact.email || !contact.contactName || !contact.poReference || designIncomplete;
 
   function submit() {
     setSubmitting(true);
     const submittedAt = new Date().toISOString();
-    setDesignField('submittedAt', submittedAt);
+    markSubmitted();
     const payload = {
       submittedAt,
       collection: collectionId,
       contact,
-      design,
+      designs,
     };
-    // Real backend integration would go here. For now we keep a local
-    // submission record so the confirmation page can show what was sent.
     if (typeof window !== 'undefined') {
       try {
         const key = 'customrequest:submissions';
@@ -125,7 +168,8 @@ export default function ReviewSubmitPage() {
           </span>
           <h2 className="mt-5 font-serif text-4xl text-stone-900">Request Submitted</h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-stone-500">
-            Thanks, {contact.contactName.split(' ')[0] || 'there'}! Your custom request has been recorded.
+            Thanks, {contact.contactName.split(' ')[0] || 'there'}! Your custom request
+            {designs.length > 1 ? ` (${designs.length} designs)` : ''} has been recorded.
             Our team will follow up at <span className="font-medium text-stone-700">{contact.email}</span> within 24–48 business hours.
           </p>
           <p className="mt-2 text-xs text-stone-400">
@@ -157,6 +201,9 @@ export default function ReviewSubmitPage() {
         <div className="px-1">
           <h2 className="font-serif text-4xl text-stone-900">Review & Submit</h2>
           <p className="mt-2 text-sm text-stone-500">
+            {designs.length > 1
+              ? `${designs.length} designs are included in this request. `
+              : ''}
             Take a moment to confirm the details below. You can jump back to any step to make changes before submitting.
           </p>
         </div>
@@ -189,35 +236,15 @@ export default function ReviewSubmitPage() {
             <Row label="Notes" value={contact.notes} />
           </SectionCard>
 
-          <SectionCard title="Design Details" editTo={`/design/${collectionId}/details`}>
-            <Row label="SKU(s)" value={design.skus.join(', ')} />
-            <Row label="Metal" value={metalSummary(design.metal)} />
-            <Row label="Finger Size" value={design.fingerSize ? `${design.fingerSize} (${design.fingerSizeSystem})` : ''} />
-            <Row label="Notes" value={design.notes} />
-            {design.uploads?.length > 0 && (
-              <Row label="Reference Files" value={`${design.uploads.length} file${design.uploads.length === 1 ? '' : 's'} attached`} />
-            )}
-          </SectionCard>
-
-          {design.includeCenterStone && (
-            <SectionCard title="Center Stone" editTo={`/design/${collectionId}/details`}>
-              <Row label="Provided By" value={cs.provideStone === 'yes' ? 'Crown Ring' : 'Customer'} />
-              {cs.provideStone === 'yes' && <Row label="Certification" value={cs.certified === 'yes' ? 'Certified' : 'Not certified'} />}
-              {cs.provideStone === 'no' && <Row label="Setting" value={cs.setStone === 'yes' ? 'Crown Ring will set the stone' : 'Customer will set'} />}
-              <Row label="Stone Type" value={csSummary.typeLabel} />
-              <Row label="Shape" value={csSummary.shapeLabel} />
-              <Row label="Carat Weight" value={cs.carat ? `${cs.carat} ${cs.caratUnit || 'ct'}` : ''} />
-              <Row label="Color" value={cs.color} />
-              <Row label="Clarity" value={cs.clarity} />
-              {cs.provideStone === 'no' && (
-                <Row label="Measurements" value={[cs.length, cs.width, cs.depth].every(Boolean) ? `${cs.length} × ${cs.width} × ${cs.depth} mm` : ''} />
-              )}
-              <Row label="Notes" value={cs.notes} />
-              {cs.uploads?.length > 0 && (
-                <Row label="Stone Photos" value={`${cs.uploads.length} file${cs.uploads.length === 1 ? '' : 's'} attached`} />
-              )}
-            </SectionCard>
-          )}
+          {designs.map((d, i) => (
+            <DesignReview
+              key={i}
+              design={d}
+              designNumber={i + 1}
+              editTo={`/design/${collectionId}/details`}
+              includeCenterStone={centerStoneRequired || d.includeCenterStone}
+            />
+          ))}
         </div>
 
         <div className="mt-8 flex items-center justify-between">

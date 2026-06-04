@@ -50,15 +50,34 @@ const defaultDesign = {
   },
   notes: '',
   uploads: [],
-  includeCenterStone: true,
-  submittedAt: null,
+  includeCenterStone: false,
 };
 
 const defaultState = {
   collection: null,
   contact: defaultContact,
-  design: defaultDesign,
+  designs: [defaultDesign],
+  submittedAt: null,
 };
+
+function mergeDesign(parsed) {
+  return {
+    ...defaultDesign,
+    ...(parsed || {}),
+    metal: {
+      ...defaultDesign.metal,
+      ...(typeof (parsed || {}).metal === 'object' && (parsed || {}).metal !== null
+        ? (parsed || {}).metal
+        : {}),
+    },
+    centerStone: {
+      ...defaultDesign.centerStone,
+      ...((parsed || {}).centerStone || {}),
+      uploads: (((parsed || {}).centerStone || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
+    },
+    uploads: ((parsed || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
+  };
+}
 
 function loadInitial() {
   if (typeof window === 'undefined') return defaultState;
@@ -66,29 +85,31 @@ function loadInitial() {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultState;
     const parsed = JSON.parse(raw);
+    const designsSource = Array.isArray(parsed.designs)
+      ? parsed.designs
+      : parsed.design
+      ? [parsed.design]
+      : [defaultDesign];
     return {
       collection: parsed.collection ?? null,
       contact: { ...defaultContact, ...(parsed.contact || {}) },
-      design: {
-        ...defaultDesign,
-        ...(parsed.design || {}),
-        metal: {
-          ...defaultDesign.metal,
-          ...(typeof (parsed.design || {}).metal === 'object' && (parsed.design || {}).metal !== null
-            ? (parsed.design || {}).metal
-            : {}),
-        },
-        centerStone: {
-          ...defaultDesign.centerStone,
-          ...((parsed.design || {}).centerStone || {}),
-          uploads: (((parsed.design || {}).centerStone || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
-        },
-        uploads: ((parsed.design || {}).uploads || []).map((u) => ({ ...u, blobUrl: null, needsReattach: true })),
-      },
+      designs: designsSource.length ? designsSource.map(mergeDesign) : [defaultDesign],
+      submittedAt: parsed.submittedAt ?? null,
     };
   } catch {
     return defaultState;
   }
+}
+
+function persistDesign(design) {
+  return {
+    ...design,
+    uploads: (design.uploads || []).map(({ id, name, size, type }) => ({ id, name, size, type })),
+    centerStone: {
+      ...design.centerStone,
+      uploads: (design.centerStone?.uploads || []).map(({ id, name, size, type }) => ({ id, name, size, type })),
+    },
+  };
 }
 
 const CustomRequestContext = createContext(null);
@@ -106,14 +127,8 @@ export function CustomRequestProvider({ children }) {
       const persistable = {
         collection: state.collection,
         contact: state.contact,
-        design: {
-          ...state.design,
-          uploads: state.design.uploads.map(({ id, name, size, type }) => ({ id, name, size, type })),
-          centerStone: {
-            ...state.design.centerStone,
-            uploads: state.design.centerStone.uploads.map(({ id, name, size, type }) => ({ id, name, size, type })),
-          },
-        },
+        designs: state.designs.map(persistDesign),
+        submittedAt: state.submittedAt,
       };
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(persistable));
     } catch {
@@ -129,15 +144,31 @@ export function CustomRequestProvider({ children }) {
     setContact: (patch) =>
       setState((s) => ({ ...s, contact: { ...s.contact, ...patch } })),
     resetContact: () => setState((s) => ({ ...s, contact: defaultContact })),
-    setDesignField: (field, value) =>
-      setState((s) => ({ ...s, design: { ...s.design, [field]: value } })),
-    setDesign: (patch) =>
-      setState((s) => ({ ...s, design: { ...s.design, ...patch } })),
-    setCenterStone: (patch) =>
+    updateDesign: (index, patch) =>
       setState((s) => ({
         ...s,
-        design: { ...s.design, centerStone: { ...s.design.centerStone, ...patch } },
+        designs: s.designs.map((d, i) => (i === index ? { ...d, ...patch } : d)),
       })),
+    updateDesignField: (index, field, value) =>
+      setState((s) => ({
+        ...s,
+        designs: s.designs.map((d, i) => (i === index ? { ...d, [field]: value } : d)),
+      })),
+    updateCenterStone: (index, patch) =>
+      setState((s) => ({
+        ...s,
+        designs: s.designs.map((d, i) =>
+          i === index ? { ...d, centerStone: { ...d.centerStone, ...patch } } : d
+        ),
+      })),
+    addDesign: () =>
+      setState((s) => ({ ...s, designs: [...s.designs, defaultDesign] })),
+    removeDesign: (index) =>
+      setState((s) => {
+        if (s.designs.length <= 1) return s;
+        return { ...s, designs: s.designs.filter((_, i) => i !== index) };
+      }),
+    markSubmitted: () => setState((s) => ({ ...s, submittedAt: new Date().toISOString() })),
     resetAll: () => setState(defaultState),
   }), [state]);
 
