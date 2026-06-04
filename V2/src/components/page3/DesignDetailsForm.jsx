@@ -1,0 +1,168 @@
+import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { ArrowLeft, Check, Send } from 'lucide-react';
+import NumberedSection from './NumberedSection.jsx';
+import SkuChipInput from './SkuChipInput.jsx';
+import MetalGrid from './MetalGrid.jsx';
+import FingerSizeField from './FingerSizeField.jsx';
+import CenterStoneSection from './CenterStoneSection.jsx';
+import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
+import NotesTextarea from '../page2/NotesTextarea.jsx';
+import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
+
+function validate(design) {
+  const e = {};
+  if (!design.skus.length) e.skus = 'Add at least one SKU.';
+  if (!design.metal) e.metal = 'Choose a metal.';
+  else if (design.metal === 'other' && !design.otherMetal) e.metal = 'Select a specific metal.';
+  if (!design.fingerSize) e.fingerSize = 'Required.';
+
+  const cs = design.centerStone;
+  const csErrors = {};
+  if (!cs.type) csErrors.type = 'Required.';
+  else if (cs.type === 'Gemstone' && !cs.typeOther.trim()) csErrors.typeOther = 'Please specify the gemstone.';
+  if (!cs.shape) csErrors.shape = 'Required.';
+  if (!cs.carat || parseFloat(cs.carat) <= 0) csErrors.carat = 'Required.';
+  if (!cs.color) csErrors.color = 'Required.';
+  if (!cs.clarity) csErrors.clarity = 'Required.';
+  if (!cs.length || parseFloat(cs.length) <= 0) csErrors.length = 'Required.';
+  if (!cs.width || parseFloat(cs.width) <= 0) csErrors.width = 'Required.';
+  if (!cs.depth || parseFloat(cs.depth) <= 0) csErrors.depth = 'Required.';
+  if (Object.keys(csErrors).length) e.centerStone = csErrors;
+
+  return e;
+}
+
+export default function DesignDetailsForm() {
+  const { collection } = useParams();
+  const navigate = useNavigate();
+  const { state, setDesign, setCenterStone } = useCustomRequest();
+  const design = state.design;
+  const [showErrors, setShowErrors] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const errors = validate(design);
+  const allValid = Object.keys(errors).length === 0;
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!allValid) {
+      setShowErrors(true);
+      const firstErrorEl = document.querySelector('.input-error, [data-error="true"]');
+      if (firstErrorEl) firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    setSubmitted(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const liveErrors = showErrors ? errors : {};
+
+  if (submitted) {
+    return (
+      <div className="card-panel p-10 text-center">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-500 text-white">
+          <Check className="h-7 w-7" />
+        </span>
+        <h2 className="mt-4 font-serif text-3xl text-stone-900">Request Submitted</h2>
+        <p className="mx-auto mt-3 max-w-md text-sm text-stone-500">
+          Thanks! Your custom request has been saved. Our team will follow up shortly using the contact information you provided.
+        </p>
+        <button
+          type="button"
+          onClick={() => navigate('/')}
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-gold-100 hover:bg-neutral-800"
+        >
+          Start a New Request
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+      <div className="px-1">
+        <h2 className="font-serif text-4xl text-stone-900">Tell Us About Your Ring</h2>
+        <p className="mt-2 text-sm text-stone-500">
+          Please provide the details below so we can create an accurate quote and renderings.
+        </p>
+      </div>
+
+      <NumberedSection number={1} title="SKU(s)" helper="Add one or more SKUs related to this request.">
+        <SkuChipInput
+          value={design.skus}
+          onChange={(v) => setDesign({ skus: v })}
+          error={liveErrors.skus}
+        />
+      </NumberedSection>
+
+      <NumberedSection number={2} title="Metal" helper="Select the primary metal for your ring.">
+        <MetalGrid
+          value={design.metal}
+          otherValue={design.otherMetal}
+          onChange={(v) => setDesign({ metal: v })}
+          onOtherChange={(v) => setDesign({ otherMetal: v })}
+          error={liveErrors.metal}
+        />
+      </NumberedSection>
+
+      <NumberedSection number={3} title="Finger Size" helper="Select the ring size.">
+        <FingerSizeField
+          system={design.fingerSizeSystem}
+          size={design.fingerSize}
+          onSystemChange={(v) => setDesign({ fingerSizeSystem: v })}
+          onSizeChange={(v) => setDesign({ fingerSize: v })}
+          error={liveErrors.fingerSize}
+        />
+      </NumberedSection>
+
+      <NumberedSection number={4} title="Center Stone">
+        <CenterStoneSection
+          value={design.centerStone}
+          onChange={(patch) => setCenterStone(patch)}
+          errors={liveErrors.centerStone || {}}
+        />
+      </NumberedSection>
+
+      <NumberedSection
+        number={5}
+        title="Details / Additional Information"
+        helper="Share any additional details about your design, inspiration, setting style, band width, engraving, etc."
+      >
+        <NotesTextarea
+          value={design.notes}
+          onChange={(v) => setDesign({ notes: v })}
+          maxLength={1000}
+          rows={4}
+          label=""
+          eyebrowStyle={false}
+          placeholder="Your notes here…"
+        />
+        <div className="mt-4">
+          <ReferenceImagesUploader
+            value={design.uploads}
+            onChange={(v) => setDesign({ uploads: v })}
+          />
+        </div>
+      </NumberedSection>
+
+      <div className="flex items-center justify-between pt-2">
+        <button
+          type="button"
+          onClick={() => navigate(`/design/${collection}`)}
+          className="inline-flex items-center gap-2 rounded-full bg-stone-100 px-6 py-3 text-sm font-medium text-stone-700 hover:bg-stone-200"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back
+        </button>
+        <button
+          type="submit"
+          className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-7 py-3 text-sm font-medium text-gold-100 hover:bg-neutral-800"
+        >
+          Submit Request
+          <Send className="h-4 w-4" />
+        </button>
+      </div>
+    </form>
+  );
+}

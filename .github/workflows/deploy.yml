@@ -23,8 +23,27 @@ jobs:
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
-      - run: npm run build
+          cache-dependency-path: |
+            V1/package-lock.json
+            V2/package-lock.json
+
+      - name: Install V1
+        working-directory: V1
+        run: npm ci
+      - name: Build V1
+        working-directory: V1
+        run: npm run build
+
+      - name: Install V2
+        working-directory: V2
+        run: npm ci
+      - name: Build V2
+        working-directory: V2
+        run: npm run build
+
+      - name: Copy landing page into dist
+        run: cp index.html dist/index.html
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
