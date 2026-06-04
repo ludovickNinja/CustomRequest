@@ -1,4 +1,7 @@
-import { Check } from 'lucide-react';
+import { Check, Info } from 'lucide-react';
+
+const TWO_TONE_ORDER_TIP =
+  'The first color or karat is used for the base (shank or interior band) and the second for the accents.';
 
 const TONES = [
   { id: 'single', label: 'Single Tone', helper: 'One metal throughout' },
@@ -63,7 +66,27 @@ export function metalSummary(metal) {
   return `Choose two colors · ${karatPart} two-tone · ${colorLabels.length}/2 selected`;
 }
 
-function SubsectionHeader({ letter, title, helper }) {
+function InfoTooltip({ text, label = 'More information' }) {
+  return (
+    <span className="relative inline-flex items-center">
+      <button
+        type="button"
+        aria-label={label}
+        className="peer inline-flex h-4 w-4 items-center justify-center rounded-full text-stone-400 hover:text-stone-600 focus:text-stone-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
+      >
+        <Info className="h-3.5 w-3.5" />
+      </button>
+      <span
+        role="tooltip"
+        className="pointer-events-none invisible absolute left-1/2 top-full z-20 mt-2 w-64 -translate-x-1/2 rounded-lg bg-stone-900 px-3 py-2 text-left text-xs font-normal leading-snug text-white opacity-0 shadow-lg transition peer-hover:visible peer-hover:opacity-100 peer-focus-visible:visible peer-focus-visible:opacity-100"
+      >
+        {text}
+      </span>
+    </span>
+  );
+}
+
+function SubsectionHeader({ letter, title, helper, tooltip }) {
   return (
     <div className="mb-3">
       <div className="flex items-center gap-2">
@@ -71,6 +94,7 @@ function SubsectionHeader({ letter, title, helper }) {
           {letter}
         </span>
         <p className="text-sm font-semibold text-stone-900">{title}</p>
+        {tooltip && <InfoTooltip text={tooltip} label={`${title} info`} />}
       </div>
       {helper && <p className="ml-8 mt-0.5 text-xs text-stone-500">{helper}</p>}
     </div>
@@ -188,7 +212,12 @@ export default function MetalSection({ value, onChange, error }) {
       </div>
 
       <div>
-        <SubsectionHeader letter="B" title="Karat" helper="Select the metal grade." />
+        <SubsectionHeader
+          letter="B"
+          title="Karat"
+          helper="Select the metal grade."
+          tooltip={tone === 'two-tone' ? TWO_TONE_ORDER_TIP : undefined}
+        />
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
           {karats.map((k) => {
             const selected = karat === k.id;
@@ -233,6 +262,7 @@ export default function MetalSection({ value, onChange, error }) {
               ? 'Select the gold color — the other side is Platinum.'
               : 'Select the color.'
           }
+          tooltip={tone === 'two-tone' ? TWO_TONE_ORDER_TIP : undefined}
         />
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {COLORS.map((c) => {
