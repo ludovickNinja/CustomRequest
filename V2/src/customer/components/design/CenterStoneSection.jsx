@@ -1,6 +1,6 @@
-import FieldRow from '../shared/FieldRow.jsx';
+import FieldRow from '../../../shared/FieldRow.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
-import NotesTextarea from '../page2/NotesTextarea.jsx';
+import NotesTextarea from '../contact/NotesTextarea.jsx';
 
 const STONE_TYPES = ['Diamond', 'Lab-Grown Diamond', 'Moissanite', 'Gemstone'];
 const SHAPES = ['Round', 'Oval', 'Princess', 'Cushion', 'Emerald', 'Pear', 'Marquise', 'Radiant', 'Asscher', 'Heart', 'Other'];

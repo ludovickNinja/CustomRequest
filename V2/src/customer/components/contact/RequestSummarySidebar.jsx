@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Clock, MessageCircle, Gem } from 'lucide-react';
-import { findCollection } from '../../data/collections.js';
+import { findCollection } from '../../../data/collections.js';
 
 const STEPS = [
   { n: 1, label: "We'll review your request", sub: 'Our team will carefully review your information and requirements.' },

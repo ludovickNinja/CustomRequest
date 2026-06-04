@@ -1,5 +1,5 @@
 import { Clock, Calendar } from 'lucide-react';
-import FieldRow from '../shared/FieldRow.jsx';
+import FieldRow from '../../../shared/FieldRow.jsx';
 
 export default function AppointmentSection({
   hasAppointment,

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Pencil } from 'lucide-react';
-import { fullCustom } from '../../data/collections.js';
+import { fullCustom } from '../../../data/collections.js';
 
 export default function FullCustomBanner({ onChoose }) {
   return (
