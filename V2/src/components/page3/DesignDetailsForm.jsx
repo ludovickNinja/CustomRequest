@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Check, ChevronDown, Gem, Send } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown, Gem } from 'lucide-react';
 import NumberedSection from './NumberedSection.jsx';
 import SkuChipInput from './SkuChipInput.jsx';
-import MetalSection from './MetalSection.jsx';
+import MetalSection, { colorsNeeded } from './MetalSection.jsx';
 import FingerSizeField from './FingerSizeField.jsx';
 import CenterStoneSection from './CenterStoneSection.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
@@ -14,10 +14,16 @@ function validate(design, includeCenterStone) {
   const e = {};
   if (!design.skus.length) e.skus = 'Add at least one SKU.';
   const m = design.metal;
+  const needed = colorsNeeded(m);
   if (!m.karat) e.metal = 'Choose a karat.';
   else if (m.karat === 'Other' && !m.karatOther.trim()) e.metal = 'Please specify the karat.';
-  else if (m.tone === 'two-tone' && m.colors.length !== 2) e.metal = 'Choose two colors for two-tone.';
-  else if (m.tone === 'single' && m.colors.length !== 1) e.metal = 'Choose a color.';
+  else if (m.colors.length !== needed) {
+    e.metal = needed === 2
+      ? 'Choose two colors for two-tone.'
+      : m.tone === 'two-tone'
+      ? 'Choose the gold color.'
+      : 'Choose a color.';
+  }
   if (!design.fingerSize) e.fingerSize = 'Required.';
 
   if (includeCenterStone) {
@@ -44,13 +50,12 @@ function validate(design, includeCenterStone) {
 export default function DesignDetailsForm() {
   const { collection } = useParams();
   const navigate = useNavigate();
-  const { state, setDesign, setCenterStone } = useCustomRequest();
+  const { state, setDesign, setCenterStone, setDesignField } = useCustomRequest();
   const design = state.design;
   const projectType = state.contact.projectType;
   const centerStoneRequired = !projectType || projectType === 'Engagement Ring';
   const [includeCenterStone, setIncludeCenterStone] = useState(centerStoneRequired);
   const [showErrors, setShowErrors] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   const effectiveInclude = centerStoneRequired || includeCenterStone;
   const errors = validate(design, effectiveInclude);
@@ -64,32 +69,11 @@ export default function DesignDetailsForm() {
       if (firstErrorEl) firstErrorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setDesignField('includeCenterStone', effectiveInclude);
+    navigate(`/design/${collection}/review`);
   }
 
   const liveErrors = showErrors ? errors : {};
-
-  if (submitted) {
-    return (
-      <div className="card-panel p-10 text-center">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-500 text-white">
-          <Check className="h-7 w-7" />
-        </span>
-        <h2 className="mt-4 font-serif text-3xl text-stone-900">Request Submitted</h2>
-        <p className="mx-auto mt-3 max-w-md text-sm text-stone-500">
-          Thanks! Your custom request has been saved. Our team will follow up shortly using the contact information you provided.
-        </p>
-        <button
-          type="button"
-          onClick={() => navigate('/')}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-gold-100 hover:bg-neutral-800"
-        >
-          Start a New Request
-        </button>
-      </div>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
@@ -210,8 +194,8 @@ export default function DesignDetailsForm() {
           type="submit"
           className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-7 py-3 text-sm font-medium text-gold-100 hover:bg-neutral-800"
         >
-          Submit Request
-          <Send className="h-4 w-4" />
+          Continue to Review
+          <ArrowRight className="h-4 w-4" />
         </button>
       </div>
     </form>

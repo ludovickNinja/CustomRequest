@@ -5,21 +5,63 @@ const TONES = [
   { id: 'two-tone', label: 'Two-Tone', helper: 'A blend of two metals' },
 ];
 
-const KARATS = [
+const KARATS_SINGLE = [
   { id: '10K', label: '10K', sub: '41.7% gold' },
   { id: '14K', label: '14K', sub: '58.5% gold' },
   { id: '18K', label: '18K', sub: '75.0% gold' },
-  { id: '22K', label: '22K', sub: '91.7% gold' },
   { id: 'Platinum', label: 'Platinum', sub: '950' },
   { id: 'Other', label: 'Other', sub: 'specify' },
 ];
+
+const KARATS_TWO_TONE = [
+  { id: '10K', label: '10K', sub: '41.7% gold' },
+  { id: '14K', label: '14K', sub: '58.5% gold' },
+  { id: '18K', label: '18K', sub: '75.0% gold' },
+  { id: '14K / Platinum', label: '14K / Platinum', sub: 'gold + 950' },
+  { id: '18K / Platinum', label: '18K / Platinum', sub: 'gold + 950' },
+  { id: 'Other', label: 'Other', sub: 'specify' },
+];
+
+const PLATINUM_SWATCH = 'radial-gradient(circle at 30% 30%, #f1f5f9, #cbd5e1 70%, #64748b)';
 
 const COLORS = [
   { id: 'yellow-gold', label: 'Yellow Gold', swatch: 'radial-gradient(circle at 30% 30%, #fde68a, #d4a017 70%, #8a6a0a)' },
   { id: 'white-gold', label: 'White Gold', swatch: 'radial-gradient(circle at 30% 30%, #ffffff, #e5e7eb 70%, #9ca3af)' },
   { id: 'rose-gold', label: 'Rose Gold', swatch: 'radial-gradient(circle at 30% 30%, #fecdd3, #f43f5e 70%, #9f1239)' },
-  { id: 'platinum', label: 'Platinum', swatch: 'radial-gradient(circle at 30% 30%, #f1f5f9, #cbd5e1 70%, #64748b)' },
 ];
+
+export function karatsFor(tone) {
+  return tone === 'two-tone' ? KARATS_TWO_TONE : KARATS_SINGLE;
+}
+
+export function colorsNeeded(metal) {
+  if (metal.tone === 'single') return 1;
+  if (metal.karat === '14K / Platinum' || metal.karat === '18K / Platinum') return 1;
+  return 2;
+}
+
+export function metalSummary(metal) {
+  const karatPart = metal.karat === 'Other'
+    ? (metal.karatOther.trim() || 'Other')
+    : metal.karat;
+  const colorLabels = metal.colors
+    .map((id) => COLORS.find((c) => c.id === id)?.label)
+    .filter(Boolean);
+  const needed = colorsNeeded(metal);
+
+  if (metal.tone === 'single') {
+    if (colorLabels.length === 1) return `${karatPart} ${colorLabels[0]}`;
+    return `Choose a color · ${karatPart} single tone`;
+  }
+  if (needed === 1) {
+    if (colorLabels.length === 1) return `${karatPart} (${colorLabels[0]} + Platinum)`;
+    return `Choose the gold color · ${karatPart}`;
+  }
+  if (colorLabels.length === 2) {
+    return `${karatPart} ${colorLabels[0]} & ${colorLabels[1]}`;
+  }
+  return `Choose two colors · ${karatPart} two-tone · ${colorLabels.length}/2 selected`;
+}
 
 function SubsectionHeader({ letter, title, helper }) {
   return (
@@ -52,42 +94,43 @@ function ToneIcon({ tone }) {
       />
       <span
         className="absolute left-5 top-1 block h-9 w-9 rounded-full ring-2 ring-white"
-        style={{ background: COLORS[3].swatch }}
+        style={{ background: PLATINUM_SWATCH }}
       />
     </div>
   );
 }
 
 function summaryLabel(metal) {
-  const karatPart = metal.karat === 'Other'
-    ? (metal.karatOther.trim() || 'Other')
-    : metal.karat;
-  const colorLabels = metal.colors
-    .map((id) => COLORS.find((c) => c.id === id)?.label)
-    .filter(Boolean);
-
-  if (metal.tone === 'single') {
-    if (colorLabels.length === 1) return `${karatPart} ${colorLabels[0]}`;
-    return `Choose a color · ${karatPart} single tone`;
-  }
-  if (colorLabels.length === 2) {
-    return `${karatPart} ${colorLabels[0]} & ${colorLabels[1]}`;
-  }
-  return `Choose two colors · ${karatPart} two-tone · ${colorLabels.length}/2 selected`;
+  return metalSummary(metal);
 }
 
 export default function MetalSection({ value, onChange, error }) {
   const { tone, karat, karatOther, colors } = value;
-  const colorsNeeded = tone === 'two-tone' ? 2 : 1;
-  const summaryComplete = colors.length === colorsNeeded;
+  const karats = karatsFor(tone);
+  const needed = colorsNeeded(value);
+  const summaryComplete = colors.length === needed;
 
   function setTone(nextTone) {
-    const nextColors = nextTone === 'single' ? colors.slice(0, 1) : colors.slice(0, 2);
-    onChange({ tone: nextTone, colors: nextColors });
+    const patch = { tone: nextTone };
+    if (nextTone === 'single' && (karat === '14K / Platinum' || karat === '18K / Platinum')) {
+      patch.karat = '14K';
+    }
+    const nextMetal = { ...value, ...patch };
+    const trim = colorsNeeded(nextMetal);
+    patch.colors = colors.slice(0, trim);
+    onChange(patch);
+  }
+
+  function setKarat(nextKarat) {
+    const patch = { karat: nextKarat };
+    const nextMetal = { ...value, ...patch };
+    const trim = colorsNeeded(nextMetal);
+    if (colors.length > trim) patch.colors = colors.slice(0, trim);
+    onChange(patch);
   }
 
   function toggleColor(id) {
-    if (tone === 'single') {
+    if (needed === 1) {
       onChange({ colors: [id] });
       return;
     }
@@ -96,7 +139,7 @@ export default function MetalSection({ value, onChange, error }) {
       onChange({ colors: colors.filter((c) => c !== id) });
       return;
     }
-    if (colors.length >= 2) return;
+    if (colors.length >= needed) return;
     onChange({ colors: [...colors, id] });
   }
 
@@ -147,13 +190,13 @@ export default function MetalSection({ value, onChange, error }) {
       <div>
         <SubsectionHeader letter="B" title="Karat" helper="Select the metal grade." />
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
-          {KARATS.map((k) => {
+          {karats.map((k) => {
             const selected = karat === k.id;
             return (
               <button
                 key={k.id}
                 type="button"
-                onClick={() => onChange({ karat: k.id })}
+                onClick={() => setKarat(k.id)}
                 className={
                   'flex flex-col items-center rounded-xl border bg-white px-3 py-2 transition ' +
                   (selected
@@ -184,16 +227,18 @@ export default function MetalSection({ value, onChange, error }) {
           letter="C"
           title="Colors"
           helper={
-            tone === 'two-tone'
+            tone === 'two-tone' && needed === 2
               ? 'Select two colors — first is primary, second is accent.'
+              : tone === 'two-tone'
+              ? 'Select the gold color — the other side is Platinum.'
               : 'Select the color.'
           }
         />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {COLORS.map((c) => {
             const idx = colors.indexOf(c.id);
             const selected = idx >= 0;
-            const order = tone === 'two-tone' && selected ? idx + 1 : null;
+            const order = tone === 'two-tone' && needed === 2 && selected ? idx + 1 : null;
             return (
               <button
                 key={c.id}

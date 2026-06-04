@@ -49,6 +49,8 @@ const defaultDesign = {
   },
   notes: '',
   uploads: [],
+  includeCenterStone: true,
+  submittedAt: null,
 };
 
 const defaultState = {
