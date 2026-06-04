@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { History } from 'lucide-react';
+
 export default function PageHeader() {
   return (
     <header className="mx-auto max-w-3xl px-6 pt-16 pb-12 text-center">
@@ -7,6 +10,15 @@ export default function PageHeader() {
       </h1>
       <p className="mt-4 text-base text-stone-600 md:text-lg">
         Choose a collection to start your custom ring design.
+      </p>
+      <p className="mt-3 text-sm">
+        <Link
+          to="/requests"
+          className="inline-flex items-center gap-1.5 text-gold-700 underline-offset-4 hover:underline"
+        >
+          <History className="h-4 w-4" />
+          View Ongoing Requests
+        </Link>
       </p>
     </header>
   );
