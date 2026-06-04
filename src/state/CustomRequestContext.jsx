@@ -21,14 +21,19 @@ const defaultContact = {
 
 const defaultDesign = {
   skus: [],
-  metal: 'yellow-gold-14k',
-  otherMetal: '',
+  metal: {
+    tone: 'single',
+    karat: '14K',
+    karatOther: '',
+    colors: ['yellow-gold'],
+  },
   fingerSize: '',
   fingerSizeSystem: 'US',
   centerStone: {
     type: 'Diamond',
     typeOther: '',
     shape: 'Round',
+    shapeOther: '',
     carat: '',
     caratUnit: 'ct',
     color: 'G',
@@ -64,6 +69,12 @@ function loadInitial() {
       design: {
         ...defaultDesign,
         ...(parsed.design || {}),
+        metal: {
+          ...defaultDesign.metal,
+          ...(typeof (parsed.design || {}).metal === 'object' && (parsed.design || {}).metal !== null
+            ? (parsed.design || {}).metal
+            : {}),
+        },
         centerStone: {
           ...defaultDesign.centerStone,
           ...((parsed.design || {}).centerStone || {}),

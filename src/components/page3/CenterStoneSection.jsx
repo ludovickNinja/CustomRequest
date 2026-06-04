@@ -128,6 +128,16 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
         </FieldRow>
         <FieldRow label="Shape" error={errors.shape}>
           <Select field="shape" value={value.shape} options={SHAPES} onChange={onChange} error={errors.shape} />
+          {value.shape === 'Other' && (
+            <input
+              type="text"
+              value={value.shapeOther}
+              onChange={(e) => onChange({ shapeOther: e.target.value })}
+              placeholder="Please specify"
+              maxLength={100}
+              className={'input-base mt-2 ' + (errors.shapeOther ? 'input-error' : '')}
+            />
+          )}
         </FieldRow>
         <FieldRow label="Carat Weight" error={errors.carat}>
           <div className="flex gap-2">
@@ -156,32 +166,34 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
         <FieldRow label="Clarity" error={errors.clarity} className="sm:col-span-2">
           <Select field="clarity" value={value.clarity} options={CLARITIES} onChange={onChange} error={errors.clarity} />
         </FieldRow>
-        <div className="sm:col-span-3">
-          <p className="label-base">Measurements</p>
-          <div className="grid grid-cols-3 gap-3">
-            {[
-              { id: 'length', label: 'Length (mm)' },
-              { id: 'width', label: 'Width (mm)' },
-              { id: 'depth', label: 'Depth (mm)' },
-            ].map((m) => (
-              <div key={m.id}>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  value={value[m.id]}
-                  onChange={(e) => onChange({ [m.id]: e.target.value })}
-                  placeholder="6.50"
-                  className={'input-base ' + (errors[m.id] ? 'input-error' : '')}
-                />
-                <p className="mt-1 text-center text-xs text-stone-500">{m.label}</p>
-              </div>
-            ))}
+        {value.provideStone === 'no' && (
+          <div className="sm:col-span-3">
+            <p className="label-base">Measurements</p>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { id: 'length', label: 'Length (mm)' },
+                { id: 'width', label: 'Width (mm)' },
+                { id: 'depth', label: 'Depth (mm)' },
+              ].map((m) => (
+                <div key={m.id}>
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    value={value[m.id]}
+                    onChange={(e) => onChange({ [m.id]: e.target.value })}
+                    placeholder="6.50"
+                    className={'input-base ' + (errors[m.id] ? 'input-error' : '')}
+                  />
+                  <p className="mt-1 text-center text-xs text-stone-500">{m.label}</p>
+                </div>
+              ))}
+            </div>
+            {(errors.length || errors.width || errors.depth) && (
+              <p className="mt-2 text-xs text-red-600">All measurements required.</p>
+            )}
           </div>
-          {(errors.length || errors.width || errors.depth) && (
-            <p className="mt-2 text-xs text-red-600">All measurements required.</p>
-          )}
-        </div>
+        )}
       </div>
       <NotesTextarea
         label="Additional Information (Optional)"
