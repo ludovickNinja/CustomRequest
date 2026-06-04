@@ -35,6 +35,7 @@ export function karatsFor(tone) {
 }
 
 export function colorsNeeded(metal) {
+  if (metal.tone === 'single' && metal.karat === 'Platinum') return 0;
   if (metal.tone === 'single') return 1;
   if (metal.karat === '14K / Platinum' || metal.karat === '18K / Platinum') return 1;
   return 2;
@@ -49,6 +50,7 @@ export function metalSummary(metal) {
     .filter(Boolean);
   const needed = colorsNeeded(metal);
 
+  if (needed === 0) return karatPart;
   if (metal.tone === 'single') {
     if (colorLabels.length === 1) return `${karatPart} ${colorLabels[0]}`;
     return `Choose a color · ${karatPart} single tone`;
@@ -227,49 +229,57 @@ export default function MetalSection({ value, onChange, error }) {
           letter="C"
           title="Colors"
           helper={
-            tone === 'two-tone' && needed === 2
+            needed === 0
+              ? 'Not applicable — Platinum is the metal.'
+              : tone === 'two-tone' && needed === 2
               ? 'Select two colors — first is primary, second is accent.'
               : tone === 'two-tone'
               ? 'Select the gold color — the other side is Platinum.'
               : 'Select the color.'
           }
         />
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {COLORS.map((c) => {
-            const idx = colors.indexOf(c.id);
-            const selected = idx >= 0;
-            const order = tone === 'two-tone' && needed === 2 && selected ? idx + 1 : null;
-            return (
-              <button
-                key={c.id}
-                type="button"
-                onClick={() => toggleColor(c.id)}
-                className={
-                  'relative flex flex-col items-center rounded-2xl border bg-white p-4 transition ' +
-                  (selected
-                    ? 'border-gold-500 bg-gold-50/30 ring-1 ring-gold-500'
-                    : 'border-stone-300 hover:border-stone-400')
-                }
-              >
-                <span
+        {needed === 0 ? (
+          <div className="rounded-2xl border border-dashed border-stone-300 bg-stone-50 px-4 py-6 text-center text-sm text-stone-500">
+            None — Platinum is the metal.
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {COLORS.map((c) => {
+              const idx = colors.indexOf(c.id);
+              const selected = idx >= 0;
+              const order = tone === 'two-tone' && needed === 2 && selected ? idx + 1 : null;
+              return (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => toggleColor(c.id)}
                   className={
-                    'absolute left-3 top-3 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-semibold ' +
+                    'relative flex flex-col items-center rounded-2xl border bg-white p-4 transition ' +
                     (selected
-                      ? 'bg-gold-600 text-white'
-                      : 'border-2 border-stone-300 bg-white')
+                      ? 'border-gold-500 bg-gold-50/30 ring-1 ring-gold-500'
+                      : 'border-stone-300 hover:border-stone-400')
                   }
                 >
-                  {selected && (order ?? <Check className="h-3 w-3" />)}
-                </span>
-                <span
-                  className="mt-2 block h-16 w-16 rounded-full"
-                  style={{ background: c.swatch }}
-                />
-                <p className="mt-3 text-sm font-medium text-stone-800">{c.label}</p>
-              </button>
-            );
-          })}
-        </div>
+                  <span
+                    className={
+                      'absolute left-3 top-3 flex h-5 w-5 items-center justify-center rounded-full text-[10px] font-semibold ' +
+                      (selected
+                        ? 'bg-gold-600 text-white'
+                        : 'border-2 border-stone-300 bg-white')
+                    }
+                  >
+                    {selected && (order ?? <Check className="h-3 w-3" />)}
+                  </span>
+                  <span
+                    className="mt-2 block h-16 w-16 rounded-full"
+                    style={{ background: c.swatch }}
+                  />
+                  <p className="mt-3 text-sm font-medium text-stone-800">{c.label}</p>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div
@@ -285,6 +295,8 @@ export default function MetalSection({ value, onChange, error }) {
           style={{
             background: colors[0]
               ? COLORS.find((c) => c.id === colors[0])?.swatch
+              : needed === 0
+              ? PLATINUM_SWATCH
               : 'repeating-linear-gradient(45deg, #e5e7eb, #e5e7eb 4px, #f3f4f6 4px, #f3f4f6 8px)',
           }}
         />
