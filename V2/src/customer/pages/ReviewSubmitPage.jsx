@@ -14,7 +14,7 @@
  */
 import { useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Check, Pencil, Send } from 'lucide-react';
+import { ArrowLeft, Check, FileText, Pencil, Send } from 'lucide-react';
 import TopBar from '../../shared/TopBar.jsx';
 import Stepper from '../../shared/Stepper.jsx';
 import PageFooter from '../../shared/PageFooter.jsx';
@@ -29,6 +29,53 @@ function Row({ label, value }) {
     <div className="grid grid-cols-1 gap-1 py-2 sm:grid-cols-[180px_1fr] sm:gap-3">
       <dt className="text-xs font-medium uppercase tracking-wider text-stone-500">{label}</dt>
       <dd className="text-sm text-stone-800">{value}</dd>
+    </div>
+  );
+}
+
+/**
+ * Read-only thumbnail grid for a design's uploaded files.
+ *
+ * Images render as a cropped square preview from their in-session blob
+ * URL. PDFs — and any upload whose blob URL was lost on a page refresh
+ * (`needsReattach`) — fall back to a file icon with the file name.
+ */
+function UploadsRow({ label, uploads }) {
+  if (!uploads?.length) return null;
+  return (
+    <div className="grid grid-cols-1 gap-1 py-2 sm:grid-cols-[180px_1fr] sm:gap-3">
+      <dt className="text-xs font-medium uppercase tracking-wider text-stone-500">
+        {label}
+        <span className="ml-1 font-normal normal-case text-stone-400">
+          ({uploads.length})
+        </span>
+      </dt>
+      <dd>
+        <div className="grid grid-cols-3 gap-2 sm:grid-cols-4">
+          {uploads.map((u) => {
+            const showImage = u.type !== 'application/pdf' && u.blobUrl;
+            return (
+              <div
+                key={u.id}
+                className="relative flex aspect-square items-center justify-center overflow-hidden rounded-lg border border-stone-200 bg-stone-100"
+                title={u.name}
+              >
+                {showImage ? (
+                  <img src={u.blobUrl} alt={u.name} className="h-full w-full object-cover" />
+                ) : (
+                  <div className="flex flex-col items-center p-2 text-center text-stone-500">
+                    <FileText className="h-7 w-7" />
+                    <p className="mt-1 line-clamp-2 text-[9px] leading-tight">{u.name}</p>
+                    {!u.blobUrl && u.type !== 'application/pdf' && (
+                      <p className="mt-0.5 text-[8px] text-amber-700">Preview unavailable</p>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </dd>
     </div>
   );
 }
@@ -103,9 +150,7 @@ function DesignReview({ design, designNumber, editTo, includeCenterStone }) {
         <Row label="Metal" value={metalSummary(design.metal)} />
         <Row label="Finger Size" value={design.fingerSize ? `${design.fingerSize} (${design.fingerSizeSystem})` : ''} />
         <Row label="Notes" value={design.notes} />
-        {design.uploads?.length > 0 && (
-          <Row label="Reference Files" value={`${design.uploads.length} file${design.uploads.length === 1 ? '' : 's'} attached`} />
-        )}
+        <UploadsRow label="Reference Files" uploads={design.uploads} />
       </SectionCard>
 
       {includeCenterStone && (
@@ -122,9 +167,7 @@ function DesignReview({ design, designNumber, editTo, includeCenterStone }) {
             <Row label="Measurements" value={[cs.length, cs.width, cs.depth].every(Boolean) ? `${cs.length} × ${cs.width} × ${cs.depth} mm` : ''} />
           )}
           <Row label="Notes" value={cs.notes} />
-          {cs.uploads?.length > 0 && (
-            <Row label="Stone Photos" value={`${cs.uploads.length} file${cs.uploads.length === 1 ? '' : 's'} attached`} />
-          )}
+          <UploadsRow label="Stone Photos" uploads={cs.uploads} />
         </SectionCard>
       )}
     </>
