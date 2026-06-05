@@ -1,3 +1,11 @@
+/**
+ * Placeholder home for the admin section.
+ *
+ * Reachable at `/admin` (and any sub-path under `/admin/*` for now).
+ * Real admin pages will replace this once the dashboard lands; this
+ * stub exists so the URL responds with something sensible instead of
+ * redirecting to the customer view.
+ */
 import { Link } from 'react-router-dom';
 import { ShieldAlert } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';

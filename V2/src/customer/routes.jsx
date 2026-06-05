@@ -1,3 +1,17 @@
+/**
+ * Customer-facing routes.
+ *
+ * The customer flow is the main reason this app exists. A buyer:
+ *   1. picks a collection on  "/"
+ *   2. fills out contact info on  "/design/:collection"
+ *   3. fills out one or more designs on  "/design/:collection/details"
+ *   4. confirms and submits on  "/design/:collection/review"
+ *
+ * After they've submitted at least one request, they can come back via the
+ * "View Ongoing Requests" link on the collection picker:
+ *   - "/requests"        — searchable / sortable list of their submissions
+ *   - "/requests/:id"    — detail view with comments thread and quote panel
+ */
 import { Route } from 'react-router-dom';
 import CollectionPickerPage from './pages/CollectionPickerPage.jsx';
 import ContactInfoPage from './pages/ContactInfoPage.jsx';

@@ -1,3 +1,16 @@
+/**
+ * Step 2 of the customer flow — Contact Information.
+ *
+ * Layout: form on the left, a sticky summary sidebar on the right that
+ * shows the collection chosen on step 1. If the URL parameter doesn't
+ * match a known collection we bounce the user back to the picker — that
+ * also prevents bookmarking deep URLs that don't make sense without
+ * earlier state.
+ *
+ * The page also syncs the URL's `:collection` param into the form
+ * context so a refresh on this page (or arriving via a deep link from a
+ * known collection page) doesn't drop the selection.
+ */
 import { useEffect } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import TopBar from '../../shared/TopBar.jsx';

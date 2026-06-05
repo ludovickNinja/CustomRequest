@@ -1,3 +1,9 @@
+/**
+ * Placeholder home for the factory section.
+ *
+ * Reachable at `/factory` (and any sub-path under `/factory/*` for
+ * now). Future production-queue pages will replace this stub.
+ */
 import { Link } from 'react-router-dom';
 import { Factory } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';

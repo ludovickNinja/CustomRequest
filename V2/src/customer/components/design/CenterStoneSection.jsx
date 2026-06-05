@@ -1,3 +1,19 @@
+/**
+ * Center Stone sub-section of the Design Details form.
+ *
+ * The flow asks "who is providing the stone?" first, because the rest
+ * of the section depends on that answer:
+ *   - "Crown Ring will provide": we ask whether the stone should be
+ *     certified. Measurements are hidden (we'll source the stone).
+ *   - "I will provide": we ask whether Crown Ring should set the stone,
+ *     and surface a photo uploader so the customer can attach pictures
+ *     of their stone. Measurements (length / width / depth) are
+ *     required.
+ *
+ * Stone Type "Gemstone" and Shape "Other" each reveal a small
+ * "Please specify" input so the customer can describe a value that
+ * isn't in our dropdown.
+ */
 import FieldRow from '../../../shared/FieldRow.jsx';
 import ReferenceImagesUploader from './ReferenceImagesUploader.jsx';
 import NotesTextarea from '../contact/NotesTextarea.jsx';

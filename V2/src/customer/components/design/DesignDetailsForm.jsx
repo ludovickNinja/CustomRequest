@@ -1,3 +1,15 @@
+/**
+ * Top-level form for step 3 (Design Details).
+ *
+ * The customer can build several rings in a single submission. This
+ * component owns the list of designs — each rendered as a collapsible
+ * `DesignCard` — and the "Add Another Design" button at the bottom.
+ *
+ * Validation happens on submit (Continue to Review). Each design is
+ * validated independently; we don't let the customer add a new design
+ * while any existing one still has errors, otherwise the page fills
+ * with half-finished cards.
+ */
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Plus } from 'lucide-react';
@@ -5,6 +17,15 @@ import DesignCard from './DesignCard.jsx';
 import { colorsNeeded } from './MetalSection.jsx';
 import { useCustomRequest } from '../../../state/CustomRequestContext.jsx';
 
+/**
+ * Validate one design. Returns an object of error messages keyed by
+ * field; empty when the design is good to go.
+ *
+ * Project type drives whether the center stone block is required: for
+ * Engagement Ring (or when no project type is set) it's always required.
+ * For everything else it's only required when the user opted in via
+ * the per-design `includeCenterStone` toggle.
+ */
 function validateDesign(design, projectType) {
   const centerStoneRequired = !projectType || projectType === 'Engagement Ring';
   const includeCenterStone = centerStoneRequired || design.includeCenterStone;
@@ -58,9 +79,15 @@ export default function DesignDetailsForm() {
   const projectType = state.contact.projectType;
   const centerStoneRequired = !projectType || projectType === 'Engagement Ring';
   const [showErrors, setShowErrors] = useState(false);
+  // One boolean per design tracking whether its card is expanded. We
+  // start with the most recent design open, the rest collapsed — that
+  // matches the usual "I'm working on the new one" mental model.
   const [expanded, setExpanded] = useState(() => designs.map((_, i) => i === designs.length - 1));
 
-  // Keep `expanded` in sync if designs are added/removed externally.
+  // Keep `expanded` in sync if designs are added/removed externally
+  // (e.g. by navigating back to this page after a refresh). When new
+  // designs appear we expand only the new ones; when designs are
+  // removed we just truncate.
   useEffect(() => {
     setExpanded((prev) => {
       if (prev.length === designs.length) return prev;

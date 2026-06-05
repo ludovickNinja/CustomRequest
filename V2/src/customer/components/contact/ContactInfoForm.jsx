@@ -1,3 +1,15 @@
+/**
+ * Contact Information form (step 2).
+ *
+ * Required fields, in order of appearance: Account / Company Name,
+ * Contact Name, Email, PO# / Reference / Client Name, Telephone Number,
+ * and Quote Type. An optional Appointment date/time block validates
+ * only when the customer flips that question to "yes".
+ *
+ * Validation runs on every render against a `touched` map so we don't
+ * yell at the user before they've actually visited a field, but block
+ * the "Continue" button until everything required is filled in.
+ */
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Building2, User, Mail, Hash, ArrowLeft, ArrowRight } from 'lucide-react';

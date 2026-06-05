@@ -1,3 +1,23 @@
+/**
+ * Metal section for the Design Details page (step 3, sub-section 2).
+ *
+ * The customer makes three choices in order:
+ *   A. Tone    — "Single Tone" (one metal) or "Two-Tone" (two metals).
+ *   B. Karat   — gold karat or platinum; the list of options depends
+ *                on the tone. Two-tone also offers gold/platinum combos.
+ *   C. Colors  — Yellow / White / Rose gold tiles. How many colors the
+ *                customer needs to pick depends on tone + karat (see
+ *                `colorsNeeded`).
+ *
+ * The summary banner at the bottom previews the final selection or
+ * explains what's still missing.
+ *
+ * Three helpers are exported because the form's validator and the
+ * Review page also need them:
+ *   - `karatsFor(tone)`    → which karat tiles to show.
+ *   - `colorsNeeded(metal)`→ how many color picks are required.
+ *   - `metalSummary(metal)`→ human-readable label of the current pick.
+ */
 import { Check, Info } from 'lucide-react';
 
 const TWO_TONE_ORDER_TIP =
@@ -33,10 +53,19 @@ const COLORS = [
   { id: 'rose-gold', label: 'Rose Gold', swatch: 'radial-gradient(circle at 30% 30%, #fecdd3, #f43f5e 70%, #9f1239)' },
 ];
 
+/** Which karat tiles to render given the current tone. */
 export function karatsFor(tone) {
   return tone === 'two-tone' ? KARATS_TWO_TONE : KARATS_SINGLE;
 }
 
+/**
+ * How many gold colors the customer needs to pick for this metal config:
+ *   - Single tone: always 1 (the metal's color).
+ *   - Two-tone, gold + platinum karats: 1 — the gold color; the other
+ *     side is platinum, which doesn't get a color tile.
+ *   - Two-tone, gold-only karats: 2 — the base and the accent colors
+ *     (ordered; the first pick is the base).
+ */
 export function colorsNeeded(metal) {
   if (metal.tone === 'single') return 1;
   if (metal.karat === '14K / Platinum' || metal.karat === '18K / Platinum') return 1;
@@ -134,9 +163,14 @@ export default function MetalSection({ value, onChange, error }) {
   const needed = colorsNeeded(value);
   const summaryComplete = colors.length === needed;
 
+  // Switching tones can leave the karat or color list in a state that
+  // no longer applies — e.g. "14K / Platinum" is a two-tone-only karat,
+  // and single tone only needs one color. We patch both fields together
+  // so the form never renders an inconsistent combination.
   function setTone(nextTone) {
     const patch = { tone: nextTone };
     if (nextTone === 'single' && (karat === '14K / Platinum' || karat === '18K / Platinum')) {
+      // Drop the gold/platinum combo — pick a sensible default karat.
       patch.karat = '14K';
     }
     const nextMetal = { ...value, ...patch };
@@ -145,6 +179,9 @@ export default function MetalSection({ value, onChange, error }) {
     onChange(patch);
   }
 
+  // Picking a different karat sometimes reduces how many colors are
+  // needed (e.g. moving from "14K" to "14K / Platinum" in two-tone
+  // drops the second color). Trim the colors array in that case.
   function setKarat(nextKarat) {
     const patch = { karat: nextKarat };
     const nextMetal = { ...value, ...patch };
@@ -153,6 +190,8 @@ export default function MetalSection({ value, onChange, error }) {
     onChange(patch);
   }
 
+  // Color selection is order-sensitive in two-tone mode (first = base,
+  // second = accent). For single-pick configs we just replace the array.
   function toggleColor(id) {
     if (needed === 1) {
       onChange({ colors: [id] });
@@ -160,9 +199,12 @@ export default function MetalSection({ value, onChange, error }) {
     }
     const idx = colors.indexOf(id);
     if (idx >= 0) {
+      // Already selected — clicking again removes it (and any later picks
+      // shift left, which preserves the base/accent order naturally).
       onChange({ colors: colors.filter((c) => c !== id) });
       return;
     }
+    // Don't allow more selections than the config asks for.
     if (colors.length >= needed) return;
     onChange({ colors: [...colors, id] });
   }

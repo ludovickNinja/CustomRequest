@@ -1,3 +1,14 @@
+/**
+ * Step 1 of the customer flow — the landing/collection picker.
+ *
+ * The customer either picks a known collection (CrownRing, Noam Carver,
+ * MFit My Caroline) or opts for a Full Custom request. Choosing a
+ * collection persists it into the form context and navigates them on to
+ * the Contact Information page.
+ *
+ * The PageHeader also surfaces the "View Ongoing Requests" link that
+ * sends returning customers to /requests.
+ */
 import PageHeader from '../components/collection/PageHeader.jsx';
 import CollectionCard from '../components/collection/CollectionCard.jsx';
 import FullCustomBanner from '../components/collection/FullCustomBanner.jsx';
