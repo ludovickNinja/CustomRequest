@@ -28,18 +28,47 @@
  * predate the `id` field get one assigned by `normalize` on read.
  */
 
+import seedSubmissions from '../../../Data/submissions.json';
+
 const STORAGE_KEY = 'customrequest:submissions';
 
 /**
+ * One-time flag so a visitor who deletes every request doesn't get the
+ * mock fixtures silently re-created on the next read.
+ */
+const SEED_FLAG_KEY = 'customrequest:seeded';
+
+/**
+ * Demo/mock-up seeding. The first time someone lands with nothing stored,
+ * copy the shared fixtures from `/Data/submissions.json` into localStorage
+ * so the requests list — and the In House / Factory views once they're
+ * built — have realistic records to show. Guarded by SEED_FLAG_KEY so it
+ * only ever runs once per browser. When the real backend lands this whole
+ * helper disappears along with the rest of the localStorage implementation.
+ */
+function seedFixtures() {
+  if (typeof window === 'undefined') return [];
+  try {
+    if (window.localStorage.getItem(SEED_FLAG_KEY)) return [];
+    const seed = Array.isArray(seedSubmissions) ? seedSubmissions : [];
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
+    window.localStorage.setItem(SEED_FLAG_KEY, '1');
+    return seed;
+  } catch {
+    return [];
+  }
+}
+
+/**
  * Read every submission out of localStorage. Returns an empty array on
- * SSR (no `window`), on missing/blank value, or on malformed JSON — so the
- * UI can always assume an array.
+ * SSR (no `window`) or on malformed JSON — so the UI can always assume an
+ * array. The very first read with no stored value seeds the mock fixtures.
  */
 function readAll() {
   if (typeof window === 'undefined') return [];
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
+    if (raw == null) return seedFixtures();
     const parsed = JSON.parse(raw);
     return Array.isArray(parsed) ? parsed : [];
   } catch {

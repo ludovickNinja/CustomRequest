@@ -51,6 +51,10 @@ The root `index.html` is a tiny landing page that links to both versions.
 │   │
 │   ├── index.html, package.json, vite.config.js, tailwind.config.js, postcss.config.js
 │
+├── Data/                        # Shared mock-up fixtures (plain JSON, framework-neutral)
+│   ├── submissions.json         # Sample custom-request records
+│   └── README.md                # Record shape + how each view consumes it
+│
 ├── index.html                   # Static landing page at /CustomRequest/
 └── .github/workflows/deploy.yml # Builds V1 + V2 + copies landing page to dist/
 ```
@@ -93,6 +97,12 @@ Everything that touches persistence goes through
 Today this module reads/writes the `customrequest:submissions` key in
 `localStorage`. When the real backend lands, only this file changes — every
 caller in `customer/`, `admin/`, and `factory/` stays the same.
+
+On a visitor's first read with nothing stored, the store seeds the shared
+mock fixtures from the repo-root [`Data/submissions.json`](Data/README.md)
+(guarded by a one-time flag so deleting every request doesn't re-create them).
+Because all three roles read through this store, the same fixtures populate the
+customer requests list and the future In House / Factory views for free.
 
 ### The `state/CustomRequestContext.jsx` reducer
 
