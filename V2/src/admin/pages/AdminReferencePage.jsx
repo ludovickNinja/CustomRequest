@@ -18,6 +18,8 @@ import StatusBadge from '../../shared/StatusBadge.jsx';
 import PricingBreakdown from '../../shared/reference/PricingBreakdown.jsx';
 import RenderingsSection from '../../shared/reference/RenderingsSection.jsx';
 import DiscussionThread from '../../shared/reference/DiscussionThread.jsx';
+import ActivityTimeline from '../../shared/reference/ActivityTimeline.jsx';
+import { relativeTime } from '../../shared/staleness.js';
 import { metalSummary } from '../../customer/components/design/MetalSection.jsx';
 import { findCollection } from '../../data/collections.js';
 import { STATUSES } from '../../data/statuses.js';
@@ -109,6 +111,7 @@ export default function AdminReferencePage() {
             </Link>{' '}
             · {collection?.shortLabel || collection?.label || reference.collection}
             {reference.designCount > 1 ? ` · design ${reference.designIndex + 1} of ${reference.designCount}` : ''}
+            {' '}· Updated {relativeTime(reference.updatedAt)}
           </p>
         </div>
 
@@ -146,6 +149,8 @@ export default function AdminReferencePage() {
             />
 
             <RenderingsSection design={design} />
+
+            <ActivityTimeline activity={design.activity} />
           </div>
 
           {/* Right: admin-only controls */}

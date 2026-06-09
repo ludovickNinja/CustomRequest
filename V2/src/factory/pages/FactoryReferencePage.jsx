@@ -13,6 +13,8 @@ import { ArrowLeft, Upload, Check } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
 import StatusBadge from '../../shared/StatusBadge.jsx';
 import RenderingsSection from '../../shared/reference/RenderingsSection.jsx';
+import ActivityTimeline from '../../shared/reference/ActivityTimeline.jsx';
+import { relativeTime } from '../../shared/staleness.js';
 import { metalSummary } from '../../customer/components/design/MetalSection.jsx';
 import { findCollection } from '../../data/collections.js';
 import { getReference, updateReference, addRendering } from '../../services/submissionsStore.js';
@@ -85,6 +87,7 @@ export default function FactoryReferencePage() {
             Quote {reference.quoteNo} · Customer request {reference.poReference || reference.submissionId} ·{' '}
             {collection?.shortLabel || collection?.label || reference.collection}
             {reference.designCount > 1 ? ` · design ${reference.designIndex + 1} of ${reference.designCount}` : ''}
+            {' '}· Updated {relativeTime(reference.updatedAt)}
           </p>
         </div>
 
@@ -112,6 +115,8 @@ export default function FactoryReferencePage() {
             </section>
 
             <RenderingsSection design={design} />
+
+            <ActivityTimeline activity={design.activity} />
           </div>
 
           <aside className="lg:sticky lg:top-20 lg:self-start">

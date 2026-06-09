@@ -31,6 +31,7 @@
 import seedSubmissions from '../../../Data/submissions.json';
 import { needsAttention, findStatus } from '../data/statuses.js';
 import { factoryName } from '../data/factories.js';
+import { isStale } from '../shared/staleness.js';
 
 const STORAGE_KEY = 'customrequest:submissions';
 
@@ -42,7 +43,7 @@ const STORAGE_KEY = 'customrequest:submissions';
  * source of truth, localStorage is just a working copy for the session.)
  */
 const SEED_VERSION_KEY = 'customrequest:seedVersion';
-const SEED_VERSION = '2026-06-09-status-lifecycle';
+const SEED_VERSION = '2026-06-09-activity-tracking';
 
 /**
  * Demo/mock-up seeding. Copies the shared fixtures from
@@ -185,6 +186,7 @@ function maxRefSeq(items) {
  * "pending", unassigned to a factory and unpriced.
  */
 function stampWorkflow(design, seq) {
+  const now = new Date().toISOString();
   return {
     ...design,
     referenceNo: design.referenceNo || `R${seq}`,
@@ -194,6 +196,8 @@ function stampWorkflow(design, seq) {
     price: design.price ?? null,
     pricePublished: design.pricePublished ?? false,
     currency: design.currency || 'USD',
+    updatedAt: design.updatedAt || now,
+    activity: design.activity || [{ at: now, type: 'created' }],
     pricing: design.pricing ?? null,
     renderings: design.renderings || { model: null, angles: [], specSheet: null },
     messages: design.messages || [],
@@ -269,6 +273,7 @@ function toReferenceRow(submission, design, designIndex) {
     currency: design.currency || 'USD',
     hasRenderings: !!(design.renderings && (design.renderings.model || (design.renderings.angles || []).length)),
     messagesCount: (design.messages || []).length,
+    updatedAt: design.updatedAt || submission.submittedAt,
     // Parent request context, denormalized for the table.
     submissionId: submission.id,
     designIndex,
@@ -334,6 +339,8 @@ function refSortValue(r, key) {
       return r.factoryId ? factoryName(r.factoryId) : '~'; // unassigned sorts last (asc)
     case 'submittedAt':
       return new Date(r.submittedAt).getTime();
+    case 'updatedAt':
+      return new Date(r.updatedAt).getTime();
     default:
       return r[key] ?? '';
   }
@@ -381,6 +388,16 @@ export function getReference(referenceNo) {
   };
 }
 
+/**
+ * Stamp a design as just-touched: bump `updatedAt` to now and append an
+ * activity entry. This is how we track every update to a reference so the
+ * UI can spot what's falling behind.
+ */
+function touch(design, entry) {
+  const at = new Date().toISOString();
+  return { ...design, updatedAt: at, activity: [...(design.activity || []), { ...entry, at }] };
+}
+
 /** Write a patched design back into its submission, then persist. */
 function commitDesign(referenceNo, patchDesign) {
   const { items, submission, design, designIndex } = locateReference(referenceNo);
@@ -402,7 +419,20 @@ function commitDesign(referenceNo, patchDesign) {
 export function updateReference(referenceNo, patch = {}) {
   const allowed = ['status', 'factoryId', 'price', 'pricePublished', 'currency'];
   const clean = Object.fromEntries(Object.entries(patch).filter(([k]) => allowed.includes(k)));
-  const result = commitDesign(referenceNo, (d) => ({ ...d, ...clean }));
+  const result = commitDesign(referenceNo, (d) => {
+    // Describe the change for the activity log (status moves are the headline).
+    let entry;
+    if ('status' in clean && clean.status !== d.status) {
+      entry = { type: 'status', from: d.status, to: clean.status };
+    } else if ('factoryId' in clean) {
+      entry = { type: 'factory', to: clean.factoryId };
+    } else if ('price' in clean || 'pricePublished' in clean) {
+      entry = { type: 'price' };
+    } else {
+      entry = { type: 'update' };
+    }
+    return touch({ ...d, ...clean }, entry);
+  });
   return result ? getReference(referenceNo) : null;
 }
 
@@ -420,7 +450,8 @@ export function addRendering(referenceNo, { label, uploadedBy = 'Admin' }) {
   };
   const result = commitDesign(referenceNo, (d) => {
     const renderings = d.renderings || { model: null, angles: [], specSheet: null };
-    return { ...d, renderings: { ...renderings, angles: [...(renderings.angles || []), render] } };
+    const next = { ...d, renderings: { ...renderings, angles: [...(renderings.angles || []), render] } };
+    return touch(next, { type: 'rendering', label: render.label });
   });
   return result ? render : null;
 }
@@ -439,13 +470,16 @@ export function addReferenceMessage(referenceNo, { author = 'Admin', role = 'adm
     body: body.trim(),
     createdAt: new Date().toISOString(),
   };
-  const result = commitDesign(referenceNo, (d) => ({ ...d, messages: [...(d.messages || []), message] }));
+  const result = commitDesign(referenceNo, (d) =>
+    touch({ ...d, messages: [...(d.messages || []), message] }, { type: 'message', role })
+  );
   return result ? message : null;
 }
 
-/** Totals for the admin summary line: total references and how many need attention. */
+/** Totals for the admin summary line: total, needing attention, and stale. */
 export function referenceStats() {
   const rows = allReferences(readAll().map(normalize));
   const attention = rows.filter((r) => needsAttention(r.status)).length;
-  return { total: rows.length, attention };
+  const stale = rows.filter((r) => isStale(r)).length;
+  return { total: rows.length, attention, stale };
 }

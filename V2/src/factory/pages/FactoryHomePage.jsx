@@ -10,10 +10,11 @@
  */
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, X, ChevronRight, Hammer } from 'lucide-react';
+import { Search, X, ChevronRight, Hammer, AlertTriangle } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
 import StatusBadge from '../../shared/StatusBadge.jsx';
 import SortHeader, { nextSort } from '../../shared/SortHeader.jsx';
+import { isStale, relativeTime } from '../../shared/staleness.js';
 import { listReferences } from '../../services/submissionsStore.js';
 import { STATUSES } from '../../data/statuses.js';
 import { findCollection } from '../../data/collections.js';
@@ -35,10 +36,12 @@ export default function FactoryHomePage() {
     () => listReferences({ search, status, factoryId: currentFactoryId, sort }),
     [search, status, currentFactoryId, sort]
   );
-  const total = useMemo(
-    () => listReferences({ factoryId: currentFactoryId }).length,
+  const assigned = useMemo(
+    () => listReferences({ factoryId: currentFactoryId }),
     [currentFactoryId]
   );
+  const total = assigned.length;
+  const stale = useMemo(() => assigned.filter(isStale).length, [assigned]);
 
   const filtering = search.trim() || status !== 'all';
   function clearFilters() {
@@ -68,6 +71,11 @@ export default function FactoryHomePage() {
               </>
             )}{' '}
             assigned reference{total === 1 ? '' : 's'}
+            {stale > 0 && (
+              <>
+                {' '}· <span className="font-semibold text-rose-600">{stale}</span> falling behind
+              </>
+            )}
           </p>
         </header>
 
@@ -129,12 +137,15 @@ export default function FactoryHomePage() {
                     <SortHeader label="Customer Request" sortKey="poReference" sort={sort} onSort={onSort} />
                     <SortHeader label="Collection" sortKey="collection" sort={sort} onSort={onSort} />
                     <SortHeader label="Status" sortKey="status" sort={sort} onSort={onSort} />
+                    <SortHeader label="Updated" sortKey="updatedAt" sort={sort} onSort={onSort} />
                     <th className="px-3 py-2" />
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
-                  {rows.map((r) => (
-                    <tr key={r.referenceNo} className="group hover:bg-stone-50">
+                  {rows.map((r) => {
+                    const stale = isStale(r);
+                    return (
+                    <tr key={r.referenceNo} className={'group hover:bg-stone-50' + (stale ? ' bg-rose-50/40' : '')}>
                       <td className="px-3 py-3">
                         <Link
                           to={`/factory/reference/${encodeURIComponent(r.referenceNo)}`}
@@ -152,6 +163,12 @@ export default function FactoryHomePage() {
                       <td className="px-3 py-3 text-stone-700">{r.poReference || '—'}</td>
                       <td className="px-3 py-3 text-stone-600">{collectionLabel(r.collection)}</td>
                       <td className="px-3 py-3"><StatusBadge status={r.status} /></td>
+                      <td className="px-3 py-3">
+                        <span className={'inline-flex items-center gap-1 ' + (stale ? 'font-medium text-rose-600' : 'text-stone-500')}>
+                          {stale && <AlertTriangle className="h-3.5 w-3.5" />}
+                          {relativeTime(r.updatedAt)}
+                        </span>
+                      </td>
                       <td className="px-3 py-3 text-right">
                         <Link
                           to={`/factory/reference/${encodeURIComponent(r.referenceNo)}`}
@@ -162,7 +179,8 @@ export default function FactoryHomePage() {
                         </Link>
                       </td>
                     </tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
             )}

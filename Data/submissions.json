@@ -72,7 +72,14 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-08T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-12T15:42:00.000Z",
+            "type": "created"
+          }
+        ]
       }
     ],
     "comments": [
@@ -160,7 +167,19 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-06T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-18T19:10:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-06T12:00:00.000Z",
+            "type": "status",
+            "to": "assigned"
+          }
+        ]
       },
       {
         "skus": [
@@ -210,7 +229,19 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-04T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-18T19:10:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-04T12:00:00.000Z",
+            "type": "status",
+            "to": "in-progress"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -317,7 +348,19 @@
           "specSheet": {
             "name": "r50004_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-02T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-21T13:25:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-02T12:00:00.000Z",
+            "type": "status",
+            "to": "uploaded"
+          }
+        ]
       }
     ],
     "comments": [
@@ -449,7 +492,19 @@
           "specSheet": {
             "name": "r50005_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-31T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-27T17:48:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-31T12:00:00.000Z",
+            "type": "status",
+            "to": "in-review"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -569,7 +624,19 @@
           "specSheet": {
             "name": "r50006_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-01T20:33:00.000Z",
+        "activity": [
+          {
+            "at": "2026-06-01T20:33:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-01T20:33:00.000Z",
+            "type": "status",
+            "to": "sent"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -686,7 +753,19 @@
           "specSheet": {
             "name": "r50007_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-05T14:07:00.000Z",
+        "activity": [
+          {
+            "at": "2026-06-05T14:07:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-05T14:07:00.000Z",
+            "type": "status",
+            "to": "adjustment-needed"
+          }
+        ]
       }
     ],
     "comments": [
@@ -804,7 +883,19 @@
           "specSheet": {
             "name": "r50008_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-25T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-20T18:05:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-25T12:00:00.000Z",
+            "type": "status",
+            "to": "approved"
+          }
+        ]
       },
       {
         "skus": [
@@ -886,7 +977,19 @@
           "specSheet": {
             "name": "r50009_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-08T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-20T18:05:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-08T12:00:00.000Z",
+            "type": "status",
+            "to": "cancelled"
+          }
+        ]
       },
       {
         "skus": [
@@ -936,7 +1039,14 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-06T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-20T18:05:00.000Z",
+            "type": "created"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -1016,7 +1126,19 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-04T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-08T16:40:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-04T12:00:00.000Z",
+            "type": "status",
+            "to": "assigned"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -1094,7 +1216,19 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-02T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-25T21:15:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-02T12:00:00.000Z",
+            "type": "status",
+            "to": "in-progress"
+          }
+        ]
       },
       {
         "skus": [],
@@ -1174,7 +1308,19 @@
           "specSheet": {
             "name": "r50013_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-31T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-25T21:15:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-31T12:00:00.000Z",
+            "type": "status",
+            "to": "uploaded"
+          }
+        ]
       },
       {
         "skus": [],
@@ -1262,7 +1408,19 @@
           "specSheet": {
             "name": "r50014_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-29T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-25T21:15:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-29T12:00:00.000Z",
+            "type": "status",
+            "to": "in-review"
+          }
+        ]
       },
       {
         "skus": [],
@@ -1350,7 +1508,19 @@
           "specSheet": {
             "name": "r50015_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-27T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-25T21:15:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-27T12:00:00.000Z",
+            "type": "status",
+            "to": "sent"
+          }
+        ]
       }
     ],
     "comments": [
@@ -1476,7 +1646,19 @@
           "specSheet": {
             "name": "r50016_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-25T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-14T17:22:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-25T12:00:00.000Z",
+            "type": "status",
+            "to": "adjustment-needed"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -1587,7 +1769,19 @@
           "specSheet": {
             "name": "r50017_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-08T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-29T15:48:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-08T12:00:00.000Z",
+            "type": "status",
+            "to": "approved"
+          }
+        ]
       },
       {
         "skus": [
@@ -1669,7 +1863,19 @@
           "specSheet": {
             "name": "r50018_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-06T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-29T15:48:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-06T12:00:00.000Z",
+            "type": "status",
+            "to": "cancelled"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -1746,7 +1952,14 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-04T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-30T14:12:00.000Z",
+            "type": "created"
+          }
+        ]
       },
       {
         "skus": [
@@ -1796,7 +2009,19 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-02T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-30T14:12:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-02T12:00:00.000Z",
+            "type": "status",
+            "to": "assigned"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -1871,7 +2096,19 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-03T19:30:00.000Z",
+        "activity": [
+          {
+            "at": "2026-06-03T19:30:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-03T19:30:00.000Z",
+            "type": "status",
+            "to": "in-progress"
+          }
+        ]
       }
     ],
     "comments": [
@@ -1989,7 +2226,19 @@
           "specSheet": {
             "name": "r50022_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-29T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-18T16:55:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-29T12:00:00.000Z",
+            "type": "status",
+            "to": "uploaded"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -2108,7 +2357,19 @@
           "specSheet": {
             "name": "r50023_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-27T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-06T20:10:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-27T12:00:00.000Z",
+            "type": "status",
+            "to": "in-review"
+          }
+        ]
       },
       {
         "skus": [
@@ -2198,7 +2459,19 @@
           "specSheet": {
             "name": "r50024_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-05-25T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-06T20:10:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-05-25T12:00:00.000Z",
+            "type": "status",
+            "to": "sent"
+          }
+        ]
       },
       {
         "skus": [
@@ -2288,7 +2561,19 @@
           "specSheet": {
             "name": "r50025_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-08T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-06T20:10:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-08T12:00:00.000Z",
+            "type": "status",
+            "to": "adjustment-needed"
+          }
+        ]
       }
     ],
     "comments": [
@@ -2406,7 +2691,19 @@
           "specSheet": {
             "name": "r50026_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-06T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-05-31T18:18:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-06T12:00:00.000Z",
+            "type": "status",
+            "to": "approved"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -2515,7 +2812,19 @@
           "specSheet": {
             "name": "r50027_spec_sheet.pdf"
           }
-        }
+        },
+        "updatedAt": "2026-06-04T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-22T13:40:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-04T12:00:00.000Z",
+            "type": "status",
+            "to": "cancelled"
+          }
+        ]
       },
       {
         "skus": [],
@@ -2563,7 +2872,14 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-02T12:00:00.000Z",
+        "activity": [
+          {
+            "at": "2026-04-22T13:40:00.000Z",
+            "type": "created"
+          }
+        ]
       }
     ],
     "comments": [],
@@ -2642,7 +2958,19 @@
           "model": null,
           "angles": [],
           "specSheet": null
-        }
+        },
+        "updatedAt": "2026-06-07T11:05:00.000Z",
+        "activity": [
+          {
+            "at": "2026-06-07T11:05:00.000Z",
+            "type": "created"
+          },
+          {
+            "at": "2026-06-07T11:05:00.000Z",
+            "type": "status",
+            "to": "assigned"
+          }
+        ]
       }
     ],
     "comments": [],

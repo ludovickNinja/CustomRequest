@@ -109,11 +109,22 @@ renderings and can post to the discussion.
       },
       "messages": [                        // per-reference discussion thread
         { "id": "...", "author": "...", "role": "customer", "body": "...", "createdAt": "..." }
+      ],
+      "updatedAt": "2026-06-08T12:00:00.000Z", // last time the reference was touched
+      "activity": [                        // running log of what happened, when
+        { "at": "...", "type": "created" },
+        { "at": "...", "type": "status", "to": "assigned" }
       ]
     }
   ]
 }
 ```
+
+Every mutation (`updateReference`, `addRendering`, `addReferenceMessage`) bumps
+`updatedAt` and appends an `activity` entry. The admin and factory tables show
+"Updated …" and **highlight references that are falling behind** — in flight
+(non-terminal) and untouched for at least `STALE_AFTER_DAYS`
+(`V2/src/shared/staleness.js`). Each reference page shows the full activity log.
 
 **Status pipeline** (`V2/src/data/statuses.js`). This is a quote-request
 dispatch flow, not ring production:
