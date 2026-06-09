@@ -1,0 +1,6 @@
+[
+  { "id": "crownring-mtl", "name": "CrownRing Atelier — Montréal", "type": "in-house" },
+  { "id": "goldworks-ny", "name": "GoldWorks — New York", "type": "external" },
+  { "id": "lumina-cad", "name": "Lumina CAD Studio", "type": "external" },
+  { "id": "artisan-la", "name": "Artisan Casting — Los Angeles", "type": "external" }
+]

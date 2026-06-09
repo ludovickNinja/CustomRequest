@@ -41,8 +41,9 @@ The root `index.html` is a tiny landing page that links to both versions.
 │   │   │   ├── pages/
 │   │   │   └── components/{collection,contact,design}/
 │   │   │
-│   │   ├── admin/               # Placeholder section, role-gated by URL today
+│   │   ├── admin/               # In House view — reference queue + detail
 │   │   │   ├── routes.jsx
+│   │   │   ├── components/
 │   │   │   └── pages/
 │   │   │
 │   │   └── factory/             # Placeholder section, role-gated by URL today
@@ -65,7 +66,11 @@ V2 serves three user roles from a single build:
 
 - **Customer** — buyer using the request flow, the request list, and the
   request detail page.
-- **Admin** — internal team viewing every submission (placeholder today).
+- **Admin** — In House team. "Admin Operations" shows a reference-level
+  queue across every account (one row per design), with search and
+  status/factory filters; each reference opens a detail panel to update
+  status, assign a factory, upload renderings, answer messages, and publish
+  pricing.
 - **Factory** — production team viewing assigned requests (placeholder today).
 
 Each role lives in its own folder with its own `routes.jsx`. `App.jsx` is a
@@ -93,6 +98,10 @@ Everything that touches persistence goes through
   Review & Submit page.
 - `listComments(id)` / `addComment(id, comment)` — comments thread on a
   submission.
+- `listReferences({ search, status, factoryId })` / `getReference(refNo)` —
+  the admin queue and detail, flattened to one row per design.
+- `updateReference(refNo, patch)` / `addReferenceAsset` / `addReferenceMessage`
+  / `referenceStats()` — the In House view's reference-level writes + totals.
 
 Today this module reads/writes the `customrequest:submissions` key in
 `localStorage`. When the real backend lands, only this file changes — every
