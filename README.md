@@ -107,11 +107,13 @@ Today this module reads/writes the `customrequest:submissions` key in
 `localStorage`. When the real backend lands, only this file changes — every
 caller in `customer/`, `admin/`, and `factory/` stays the same.
 
-On a visitor's first read with nothing stored, the store seeds the shared
-mock fixtures from the repo-root [`Data/submissions.json`](Data/README.md)
-(guarded by a one-time flag so deleting every request doesn't re-create them).
+The store seeds the shared mock fixtures from the repo-root
+[`Data/submissions.json`](Data/README.md) into `localStorage` when nothing is
+stored yet, or when the stored `SEED_VERSION` is stale — so refreshed fixtures
+always replace whatever an earlier visit left behind (this is a POC; the JSON
+is the source of truth). Bump `SEED_VERSION` whenever the mock data changes.
 Because all three roles read through this store, the same fixtures populate the
-customer requests list and the future In House / Factory views for free.
+customer requests list, the In House view, and the future Factory view.
 
 ### The `state/CustomRequestContext.jsx` reducer
 

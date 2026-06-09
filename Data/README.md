@@ -18,10 +18,13 @@ other tool can read the exact same fixtures without depending on the React app.
 ## How it's consumed today
 
 `V2/src/services/submissionsStore.js` imports `submissions.json` and seeds it
-into `localStorage` the first time a visitor lands with no stored requests.
-After that, the store reads and writes `localStorage` as usual. Because every
-role in V2 (customer, In House/admin, Factory) reads through that one store,
-the fixtures show up everywhere automatically.
+into `localStorage` when nothing is stored yet, or when the stored
+`SEED_VERSION` is stale (so updated fixtures always replace an earlier visit's
+copy — the JSON is the source of truth in this POC). After that, the store
+reads and writes `localStorage` as usual. Because every role in V2 (customer,
+In House/admin, Factory) reads through that one store, the fixtures show up
+everywhere automatically. **Bump `SEED_VERSION` whenever you change the mock
+data in this folder.**
 
 The cross-folder import works in production because the Vite build follows the
 import graph at build time. For the dev server, `V2/vite.config.js` adds the
