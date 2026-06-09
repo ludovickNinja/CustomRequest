@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import { Search, X, ChevronRight, Hammer } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
 import StatusBadge from '../../shared/StatusBadge.jsx';
+import SortHeader, { nextSort } from '../../shared/SortHeader.jsx';
 import { listReferences } from '../../services/submissionsStore.js';
 import { STATUSES } from '../../data/statuses.js';
 import { findCollection } from '../../data/collections.js';
@@ -27,10 +28,12 @@ export default function FactoryHomePage() {
   const { currentFactory, currentFactoryId } = useFactory();
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('all');
+  const [sort, setSort] = useState({ key: 'submittedAt', dir: 'desc' });
+  const onSort = (key) => setSort((prev) => nextSort(prev, key));
 
   const rows = useMemo(
-    () => listReferences({ search, status, factoryId: currentFactoryId }),
-    [search, status, currentFactoryId]
+    () => listReferences({ search, status, factoryId: currentFactoryId, sort }),
+    [search, status, currentFactoryId, sort]
   );
   const total = useMemo(
     () => listReferences({ factoryId: currentFactoryId }).length,
@@ -121,11 +124,11 @@ export default function FactoryHomePage() {
               <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-stone-200 text-[11px] uppercase tracking-wider text-stone-500">
-                    <th className="px-3 py-2 font-medium">Reference</th>
-                    <th className="px-3 py-2 font-medium">Quote</th>
-                    <th className="px-3 py-2 font-medium">Customer Request</th>
-                    <th className="px-3 py-2 font-medium">Collection</th>
-                    <th className="px-3 py-2 font-medium">Status</th>
+                    <SortHeader label="Reference" sortKey="referenceNo" sort={sort} onSort={onSort} />
+                    <SortHeader label="Quote" sortKey="quoteNo" sort={sort} onSort={onSort} />
+                    <SortHeader label="Customer Request" sortKey="poReference" sort={sort} onSort={onSort} />
+                    <SortHeader label="Collection" sortKey="collection" sort={sort} onSort={onSort} />
+                    <SortHeader label="Status" sortKey="status" sort={sort} onSort={onSort} />
                     <th className="px-3 py-2" />
                   </tr>
                 </thead>

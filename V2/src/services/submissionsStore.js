@@ -29,7 +29,8 @@
  */
 
 import seedSubmissions from '../../../Data/submissions.json';
-import { needsAttention } from '../data/statuses.js';
+import { needsAttention, findStatus } from '../data/statuses.js';
+import { factoryName } from '../data/factories.js';
 
 const STORAGE_KEY = 'customrequest:submissions';
 
@@ -297,9 +298,12 @@ function allReferences(items) {
  *                   contact, sales person, and collection.
  *   - `status`    — a status id, or 'all'.
  *   - `factoryId` — a factory id, 'all', or 'unassigned'.
- * Sorted newest-submitted first.
+ *   - `sort`      — { key, dir }. `key` is a column (quoteNo, referenceNo,
+ *                   poReference, accountName, salesPerson, status, factory,
+ *                   collection, submittedAt); `dir` is 'asc' | 'desc'.
+ *                   Defaults to newest-submitted first.
  */
-export function listReferences({ search = '', status = 'all', factoryId = 'all' } = {}) {
+export function listReferences({ search = '', status = 'all', factoryId = 'all', sort } = {}) {
   let rows = allReferences(readAll().map(normalize));
 
   if (status && status !== 'all') rows = rows.filter((r) => r.status === status);
@@ -318,7 +322,39 @@ export function listReferences({ search = '', status = 'all', factoryId = 'all' 
     );
   }
 
-  return rows.sort((a, b) => new Date(b.submittedAt) - new Date(a.submittedAt));
+  return sortReferences(rows, sort);
+}
+
+/** A reference's sortable value for a given column key. */
+function refSortValue(r, key) {
+  switch (key) {
+    case 'status':
+      return findStatus(r.status).order; // pipeline order, not alphabetical
+    case 'factory':
+      return r.factoryId ? factoryName(r.factoryId) : '~'; // unassigned sorts last (asc)
+    case 'submittedAt':
+      return new Date(r.submittedAt).getTime();
+    default:
+      return r[key] ?? '';
+  }
+}
+
+/** Sort reference rows by { key, dir }; defaults to newest-submitted first. */
+function sortReferences(rows, sort) {
+  const { key = 'submittedAt', dir = 'desc' } = sort || {};
+  const mul = dir === 'desc' ? -1 : 1;
+  return [...rows].sort((a, b) => {
+    const av = refSortValue(a, key);
+    const bv = refSortValue(b, key);
+    let cmp;
+    if (typeof av === 'number' && typeof bv === 'number') cmp = av - bv;
+    else cmp = String(av).localeCompare(String(bv), undefined, { numeric: true, sensitivity: 'base' });
+    // Tie-break on quote number so equal keys stay in a stable, sensible order.
+    if (cmp === 0 && key !== 'quoteNo') {
+      cmp = String(a.quoteNo).localeCompare(String(b.quoteNo), undefined, { numeric: true });
+    }
+    return cmp * mul;
+  });
 }
 
 /** Locate a reference and its parent submission by reference number. */
