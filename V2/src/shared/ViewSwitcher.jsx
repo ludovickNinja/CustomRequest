@@ -12,9 +12,9 @@
  * lands this becomes an account/role indicator rather than a free switch,
  * but the menu shape stays the same.
  *
- * Mounted once in App.jsx (outside <Routes>) so a single instance floats
- * above whatever page is rendered. It reads the current location to label
- * the trigger and highlight the active entry.
+ * Rendered inside <TopRightControls>, which owns the fixed top-right
+ * positioning. This component just lays itself out relatively and reads
+ * the current location to label the trigger and highlight the active entry.
  */
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -69,7 +69,7 @@ export default function ViewSwitcher() {
   }
 
   return (
-    <div ref={rootRef} className="fixed right-4 top-3 z-50">
+    <div ref={rootRef} className="relative">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}

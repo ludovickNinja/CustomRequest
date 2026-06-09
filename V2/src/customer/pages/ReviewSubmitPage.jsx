@@ -20,6 +20,7 @@ import Stepper from '../../shared/Stepper.jsx';
 import PageFooter from '../../shared/PageFooter.jsx';
 import { findCollection } from '../../data/collections.js';
 import { useCustomRequest } from '../../state/CustomRequestContext.jsx';
+import { useStore } from '../../state/StoreContext.jsx';
 import { createSubmission } from '../../services/submissionsStore.js';
 import { metalSummary } from '../components/design/MetalSection.jsx';
 
@@ -135,6 +136,7 @@ export default function ReviewSubmitPage() {
   const { collection: collectionId } = useParams();
   const navigate = useNavigate();
   const { state, markSubmitted, resetAll } = useCustomRequest();
+  const { currentAccountId } = useStore();
   const collection = findCollection(collectionId);
   const [submitting, setSubmitting] = useState(false);
   const [confirmation, setConfirmation] = useState(null);
@@ -150,6 +152,7 @@ export default function ReviewSubmitPage() {
     setSubmitting(true);
     markSubmitted();
     const record = createSubmission({
+      accountId: currentAccountId,
       collection: collectionId,
       contact,
       designs,

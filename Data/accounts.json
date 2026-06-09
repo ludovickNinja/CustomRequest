@@ -1,0 +1,7 @@
+[
+  { "id": "robbins-brothers", "name": "Robbins Brothers", "location": "Los Angeles, CA" },
+  { "id": "brilliant-earth-sf", "name": "Brilliant Earth — San Francisco", "location": "San Francisco, CA" },
+  { "id": "diamond-district-nyc", "name": "Diamond District NYC", "location": "New York, NY" },
+  { "id": "ben-bridge", "name": "Ben Bridge Jeweler", "location": "Seattle, WA" },
+  { "id": "bijouterie-lacroix-mtl", "name": "Bijouterie Lacroix — Montréal", "location": "Montréal, QC" }
+]

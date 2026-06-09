@@ -1,6 +1,7 @@
 [
   {
     "id": "REQ-2026-0512-RB1",
+    "accountId": "robbins-brothers",
     "submittedAt": "2026-05-12T15:42:00.000Z",
     "collection": "crownring",
     "contact": {
@@ -65,6 +66,7 @@
   },
   {
     "id": "REQ-2026-0518-BE2",
+    "accountId": "brilliant-earth-sf",
     "submittedAt": "2026-05-18T19:10:00.000Z",
     "collection": "noam-carver",
     "contact": {
@@ -154,6 +156,7 @@
   },
   {
     "id": "REQ-2026-0521-DD3",
+    "accountId": "diamond-district-nyc",
     "submittedAt": "2026-05-21T13:25:00.000Z",
     "collection": "full-custom",
     "contact": {
@@ -224,6 +227,7 @@
   },
   {
     "id": "REQ-2026-0527-BB4",
+    "accountId": "ben-bridge",
     "submittedAt": "2026-05-27T17:48:00.000Z",
     "collection": "mia-my-caroline",
     "contact": {
@@ -281,6 +285,7 @@
   },
   {
     "id": "REQ-2026-0601-RB5",
+    "accountId": "robbins-brothers",
     "submittedAt": "2026-06-01T20:33:00.000Z",
     "collection": "crownring",
     "contact": {
@@ -338,6 +343,7 @@
   },
   {
     "id": "REQ-2026-0605-MTL6",
+    "accountId": "bijouterie-lacroix-mtl",
     "submittedAt": "2026-06-05T14:07:00.000Z",
     "collection": "full-custom",
     "contact": {
@@ -399,5 +405,690 @@
         "createdAt": "2026-06-05T14:20:00.000Z"
       }
     ]
+  },
+  {
+    "id": "REQ-2026-0420-RB7",
+    "accountId": "robbins-brothers",
+    "submittedAt": "2026-04-20T18:05:00.000Z",
+    "collection": "noam-carver",
+    "contact": {
+      "accountName": "Robbins Brothers",
+      "contactName": "Dana Whitfield",
+      "email": "dana.whitfield@robbinsbrothers.com",
+      "cc": ["orders@robbinsbrothers.com"],
+      "poReference": "RB-47980",
+      "phoneCountry": "US",
+      "phone": "(310) 555-0142",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Engagement Ring",
+      "projectTypeOther": "",
+      "notes": "Full bridal set — engagement ring plus matching his & hers bands. Please keep the finish consistent across all three."
+    },
+    "designs": [
+      {
+        "skus": ["NC-ENG-512"],
+        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "6",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "1.50", "caratUnit": "ct", "color": "F", "clarity": "VS1",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": "GIA preferred."
+        },
+        "notes": "Hidden halo, cathedral setting.",
+        "uploads": [],
+        "includeCenterStone": true
+      },
+      {
+        "skus": ["NC-WB-512W"],
+        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "6",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Curved band, contoured to nest with the engagement ring.",
+        "uploads": [],
+        "includeCenterStone": false
+      },
+      {
+        "skus": ["NC-WB-513M"],
+        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "9.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Men's band — 6mm, satin finish with polished bevels.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0508-RB8",
+    "accountId": "robbins-brothers",
+    "submittedAt": "2026-05-08T16:40:00.000Z",
+    "collection": "crownring",
+    "contact": {
+      "accountName": "Robbins Brothers",
+      "contactName": "Dana Whitfield",
+      "email": "dana.whitfield@robbinsbrothers.com",
+      "cc": ["orders@robbinsbrothers.com"],
+      "poReference": "RB-48155",
+      "phoneCountry": "US",
+      "phone": "(310) 555-0142",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Wedding Band",
+      "projectTypeOther": "",
+      "notes": "Single plain band, comfort fit."
+    },
+    "designs": [
+      {
+        "skus": ["CR-WB-0098"],
+        "metal": { "tone": "two-tone", "karat": "14K", "karatOther": "", "colors": ["yellow-gold", "rose-gold"] },
+        "fingerSize": "8",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "5mm comfort fit, rose-gold center rail between yellow-gold edges.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0425-BE7",
+    "accountId": "brilliant-earth-sf",
+    "submittedAt": "2026-04-25T21:15:00.000Z",
+    "collection": "full-custom",
+    "contact": {
+      "accountName": "Brilliant Earth — San Francisco",
+      "contactName": "Marcus Lindqvist",
+      "email": "m.lindqvist@brilliantearth.com",
+      "cc": ["sf-studio@brilliantearth.com", "design@brilliantearth.com"],
+      "poReference": "BE-SF-2240",
+      "phoneCountry": "US",
+      "phone": "(415) 555-0199",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Fashion Ring",
+      "projectTypeOther": "",
+      "notes": "Capsule collection concept — four coordinated pieces for a trunk show. All lab-grown where stones apply."
+    },
+    "designs": [
+      {
+        "skus": [],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["yellow-gold"] },
+        "fingerSize": "6.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Oval", "shapeOther": "",
+          "carat": "2.00", "caratUnit": "ct", "color": "E", "clarity": "VVS2",
+          "length": "9.0", "width": "6.5", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": "IGI certified."
+        },
+        "notes": "Oval solitaire, thin pavé band.",
+        "uploads": [],
+        "includeCenterStone": true
+      },
+      {
+        "skus": [],
+        "metal": { "tone": "single", "karat": "Platinum", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "6.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "1.00", "caratUnit": "ct", "color": "F", "clarity": "VS1",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Three-stone, tapered baguette sides.",
+        "uploads": [],
+        "includeCenterStone": true
+      },
+      {
+        "skus": [],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "6.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Full pavé eternity band, ~1.5mm stones.",
+        "uploads": [],
+        "includeCenterStone": false
+      },
+      {
+        "skus": [],
+        "metal": { "tone": "two-tone", "karat": "14K / Platinum", "karatOther": "", "colors": ["yellow-gold"] },
+        "fingerSize": "10",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Men's band — platinum shank with a yellow-gold inlay.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": [
+      {
+        "id": "c-be7-001",
+        "author": "Marcus Lindqvist",
+        "body": "If timelines allow, we'd love renders of all four together for the trunk show deck.",
+        "createdAt": "2026-04-26T15:40:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "REQ-2026-0514-BE8",
+    "accountId": "brilliant-earth-sf",
+    "submittedAt": "2026-05-14T17:22:00.000Z",
+    "collection": "mia-my-caroline",
+    "contact": {
+      "accountName": "Brilliant Earth — San Francisco",
+      "contactName": "Marcus Lindqvist",
+      "email": "m.lindqvist@brilliantearth.com",
+      "cc": ["sf-studio@brilliantearth.com"],
+      "poReference": "BE-SF-2305",
+      "phoneCountry": "US",
+      "phone": "(415) 555-0199",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Engagement Ring",
+      "projectTypeOther": "",
+      "notes": "Single solitaire, customer is set on rose gold."
+    },
+    "designs": [
+      {
+        "skus": ["MC-ENG-220"],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["rose-gold"] },
+        "fingerSize": "5.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Cushion", "shapeOther": "",
+          "carat": "1.75", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Cushion solitaire, hidden halo, thin band.",
+        "uploads": [],
+        "includeCenterStone": true
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0529-BE9",
+    "accountId": "brilliant-earth-sf",
+    "submittedAt": "2026-05-29T15:48:00.000Z",
+    "collection": "noam-carver",
+    "contact": {
+      "accountName": "Brilliant Earth — San Francisco",
+      "contactName": "Marcus Lindqvist",
+      "email": "m.lindqvist@brilliantearth.com",
+      "cc": ["sf-studio@brilliantearth.com"],
+      "poReference": "BE-SF-2358",
+      "phoneCountry": "US",
+      "phone": "(415) 555-0199",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Engagement Ring",
+      "projectTypeOther": "",
+      "notes": "Engagement ring with a matching contoured band."
+    },
+    "designs": [
+      {
+        "skus": ["NC-ENG-330"],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["yellow-gold"] },
+        "fingerSize": "7",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Pear", "shapeOther": "",
+          "carat": "1.30", "caratUnit": "ct", "color": "G", "clarity": "VS1",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Pear solitaire, point facing up, claw prongs.",
+        "uploads": [],
+        "includeCenterStone": true
+      },
+      {
+        "skus": ["NC-WB-331"],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["yellow-gold"] },
+        "fingerSize": "7",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Contoured band with a notch for the pear point.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0430-DD7",
+    "accountId": "diamond-district-nyc",
+    "submittedAt": "2026-04-30T14:12:00.000Z",
+    "collection": "crownring",
+    "contact": {
+      "accountName": "Diamond District NYC",
+      "contactName": "Priya Raman",
+      "email": "priya@diamonddistrictnyc.com",
+      "cc": [],
+      "poReference": "DDNYC-7688",
+      "phoneCountry": "US",
+      "phone": "(212) 555-0177",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "phone",
+      "projectType": "Fashion Ring",
+      "projectTypeOther": "",
+      "notes": "A stacking pair — fashion ring plus a thin companion band."
+    },
+    "designs": [
+      {
+        "skus": ["CR-FR-712"],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "6",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Moissanite", "typeOther": "", "shape": "Marquise", "shapeOther": "",
+          "carat": "1.00", "caratUnit": "ct", "color": "", "clarity": "",
+          "length": "10.0", "width": "5.0", "depth": "",
+          "provideStone": "yes", "certified": "no", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "East-west marquise, bezel set.",
+        "uploads": [],
+        "includeCenterStone": true
+      },
+      {
+        "skus": ["CR-FR-712B"],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "6",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Thin 1.5mm companion band, plain.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0603-DD8",
+    "accountId": "diamond-district-nyc",
+    "submittedAt": "2026-06-03T19:30:00.000Z",
+    "collection": "full-custom",
+    "contact": {
+      "accountName": "Diamond District NYC",
+      "contactName": "Priya Raman",
+      "email": "priya@diamonddistrictnyc.com",
+      "cc": [],
+      "poReference": "DDNYC-7802",
+      "phoneCountry": "US",
+      "phone": "(212) 555-0177",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "phone",
+      "projectType": "Anniversary Ring",
+      "projectTypeOther": "",
+      "notes": "Customer-supplied emerald, wants a vintage-style halo."
+    },
+    "designs": [
+      {
+        "skus": [],
+        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["yellow-gold"] },
+        "fingerSize": "6.25",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Gemstone", "typeOther": "Emerald", "shape": "Emerald", "shapeOther": "",
+          "carat": "1.80", "caratUnit": "ct", "color": "", "clarity": "",
+          "length": "8.0", "width": "6.0", "depth": "4.0",
+          "provideStone": "no", "certified": "no", "setStone": "yes",
+          "uploads": [], "notes": "Customer-supplied Colombian emerald — handle with extra care, it's included."
+        },
+        "notes": "Vintage diamond halo, milgrain gallery.",
+        "uploads": [],
+        "includeCenterStone": true
+      }
+    ],
+    "comments": [
+      {
+        "id": "c-dd8-001",
+        "author": "Priya Raman",
+        "body": "Emerald is fragile — please confirm whether you can set it or if it should be sent loose for us to set.",
+        "createdAt": "2026-06-04T13:05:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "REQ-2026-0418-BB7",
+    "accountId": "ben-bridge",
+    "submittedAt": "2026-04-18T16:55:00.000Z",
+    "collection": "mia-my-caroline",
+    "contact": {
+      "accountName": "Ben Bridge Jeweler",
+      "contactName": "Sofia Alvarez",
+      "email": "sofia.alvarez@benbridge.com",
+      "cc": ["custom@benbridge.com"],
+      "poReference": "BB-98770",
+      "phoneCountry": "US",
+      "phone": "(206) 555-0123",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Anniversary Ring",
+      "projectTypeOther": "",
+      "notes": "Single anniversary band, customer wants a pop of color with sapphire accents."
+    },
+    "designs": [
+      {
+        "skus": ["MC-ANN-410"],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "N",
+        "fingerSizeSystem": "UK",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "H", "clarity": "SI1",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Alternating diamonds and blue sapphires halfway around.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0506-BB8",
+    "accountId": "ben-bridge",
+    "submittedAt": "2026-05-06T20:10:00.000Z",
+    "collection": "noam-carver",
+    "contact": {
+      "accountName": "Ben Bridge Jeweler",
+      "contactName": "Sofia Alvarez",
+      "email": "sofia.alvarez@benbridge.com",
+      "cc": ["custom@benbridge.com"],
+      "poReference": "BB-98910",
+      "phoneCountry": "US",
+      "phone": "(206) 555-0123",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "yes",
+      "appointmentDate": "2026-06-12",
+      "appointmentTime": "14:00",
+      "preferredContact": "phone",
+      "projectType": "Engagement Ring",
+      "projectTypeOther": "",
+      "notes": "Bridal set — engagement ring and two bands. Customer visiting the store for the review."
+    },
+    "designs": [
+      {
+        "skus": ["NC-ENG-720"],
+        "metal": { "tone": "two-tone", "karat": "18K / Platinum", "karatOther": "", "colors": ["yellow-gold"] },
+        "fingerSize": "6.75",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Oval", "shapeOther": "",
+          "carat": "2.20", "caratUnit": "ct", "color": "E", "clarity": "VS1",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": "GIA certified."
+        },
+        "notes": "Oval, yellow-gold basket on a platinum shank.",
+        "uploads": [],
+        "includeCenterStone": true
+      },
+      {
+        "skus": ["NC-WB-721W"],
+        "metal": { "tone": "single", "karat": "Platinum", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "6.75",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Her band — half-eternity, shared prong.",
+        "uploads": [],
+        "includeCenterStone": false
+      },
+      {
+        "skus": ["NC-WB-722M"],
+        "metal": { "tone": "single", "karat": "Platinum", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "10",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "His band — 6mm, hammered finish.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": [
+      {
+        "id": "c-bb8-001",
+        "author": "Sofia Alvarez",
+        "body": "Confirmed the in-store review for June 12 at 2pm. Please have CAD for all three pieces.",
+        "createdAt": "2026-05-06T20:25:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "REQ-2026-0531-BB9",
+    "accountId": "ben-bridge",
+    "submittedAt": "2026-05-31T18:18:00.000Z",
+    "collection": "crownring",
+    "contact": {
+      "accountName": "Ben Bridge Jeweler",
+      "contactName": "Sofia Alvarez",
+      "email": "sofia.alvarez@benbridge.com",
+      "cc": ["custom@benbridge.com"],
+      "poReference": "BB-99055",
+      "phoneCountry": "US",
+      "phone": "(206) 555-0123",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Fashion Ring",
+      "projectTypeOther": "",
+      "notes": "Single fashion piece, budget-conscious — moissanite center."
+    },
+    "designs": [
+      {
+        "skus": ["CR-FR-880"],
+        "metal": { "tone": "single", "karat": "10K", "karatOther": "", "colors": ["yellow-gold"] },
+        "fingerSize": "7.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Moissanite", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "1.50", "caratUnit": "ct", "color": "", "clarity": "",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "no", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Solitaire, four-prong, plain band.",
+        "uploads": [],
+        "includeCenterStone": true
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0422-MTL7",
+    "accountId": "bijouterie-lacroix-mtl",
+    "submittedAt": "2026-04-22T13:40:00.000Z",
+    "collection": "full-custom",
+    "contact": {
+      "accountName": "Bijouterie Lacroix — Montréal",
+      "contactName": "Élise Tremblay",
+      "email": "elise@bijouterielacroix.ca",
+      "cc": ["atelier@bijouterielacroix.ca"],
+      "poReference": "BL-MTL-1120",
+      "phoneCountry": "CA",
+      "phone": "(514) 555-0188",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Engagement Ring",
+      "projectTypeOther": "",
+      "notes": "Engagement ring plus a wrap that turns it into a set later."
+    },
+    "designs": [
+      {
+        "skus": [],
+        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["rose-gold"] },
+        "fingerSize": "54",
+        "fingerSizeSystem": "EU",
+        "centerStone": {
+          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Radiant", "shapeOther": "",
+          "carat": "2.50", "caratUnit": "ct", "color": "F", "clarity": "VVS2",
+          "length": "8.5", "width": "6.5", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": "IGI certified."
+        },
+        "notes": "Radiant solitaire, thin rose-gold band.",
+        "uploads": [],
+        "includeCenterStone": true
+      },
+      {
+        "skus": [],
+        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["rose-gold"] },
+        "fingerSize": "54",
+        "fingerSizeSystem": "EU",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "Diamond wrap/jacket that frames the solitaire.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0607-MTL8",
+    "accountId": "bijouterie-lacroix-mtl",
+    "submittedAt": "2026-06-07T11:05:00.000Z",
+    "collection": "noam-carver",
+    "contact": {
+      "accountName": "Bijouterie Lacroix — Montréal",
+      "contactName": "Élise Tremblay",
+      "email": "elise@bijouterielacroix.ca",
+      "cc": ["atelier@bijouterielacroix.ca"],
+      "poReference": "BL-MTL-1203",
+      "phoneCountry": "CA",
+      "phone": "(514) 555-0188",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Wedding Band",
+      "projectTypeOther": "",
+      "notes": "Single women's band."
+    },
+    "designs": [
+      {
+        "skus": ["NC-WB-905"],
+        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "fingerSize": "50",
+        "fingerSizeSystem": "EU",
+        "centerStone": {
+          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
+          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
+          "length": "", "width": "", "depth": "",
+          "provideStone": "yes", "certified": "yes", "setStone": "yes",
+          "uploads": [], "notes": ""
+        },
+        "notes": "2mm, marquise-and-round diamond pattern halfway around.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
   }
 ]

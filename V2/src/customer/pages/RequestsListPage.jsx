@@ -15,6 +15,7 @@ import PageFooter from '../../shared/PageFooter.jsx';
 import TopBar from '../../shared/TopBar.jsx';
 import { listSubmissions } from '../../services/submissionsStore.js';
 import { findCollection } from '../../data/collections.js';
+import { useStore } from '../../state/StoreContext.jsx';
 
 const SORT_OPTIONS = [
   { id: 'newest', label: 'Newest first' },
@@ -37,9 +38,13 @@ function collectionLabel(id) {
 }
 
 export default function RequestsListPage() {
+  const { currentAccountId, currentAccount } = useStore();
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('newest');
-  const submissions = useMemo(() => listSubmissions({ search, sort }), [search, sort]);
+  const submissions = useMemo(
+    () => listSubmissions({ search, sort, accountId: currentAccountId }),
+    [search, sort, currentAccountId]
+  );
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -50,6 +55,11 @@ export default function RequestsListPage() {
             <p className="eyebrow">Your Activity</p>
             <h1 className="mt-2 font-serif text-4xl text-stone-900">Ongoing Requests</h1>
             <p className="mt-1 text-sm text-stone-500">
+              {currentAccount && (
+                <>
+                  Projects for <span className="font-medium text-stone-700">{currentAccount.name}</span>.{' '}
+                </>
+              )}
               Review submissions, check quotes, and leave comments for our team.
             </p>
           </div>
