@@ -1,6 +1,7 @@
 [
   {
     "id": "REQ-2026-0512-RB1",
+    "accountId": "robbins-brothers",
     "submittedAt": "2026-05-12T15:42:00.000Z",
     "collection": "crownring",
     "contact": {
@@ -65,6 +66,7 @@
   },
   {
     "id": "REQ-2026-0518-BE2",
+    "accountId": "brilliant-earth-sf",
     "submittedAt": "2026-05-18T19:10:00.000Z",
     "collection": "noam-carver",
     "contact": {
@@ -154,6 +156,7 @@
   },
   {
     "id": "REQ-2026-0521-DD3",
+    "accountId": "diamond-district-nyc",
     "submittedAt": "2026-05-21T13:25:00.000Z",
     "collection": "full-custom",
     "contact": {
@@ -224,6 +227,7 @@
   },
   {
     "id": "REQ-2026-0527-BB4",
+    "accountId": "ben-bridge",
     "submittedAt": "2026-05-27T17:48:00.000Z",
     "collection": "mia-my-caroline",
     "contact": {
@@ -281,6 +285,7 @@
   },
   {
     "id": "REQ-2026-0601-RB5",
+    "accountId": "robbins-brothers",
     "submittedAt": "2026-06-01T20:33:00.000Z",
     "collection": "crownring",
     "contact": {
@@ -338,6 +343,7 @@
   },
   {
     "id": "REQ-2026-0605-MTL6",
+    "accountId": "bijouterie-lacroix-mtl",
     "submittedAt": "2026-06-05T14:07:00.000Z",
     "collection": "full-custom",
     "contact": {

@@ -25,6 +25,7 @@ import {
   addComment,
 } from '../../services/submissionsStore.js';
 import { metalSummary } from '../components/design/MetalSection.jsx';
+import { useStore } from '../../state/StoreContext.jsx';
 
 function formatDate(iso) {
   try {
@@ -92,6 +93,7 @@ function DesignSummary({ design, index }) {
 
 export default function RequestDetailPage() {
   const { id } = useParams();
+  const { currentAccountId } = useStore();
   const decodedId = id ? decodeURIComponent(id) : '';
   const submission = useMemo(() => (decodedId ? getSubmission(decodedId) : null), [decodedId]);
   const [comments, setComments] = useState(() => (decodedId ? listComments(decodedId) : []));
@@ -104,6 +106,11 @@ export default function RequestDetailPage() {
   }, [decodedId]);
 
   if (!submission) return <Navigate to="/requests" replace />;
+  // A store can only open its own requests. Records that predate store
+  // scoping (no accountId) stay accessible.
+  if (submission.accountId && submission.accountId !== currentAccountId) {
+    return <Navigate to="/requests" replace />;
+  }
 
   const collection = findCollection(submission.collection);
   const contact = submission.contact || {};

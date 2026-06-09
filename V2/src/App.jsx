@@ -12,12 +12,15 @@
  * `services/submissionsStore` module instead — but it's harmless to have
  * the provider mounted everywhere.
  *
- * <ViewSwitcher> lives outside <Routes> so the single floating dropdown in
- * the top-right corner persists across every page and role.
+ * <TopRightControls> lives outside <Routes> so the floating view switcher
+ * (and, in the customer view, the store switcher) persists across every
+ * page and role. <StoreProvider> wraps the tree so the customer view and
+ * its store switcher share one "current store" selection.
  */
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { CustomRequestProvider } from './state/CustomRequestContext.jsx';
-import ViewSwitcher from './shared/ViewSwitcher.jsx';
+import { StoreProvider } from './state/StoreContext.jsx';
+import TopRightControls from './shared/TopRightControls.jsx';
 import customerRoutes from './customer/routes.jsx';
 import adminRoutes from './admin/routes.jsx';
 import factoryRoutes from './factory/routes.jsx';
@@ -25,15 +28,17 @@ import factoryRoutes from './factory/routes.jsx';
 export default function App() {
   return (
     <CustomRequestProvider>
-      <ViewSwitcher />
-      <Routes>
-        {/* Each role's route module returns an array of <Route> elements. */}
-        {customerRoutes()}
-        {adminRoutes()}
-        {factoryRoutes()}
-        {/* Anything we didn't recognize sends the user back to the picker. */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <StoreProvider>
+        <TopRightControls />
+        <Routes>
+          {/* Each role's route module returns an array of <Route> elements. */}
+          {customerRoutes()}
+          {adminRoutes()}
+          {factoryRoutes()}
+          {/* Anything we didn't recognize sends the user back to the picker. */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </StoreProvider>
     </CustomRequestProvider>
   );
 }

@@ -12,6 +12,7 @@ other tool can read the exact same fixtures without depending on the React app.
 | File               | What it holds                                                        |
 | ------------------ | -------------------------------------------------------------------- |
 | `submissions.json` | An array of custom-request records — one per submitted request.      |
+| `accounts.json`    | The canonical store/account list (the tenants the app is scoped to). |
 
 ## How it's consumed today
 
@@ -38,6 +39,7 @@ Each entry in `submissions.json` mirrors the record shape documented in
 ```jsonc
 {
   "id": "REQ-2026-0512-RB1",        // stable, unique per submission
+  "accountId": "robbins-brothers",  // store this request belongs to (see accounts.json)
   "submittedAt": "2026-05-12T15:42:00.000Z", // ISO-8601
   "collection": "crownring",        // id from V2/src/data/collections.js
   "contact": { /* mirrors defaultContact */ },
@@ -47,6 +49,24 @@ Each entry in `submissions.json` mirrors the record shape documented in
   ]
 }
 ```
+
+## Store scoping
+
+`accounts.json` is the tenant list. Each entry is a store/company:
+
+```jsonc
+{ "id": "robbins-brothers", "name": "Robbins Brothers", "location": "Los Angeles, CA" }
+```
+
+Every submission carries an `accountId` pointing at one of these. The customer
+view is scoped to a single store — it only ever shows that store's requests —
+while the In House (admin) view sees every account. Today the "current store"
+is chosen with the store switcher in the top-right (no auth yet); it's held in
+`V2/src/state/StoreContext.jsx` and persisted under `customrequest:currentAccount`.
+`listSubmissions({ accountId })` does the filtering; new submissions are tagged
+with the current store on submit.
+
+Keep the `accountId` on each record in sync with an `id` in `accounts.json`.
 
 Valid enum values (keep fixtures in sync with the form):
 

@@ -100,7 +100,11 @@ function normalize(submission) {
 }
 
 /**
- * List submissions, optionally filtered and sorted.
+ * List submissions, optionally scoped, filtered, and sorted.
+ *
+ * `accountId` scopes the result to a single store/account — the customer
+ * view passes its current store so a store only ever sees its own
+ * requests; the (future) admin/In House view omits it to see everything.
  *
  * Searching is a case-insensitive substring match across the PO reference,
  * account name, contact name, email, and collection id. Sort options:
@@ -109,8 +113,9 @@ function normalize(submission) {
  *   - "po"               — by PO/reference alphabetical
  *   - "account"          — by account name alphabetical
  */
-export function listSubmissions({ search = '', sort = 'newest' } = {}) {
-  const items = readAll().map(normalize);
+export function listSubmissions({ search = '', sort = 'newest', accountId = null } = {}) {
+  const all = readAll().map(normalize);
+  const items = accountId ? all.filter((s) => s.accountId === accountId) : all;
 
   const q = search.trim().toLowerCase();
   const filtered = q
