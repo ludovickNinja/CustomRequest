@@ -19,6 +19,7 @@ import DesignDetailsPage from './pages/DesignDetailsPage.jsx';
 import ReviewSubmitPage from './pages/ReviewSubmitPage.jsx';
 import RequestsListPage from './pages/RequestsListPage.jsx';
 import RequestDetailPage from './pages/RequestDetailPage.jsx';
+import ReferenceDetailPage from './pages/ReferenceDetailPage.jsx';
 
 export default function customerRoutes() {
   return [
@@ -27,6 +28,7 @@ export default function customerRoutes() {
     <Route key="customer-details" path="/design/:collection/details" element={<DesignDetailsPage />} />,
     <Route key="customer-review" path="/design/:collection/review" element={<ReviewSubmitPage />} />,
     <Route key="customer-requests" path="/requests" element={<RequestsListPage />} />,
+    <Route key="customer-reference" path="/requests/reference/:referenceNo" element={<ReferenceDetailPage />} />,
     <Route key="customer-request-detail" path="/requests/:id" element={<RequestDetailPage />} />,
   ];
 }

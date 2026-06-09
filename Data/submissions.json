@@ -66,8 +66,13 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
-        "messages": []
+        "messages": [],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [
@@ -149,7 +154,6 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50002-1",
@@ -158,7 +162,13 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-05-18T19:10:00.000Z"
           }
-        ]
+        ],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       },
       {
         "skus": [
@@ -202,7 +212,6 @@
         "currency": "USD",
         "price": 2075,
         "pricePublished": true,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50003-1",
@@ -211,7 +220,19 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-05-18T19:10:00.000Z"
           }
-        ]
+        ],
+        "pricing": {
+          "gramWeight": "7.4g",
+          "metalKarat": "18K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 7
+        },
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [],
@@ -280,16 +301,45 @@
         "currency": "USD",
         "price": 2200,
         "pricePublished": false,
-        "assets": [
-          {
-            "id": "a-R50004-1",
-            "name": "R50004-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Sophia Martin",
-            "uploadedAt": "2026-05-21T13:25:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "8.1g",
+          "metalKarat": "18K / Platinum",
+          "diamondSummary": "1 Oval = 2.10ct",
+          "estimateValidDays": 7,
+          "deliveryDays": 8
+        },
+        "renderings": {
+          "model": {
+            "name": "R50004.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50004-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50004-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50004-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50004-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50004-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50004_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [
@@ -375,16 +425,45 @@
         "currency": "USD",
         "price": 2350,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50005-1",
-            "name": "R50005-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Liam O’Brien",
-            "uploadedAt": "2026-05-27T17:48:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "8.8g",
+          "metalKarat": "Platinum",
+          "diamondSummary": "1 Princess = 1.00ct SI1 / H",
+          "estimateValidDays": 7,
+          "deliveryDays": 9
+        },
+        "renderings": {
+          "model": {
+            "name": "R50005.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50005-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50005-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50005-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50005-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50005-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50005_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -458,16 +537,45 @@
         "currency": "USD",
         "price": 2475,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50006-1",
-            "name": "R50006-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Emma Laurent",
-            "uploadedAt": "2026-06-01T20:33:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "9.5g",
+          "metalKarat": "14K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 10
+        },
+        "renderings": {
+          "model": {
+            "name": "R50006.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50006-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50006-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50006-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50006-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50006-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50006_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -538,8 +646,13 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
-        "messages": []
+        "messages": [],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [
@@ -619,7 +732,6 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50008-1",
@@ -628,7 +740,13 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-04-20T18:05:00.000Z"
           }
-        ]
+        ],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       },
       {
         "skus": [
@@ -672,7 +790,6 @@
         "currency": "USD",
         "price": 2900,
         "pricePublished": true,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50009-1",
@@ -681,7 +798,19 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-04-20T18:05:00.000Z"
           }
-        ]
+        ],
+        "pricing": {
+          "gramWeight": "11.6g",
+          "metalKarat": "18K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 7
+        },
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       },
       {
         "skus": [
@@ -725,16 +854,45 @@
         "currency": "USD",
         "price": 3025,
         "pricePublished": false,
-        "assets": [
-          {
-            "id": "a-R50010-1",
-            "name": "R50010-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Sophia Martin",
-            "uploadedAt": "2026-04-20T18:05:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "12.3g",
+          "metalKarat": "18K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 8
+        },
+        "renderings": {
+          "model": {
+            "name": "R50010.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50010-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50010-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50010-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50010-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50010-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50010_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -808,16 +966,45 @@
         "currency": "USD",
         "price": 3175,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50011-1",
-            "name": "R50011-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Liam O’Brien",
-            "uploadedAt": "2026-05-08T16:40:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "13.0g",
+          "metalKarat": "14K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 9
+        },
+        "renderings": {
+          "model": {
+            "name": "R50011.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50011-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50011-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50011-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50011-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50011-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50011_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -889,16 +1076,45 @@
         "currency": "USD",
         "price": 3300,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50012-1",
-            "name": "R50012-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Emma Laurent",
-            "uploadedAt": "2026-04-25T21:15:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "13.7g",
+          "metalKarat": "14K",
+          "diamondSummary": "1 Oval = 2.00ct VVS2 / E",
+          "estimateValidDays": 7,
+          "deliveryDays": 10
+        },
+        "renderings": {
+          "model": {
+            "name": "R50012.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50012-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50012-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50012-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50012-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50012-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50012_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       },
       {
         "skus": [],
@@ -940,8 +1156,13 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
-        "messages": []
+        "messages": [],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       },
       {
         "skus": [],
@@ -983,7 +1204,6 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50014-1",
@@ -992,7 +1212,13 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-04-25T21:15:00.000Z"
           }
-        ]
+        ],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       },
       {
         "skus": [],
@@ -1034,7 +1260,6 @@
         "currency": "USD",
         "price": 3725,
         "pricePublished": true,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50015-1",
@@ -1043,7 +1268,19 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-04-25T21:15:00.000Z"
           }
-        ]
+        ],
+        "pricing": {
+          "gramWeight": "7.8g",
+          "metalKarat": "14K / Platinum",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 7
+        },
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [
@@ -1123,16 +1360,45 @@
         "currency": "USD",
         "price": 3850,
         "pricePublished": false,
-        "assets": [
-          {
-            "id": "a-R50016-1",
-            "name": "R50016-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Daniel Cho",
-            "uploadedAt": "2026-05-14T17:22:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "8.5g",
+          "metalKarat": "14K",
+          "diamondSummary": "1 Cushion = 1.75ct VS2 / G",
+          "estimateValidDays": 7,
+          "deliveryDays": 8
+        },
+        "renderings": {
+          "model": {
+            "name": "R50016.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50016-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50016-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50016-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50016-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50016-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50016_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -1205,16 +1471,45 @@
         "currency": "USD",
         "price": 4000,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50017-1",
-            "name": "R50017-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Sophia Martin",
-            "uploadedAt": "2026-05-29T15:48:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "9.2g",
+          "metalKarat": "14K",
+          "diamondSummary": "1 Pear = 1.30ct VS1 / G",
+          "estimateValidDays": 7,
+          "deliveryDays": 9
+        },
+        "renderings": {
+          "model": {
+            "name": "R50017.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50017-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50017-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50017-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50017-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50017-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50017_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       },
       {
         "skus": [
@@ -1258,16 +1553,45 @@
         "currency": "USD",
         "price": 4125,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50018-1",
-            "name": "R50018-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Sophia Martin",
-            "uploadedAt": "2026-05-29T15:48:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "9.9g",
+          "metalKarat": "14K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 10
+        },
+        "renderings": {
+          "model": {
+            "name": "R50018.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50018-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50018-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50018-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50018-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50018-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50018_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -1338,8 +1662,13 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
-        "messages": []
+        "messages": [],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       },
       {
         "skus": [
@@ -1383,7 +1712,6 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50020-1",
@@ -1392,7 +1720,13 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-04-30T14:12:00.000Z"
           }
-        ]
+        ],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [],
@@ -1461,7 +1795,6 @@
         "currency": "USD",
         "price": 4550,
         "pricePublished": true,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50021-1",
@@ -1470,7 +1803,19 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-06-03T19:30:00.000Z"
           }
-        ]
+        ],
+        "pricing": {
+          "gramWeight": "12.0g",
+          "metalKarat": "18K",
+          "diamondSummary": "1 Emerald = 1.80ct",
+          "estimateValidDays": 7,
+          "deliveryDays": 7
+        },
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [
@@ -1550,16 +1895,45 @@
         "currency": "USD",
         "price": 4675,
         "pricePublished": false,
-        "assets": [
-          {
-            "id": "a-R50022-1",
-            "name": "R50022-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Daniel Cho",
-            "uploadedAt": "2026-04-18T16:55:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "12.7g",
+          "metalKarat": "14K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 8
+        },
+        "renderings": {
+          "model": {
+            "name": "R50022.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50022-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50022-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50022-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50022-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50022-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50022_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -1632,16 +2006,45 @@
         "currency": "USD",
         "price": 4825,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50023-1",
-            "name": "R50023-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Sophia Martin",
-            "uploadedAt": "2026-05-06T20:10:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "13.4g",
+          "metalKarat": "18K / Platinum",
+          "diamondSummary": "1 Oval = 2.20ct VS1 / E",
+          "estimateValidDays": 7,
+          "deliveryDays": 9
+        },
+        "renderings": {
+          "model": {
+            "name": "R50023.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50023-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50023-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50023-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50023-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50023-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50023_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       },
       {
         "skus": [
@@ -1685,16 +2088,45 @@
         "currency": "USD",
         "price": 4950,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50024-1",
-            "name": "R50024-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Sophia Martin",
-            "uploadedAt": "2026-05-06T20:10:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "6.1g",
+          "metalKarat": "Platinum",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 10
+        },
+        "renderings": {
+          "model": {
+            "name": "R50024.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50024-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50024-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50024-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50024-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50024-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50024_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       },
       {
         "skus": [
@@ -1738,8 +2170,13 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
-        "messages": []
+        "messages": [],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [
@@ -1819,7 +2256,6 @@
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50026-1",
@@ -1828,7 +2264,13 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-05-31T18:18:00.000Z"
           }
-        ]
+        ],
+        "pricing": null,
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       }
     ],
     "comments": [],
@@ -1899,7 +2341,6 @@
         "currency": "USD",
         "price": 5350,
         "pricePublished": true,
-        "assets": [],
         "messages": [
           {
             "id": "m-R50027-1",
@@ -1908,7 +2349,19 @@
             "body": "Could we see a rendering before we approve the quote? Thanks!",
             "createdAt": "2026-04-22T13:40:00.000Z"
           }
-        ]
+        ],
+        "pricing": {
+          "gramWeight": "8.2g",
+          "metalKarat": "18K",
+          "diamondSummary": "1 Radiant = 2.50ct VVS2 / F",
+          "estimateValidDays": 7,
+          "deliveryDays": 7
+        },
+        "renderings": {
+          "model": null,
+          "angles": [],
+          "specSheet": null
+        }
       },
       {
         "skus": [],
@@ -1950,16 +2403,45 @@
         "currency": "USD",
         "price": 5500,
         "pricePublished": false,
-        "assets": [
-          {
-            "id": "a-R50028-1",
-            "name": "R50028-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Emma Laurent",
-            "uploadedAt": "2026-04-22T13:40:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "8.9g",
+          "metalKarat": "18K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 8
+        },
+        "renderings": {
+          "model": {
+            "name": "R50028.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50028-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50028-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50028-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50028-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50028-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50028_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],
@@ -2032,16 +2514,45 @@
         "currency": "USD",
         "price": 5625,
         "pricePublished": true,
-        "assets": [
-          {
-            "id": "a-R50029-1",
-            "name": "R50029-cad-v1.png",
-            "kind": "rendering",
-            "uploadedBy": "Daniel Cho",
-            "uploadedAt": "2026-06-07T11:05:00.000Z"
+        "messages": [],
+        "pricing": {
+          "gramWeight": "9.6g",
+          "metalKarat": "14K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 9
+        },
+        "renderings": {
+          "model": {
+            "name": "R50029.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50029-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50029-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50029-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50029-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50029-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50029_spec_sheet.pdf"
           }
-        ],
-        "messages": []
+        }
       }
     ],
     "comments": [],

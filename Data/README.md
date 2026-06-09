@@ -72,11 +72,15 @@ with the current store on submit.
 
 Keep the `accountId` on each record in sync with an `id` in `accounts.json`.
 
-## Reference workflow (admin / In House view)
+## Reference workflow + design detail (admin / customer)
 
 The admin works one **reference** at a time — a single design within a request.
-Each design therefore carries workflow fields the In House view reads and
-writes, and each submission carries the `salesPerson` who owns it:
+Each design therefore carries workflow fields, a pricing breakdown, renderings,
+and its own discussion thread (the comments now live *inside each design*, not
+once per request). Each submission also carries the `salesPerson` who owns it.
+The customer's design-detail page and the admin's reference page read the same
+fields; the admin/factory fill them in, the customer sees published pricing and
+renderings and can post to the discussion.
 
 ```jsonc
 {
@@ -89,12 +93,21 @@ writes, and each submission carries the `salesPerson` who owns it:
       "status": "new",                    // see the status pipeline below
       "factoryId": "goldworks-ny",         // assigned factory (id in factories.json) or null
       "currency": "USD",
-      "price": 2400,                       // published or draft price, or null
+      "price": 2400,                       // estimated total, or null
       "pricePublished": true,             // is the price visible to the customer?
-      "assets": [                          // uploaded renderings
-        { "id": "...", "name": "R50001-cad-v1.png", "kind": "rendering", "uploadedBy": "...", "uploadedAt": "..." }
-      ],
-      "messages": [                        // per-reference message thread
+      "pricing": {                         // breakdown shown under the total (or null)
+        "gramWeight": "8.4g",
+        "metalKarat": "14K",
+        "diamondSummary": "1 Round = 1.25ct VS1 / F",
+        "estimateValidDays": 7,
+        "deliveryDays": 6
+      },
+      "renderings": {                      // factory-provided deliverables
+        "model": { "name": "R50001.glb", "label": "3D Viewer" },  // or null
+        "angles": [ { "id": "...", "label": "Perspective View" } ],
+        "specSheet": { "name": "r50001_spec_sheet.pdf" }          // or null
+      },
+      "messages": [                        // per-reference discussion thread
         { "id": "...", "author": "...", "role": "customer", "body": "...", "createdAt": "..." }
       ]
     }

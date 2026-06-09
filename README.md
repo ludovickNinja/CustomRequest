@@ -43,10 +43,9 @@ The root `index.html` is a tiny landing page that links to both versions.
 │   │   │
 │   │   ├── admin/               # In House view — reference queue + detail
 │   │   │   ├── routes.jsx
-│   │   │   ├── components/
 │   │   │   └── pages/
 │   │   │
-│   │   └── factory/             # Placeholder section, role-gated by URL today
+│   │   └── factory/             # Factory view — workspace + reference detail
 │   │       ├── routes.jsx
 │   │       └── pages/
 │   │
@@ -71,7 +70,10 @@ V2 serves three user roles from a single build:
   status/factory filters; each reference opens a detail panel to update
   status, assign a factory, upload renderings, answer messages, and publish
   pricing.
-- **Factory** — production team viewing assigned requests (placeholder today).
+- **Factory** — production team, scoped to one factory (via a factory
+  switcher). The Factory Workspace lists the references assigned to that
+  team; each reference opens to its specs, a production-status control, and
+  a renderings upload.
 
 Each role lives in its own folder with its own `routes.jsx`. `App.jsx` is a
 thin composition root that pulls in each role's route subtree. To add a new
@@ -152,12 +154,15 @@ need to be re-attached after a refresh.
 
 ### Ongoing requests
 
-- **List** (`/requests`). Every locally stored submission, with a search box
+- **List** (`/requests`). The current store's submissions, with a search box
   (PO / reference / account / contact / email / collection) and a sort
   dropdown (Newest / Oldest / PO A→Z / Account A→Z).
-- **Detail** (`/requests/:id`). Submission summary, one card per design, a
-  Comments thread the customer can post into, and a sticky Quote sidebar
-  that currently shows a "Pending review" placeholder.
+- **Detail** (`/requests/:id`). Contact info and one card per design; each
+  card links to that design's reference page.
+- **Reference** (`/requests/reference/:referenceNo`). The per-design detail:
+  a pricing breakdown and factory renderings (read-only, filled in by
+  admin/factory), plus the design's own discussion thread. The same pricing
+  / renderings / discussion sections power the admin reference page.
 
 ## Local development
 

@@ -3,7 +3,7 @@
  * Tone → class strings are spelled out in full so Tailwind's scanner keeps
  * them in the build (no dynamic class construction).
  */
-import { findStatus } from '../../data/statuses.js';
+import { findStatus } from '../data/statuses.js';
 
 const TONE = {
   amber: 'bg-amber-50 text-amber-800 ring-amber-200',
