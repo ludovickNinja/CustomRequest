@@ -11,9 +11,13 @@
  * and factory pages don't read from that context — they go through the
  * `services/submissionsStore` module instead — but it's harmless to have
  * the provider mounted everywhere.
+ *
+ * <ViewSwitcher> lives outside <Routes> so the single floating dropdown in
+ * the top-right corner persists across every page and role.
  */
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { CustomRequestProvider } from './state/CustomRequestContext.jsx';
+import ViewSwitcher from './shared/ViewSwitcher.jsx';
 import customerRoutes from './customer/routes.jsx';
 import adminRoutes from './admin/routes.jsx';
 import factoryRoutes from './factory/routes.jsx';
@@ -21,6 +25,7 @@ import factoryRoutes from './factory/routes.jsx';
 export default function App() {
   return (
     <CustomRequestProvider>
+      <ViewSwitcher />
       <Routes>
         {/* Each role's route module returns an array of <Route> elements. */}
         {customerRoutes()}

@@ -1,0 +1,403 @@
+[
+  {
+    "id": "REQ-2026-0512-RB1",
+    "submittedAt": "2026-05-12T15:42:00.000Z",
+    "collection": "crownring",
+    "contact": {
+      "accountName": "Robbins Brothers",
+      "contactName": "Dana Whitfield",
+      "email": "dana.whitfield@robbinsbrothers.com",
+      "cc": ["orders@robbinsbrothers.com"],
+      "poReference": "RB-48217",
+      "phoneCountry": "US",
+      "phone": "(310) 555-0142",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Engagement Ring",
+      "projectTypeOther": "",
+      "notes": "Client wants to match an existing Carlex band she already owns. Rush if possible."
+    },
+    "designs": [
+      {
+        "skus": ["CR-ENG-1182"],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": ["white-gold"]
+        },
+        "fingerSize": "6.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "1.25",
+          "caratUnit": "ct",
+          "color": "F",
+          "clarity": "VS1",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "GIA certified preferred."
+        },
+        "notes": "Cathedral setting, hidden halo if it fits the budget.",
+        "uploads": [],
+        "includeCenterStone": true
+      }
+    ],
+    "comments": [
+      {
+        "id": "c-rb1-001",
+        "author": "Dana Whitfield",
+        "body": "Customer would love to see CAD before we commit to the halo.",
+        "createdAt": "2026-05-12T16:05:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "REQ-2026-0518-BE2",
+    "submittedAt": "2026-05-18T19:10:00.000Z",
+    "collection": "noam-carver",
+    "contact": {
+      "accountName": "Brilliant Earth — San Francisco",
+      "contactName": "Marcus Lindqvist",
+      "email": "m.lindqvist@brilliantearth.com",
+      "cc": ["sf-studio@brilliantearth.com", "design@brilliantearth.com"],
+      "poReference": "BE-SF-2291",
+      "phoneCountry": "US",
+      "phone": "(415) 555-0199",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Wedding Band",
+      "projectTypeOther": "",
+      "notes": "His & hers matching set — please keep the milgrain consistent across both."
+    },
+    "designs": [
+      {
+        "skus": ["NC-WB-204", "NC-WB-204M"],
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": ["yellow-gold"]
+        },
+        "fingerSize": "7",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
+        },
+        "notes": "Women's band — 2.5mm, shared-prong diamonds halfway around.",
+        "uploads": [],
+        "includeCenterStone": false
+      },
+      {
+        "skus": ["NC-WB-205M"],
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": ["yellow-gold"]
+        },
+        "fingerSize": "10.5",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
+        },
+        "notes": "Men's band — 6mm, brushed center with polished milgrain edges.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0521-DD3",
+    "submittedAt": "2026-05-21T13:25:00.000Z",
+    "collection": "full-custom",
+    "contact": {
+      "accountName": "Diamond District NYC",
+      "contactName": "Priya Raman",
+      "email": "priya@diamonddistrictnyc.com",
+      "cc": [],
+      "poReference": "DDNYC-7740",
+      "phoneCountry": "US",
+      "phone": "(212) 555-0177",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "phone",
+      "projectType": "Fashion Ring",
+      "projectTypeOther": "",
+      "notes": "Heirloom recreation. Customer is providing the center sapphire — handle with care."
+    },
+    "designs": [
+      {
+        "skus": [],
+        "metal": {
+          "tone": "two-tone",
+          "karat": "18K / Platinum",
+          "karatOther": "",
+          "colors": ["rose-gold"]
+        },
+        "fingerSize": "5.75",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Gemstone",
+          "typeOther": "Blue Sapphire",
+          "shape": "Oval",
+          "shapeOther": "",
+          "carat": "2.10",
+          "caratUnit": "ct",
+          "color": "",
+          "clarity": "",
+          "length": "8.5",
+          "width": "6.5",
+          "depth": "4.2",
+          "provideStone": "no",
+          "certified": "no",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "Customer-supplied stone, slight chip on the girdle — needs a protective bezel."
+        },
+        "notes": "Art-deco inspired, geometric shoulders, milgrain throughout.",
+        "uploads": [],
+        "includeCenterStone": true
+      }
+    ],
+    "comments": [
+      {
+        "id": "c-dd3-001",
+        "author": "Priya Raman",
+        "body": "Sending the stone in by insured courier — will share tracking once it ships.",
+        "createdAt": "2026-05-21T14:02:00.000Z"
+      },
+      {
+        "id": "c-dd3-002",
+        "author": "Priya Raman",
+        "body": "Customer prefers a bezel over prongs given the chip. Please confirm feasibility.",
+        "createdAt": "2026-05-22T09:18:00.000Z"
+      }
+    ]
+  },
+  {
+    "id": "REQ-2026-0527-BB4",
+    "submittedAt": "2026-05-27T17:48:00.000Z",
+    "collection": "mia-my-caroline",
+    "contact": {
+      "accountName": "Ben Bridge Jeweler",
+      "contactName": "Sofia Alvarez",
+      "email": "sofia.alvarez@benbridge.com",
+      "cc": ["custom@benbridge.com"],
+      "poReference": "BB-99012",
+      "phoneCountry": "US",
+      "phone": "(206) 555-0123",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Anniversary Ring",
+      "projectTypeOther": "",
+      "notes": "25th anniversary upgrade. Resetting customer's existing three stones into a new band."
+    },
+    "designs": [
+      {
+        "skus": ["MC-ANN-330"],
+        "metal": {
+          "tone": "single",
+          "karat": "Platinum",
+          "karatOther": "",
+          "colors": ["white-gold"]
+        },
+        "fingerSize": "M",
+        "fingerSizeSystem": "UK",
+        "centerStone": {
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Princess",
+          "shapeOther": "",
+          "carat": "1.00",
+          "caratUnit": "ct",
+          "color": "H",
+          "clarity": "SI1",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "no",
+          "certified": "no",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "Three existing princess-cut stones to be reset, ~1ct each."
+        },
+        "notes": "Three-stone trellis, tapered baguette accents.",
+        "uploads": [],
+        "includeCenterStone": true
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0601-RB5",
+    "submittedAt": "2026-06-01T20:33:00.000Z",
+    "collection": "crownring",
+    "contact": {
+      "accountName": "Robbins Brothers",
+      "contactName": "Dana Whitfield",
+      "email": "dana.whitfield@robbinsbrothers.com",
+      "cc": ["orders@robbinsbrothers.com"],
+      "poReference": "RB-48390",
+      "phoneCountry": "US",
+      "phone": "(310) 555-0142",
+      "quoteType": "quote-only",
+      "hasAppointment": "no",
+      "appointmentDate": "",
+      "appointmentTime": "",
+      "preferredContact": "email",
+      "projectType": "Wedding Band",
+      "projectTypeOther": "",
+      "notes": "Plain comfort-fit band, no stones. Quick turnaround requested."
+    },
+    "designs": [
+      {
+        "skus": ["CR-WB-0044"],
+        "metal": {
+          "tone": "two-tone",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": ["yellow-gold", "white-gold"]
+        },
+        "fingerSize": "9",
+        "fingerSizeSystem": "US",
+        "centerStone": {
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
+        },
+        "notes": "6mm comfort fit, yellow-gold center stripe with white-gold rails.",
+        "uploads": [],
+        "includeCenterStone": false
+      }
+    ],
+    "comments": []
+  },
+  {
+    "id": "REQ-2026-0605-MTL6",
+    "submittedAt": "2026-06-05T14:07:00.000Z",
+    "collection": "full-custom",
+    "contact": {
+      "accountName": "Bijouterie Lacroix — Montréal",
+      "contactName": "Élise Tremblay",
+      "email": "elise@bijouterielacroix.ca",
+      "cc": ["atelier@bijouterielacroix.ca"],
+      "poReference": "BL-MTL-1185",
+      "phoneCountry": "CA",
+      "phone": "(514) 555-0188",
+      "quoteType": "quote-and-design",
+      "hasAppointment": "yes",
+      "appointmentDate": "2026-06-15",
+      "appointmentTime": "10:30",
+      "preferredContact": "phone",
+      "projectType": "Engagement Ring",
+      "projectTypeOther": "",
+      "notes": "Client coming into the boutique for the design review — please have CAD ready."
+    },
+    "designs": [
+      {
+        "skus": [],
+        "metal": {
+          "tone": "two-tone",
+          "karat": "14K / Platinum",
+          "karatOther": "",
+          "colors": ["rose-gold"]
+        },
+        "fingerSize": "52",
+        "fingerSizeSystem": "EU",
+        "centerStone": {
+          "type": "Lab-Grown Diamond",
+          "typeOther": "",
+          "shape": "Emerald",
+          "shapeOther": "",
+          "carat": "2.00",
+          "caratUnit": "ct",
+          "color": "E",
+          "clarity": "VVS2",
+          "length": "8.0",
+          "width": "6.0",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "IGI certified lab diamond."
+        },
+        "notes": "East-west emerald cut, rose-gold basket on a platinum shank.",
+        "uploads": [],
+        "includeCenterStone": true
+      }
+    ],
+    "comments": [
+      {
+        "id": "c-mtl6-001",
+        "author": "Élise Tremblay",
+        "body": "Confirmed the appointment for the 15th at 10:30. Merci!",
+        "createdAt": "2026-06-05T14:20:00.000Z"
+      }
+    ]
+  }
+]
