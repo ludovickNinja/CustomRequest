@@ -14,7 +14,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Search, X, ChevronRight, Inbox } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
-import StatusBadge from '../components/StatusBadge.jsx';
+import StatusBadge from '../../shared/StatusBadge.jsx';
 import { listReferences, referenceStats } from '../../services/submissionsStore.js';
 import { STATUSES } from '../../data/statuses.js';
 import { factories, factoryName } from '../../data/factories.js';

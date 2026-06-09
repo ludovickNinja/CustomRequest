@@ -13,13 +13,15 @@
  * the provider mounted everywhere.
  *
  * <TopRightControls> lives outside <Routes> so the floating view switcher
- * (and, in the customer view, the store switcher) persists across every
- * page and role. <StoreProvider> wraps the tree so the customer view and
- * its store switcher share one "current store" selection.
+ * (plus a store switcher in the customer view / factory switcher in the
+ * factory view) persists across every page and role. <StoreProvider> and
+ * <FactoryProvider> wrap the tree so those views share one "current store"
+ * / "current factory" selection.
  */
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { CustomRequestProvider } from './state/CustomRequestContext.jsx';
 import { StoreProvider } from './state/StoreContext.jsx';
+import { FactoryProvider } from './state/FactoryContext.jsx';
 import TopRightControls from './shared/TopRightControls.jsx';
 import customerRoutes from './customer/routes.jsx';
 import adminRoutes from './admin/routes.jsx';
@@ -29,15 +31,17 @@ export default function App() {
   return (
     <CustomRequestProvider>
       <StoreProvider>
-        <TopRightControls />
-        <Routes>
-          {/* Each role's route module returns an array of <Route> elements. */}
-          {customerRoutes()}
-          {adminRoutes()}
-          {factoryRoutes()}
-          {/* Anything we didn't recognize sends the user back to the picker. */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <FactoryProvider>
+          <TopRightControls />
+          <Routes>
+            {/* Each role's route module returns an array of <Route> elements. */}
+            {customerRoutes()}
+            {adminRoutes()}
+            {factoryRoutes()}
+            {/* Anything we didn't recognize sends the user back to the picker. */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </FactoryProvider>
       </StoreProvider>
     </CustomRequestProvider>
   );

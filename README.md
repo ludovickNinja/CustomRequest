@@ -43,10 +43,9 @@ The root `index.html` is a tiny landing page that links to both versions.
 │   │   │
 │   │   ├── admin/               # In House view — reference queue + detail
 │   │   │   ├── routes.jsx
-│   │   │   ├── components/
 │   │   │   └── pages/
 │   │   │
-│   │   └── factory/             # Placeholder section, role-gated by URL today
+│   │   └── factory/             # Factory view — workspace + reference detail
 │   │       ├── routes.jsx
 │   │       └── pages/
 │   │
@@ -71,7 +70,10 @@ V2 serves three user roles from a single build:
   status/factory filters; each reference opens a detail panel to update
   status, assign a factory, upload renderings, answer messages, and publish
   pricing.
-- **Factory** — production team viewing assigned requests (placeholder today).
+- **Factory** — production team, scoped to one factory (via a factory
+  switcher). The Factory Workspace lists the references assigned to that
+  team; each reference opens to its specs, a production-status control, and
+  a renderings upload.
 
 Each role lives in its own folder with its own `routes.jsx`. `App.jsx` is a
 thin composition root that pulls in each role's route subtree. To add a new

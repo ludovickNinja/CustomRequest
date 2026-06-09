@@ -14,7 +14,7 @@ import { useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Upload } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
-import StatusBadge from '../components/StatusBadge.jsx';
+import StatusBadge from '../../shared/StatusBadge.jsx';
 import PricingBreakdown from '../../shared/reference/PricingBreakdown.jsx';
 import RenderingsSection from '../../shared/reference/RenderingsSection.jsx';
 import DiscussionThread from '../../shared/reference/DiscussionThread.jsx';
