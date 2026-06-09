@@ -13,14 +13,18 @@ other tool can read the exact same fixtures without depending on the React app.
 | ------------------ | -------------------------------------------------------------------- |
 | `submissions.json` | An array of custom-request records — one per submitted request.      |
 | `accounts.json`    | The canonical store/account list (the tenants the app is scoped to). |
+| `factories.json`   | Production factories (in-house or external) references get assigned to. |
 
 ## How it's consumed today
 
 `V2/src/services/submissionsStore.js` imports `submissions.json` and seeds it
-into `localStorage` the first time a visitor lands with no stored requests.
-After that, the store reads and writes `localStorage` as usual. Because every
-role in V2 (customer, In House/admin, Factory) reads through that one store,
-the fixtures show up everywhere automatically.
+into `localStorage` when nothing is stored yet, or when the stored
+`SEED_VERSION` is stale (so updated fixtures always replace an earlier visit's
+copy — the JSON is the source of truth in this POC). After that, the store
+reads and writes `localStorage` as usual. Because every role in V2 (customer,
+In House/admin, Factory) reads through that one store, the fixtures show up
+everywhere automatically. **Bump `SEED_VERSION` whenever you change the mock
+data in this folder.**
 
 The cross-folder import works in production because the Vite build follows the
 import graph at build time. For the dev server, `V2/vite.config.js` adds the
@@ -67,6 +71,52 @@ is chosen with the store switcher in the top-right (no auth yet); it's held in
 with the current store on submit.
 
 Keep the `accountId` on each record in sync with an `id` in `accounts.json`.
+
+## Reference workflow (admin / In House view)
+
+The admin works one **reference** at a time — a single design within a request.
+Each design therefore carries workflow fields the In House view reads and
+writes, and each submission carries the `salesPerson` who owns it:
+
+```jsonc
+{
+  "salesPerson": "Emma Laurent",          // on the submission
+  "designs": [
+    {
+      /* ...the design fields... */
+      "referenceNo": "R50001",            // globally unique per design
+      "quoteNo": "Q80001",                // quote number for this reference
+      "status": "new",                    // see the status pipeline below
+      "factoryId": "goldworks-ny",         // assigned factory (id in factories.json) or null
+      "currency": "USD",
+      "price": 2400,                       // published or draft price, or null
+      "pricePublished": true,             // is the price visible to the customer?
+      "assets": [                          // uploaded renderings
+        { "id": "...", "name": "R50001-cad-v1.png", "kind": "rendering", "uploadedBy": "...", "uploadedAt": "..." }
+      ],
+      "messages": [                        // per-reference message thread
+        { "id": "...", "author": "...", "role": "customer", "body": "...", "createdAt": "..." }
+      ]
+    }
+  ]
+}
+```
+
+**Status pipeline** (`V2/src/data/statuses.js`):
+`new` → `in-review` → `quoted` → `in-cad` → `in-production` → `shipped`.
+The "needing attention" count on the admin page is the number of references
+sitting in a status that's waiting on internal action (`new`, `in-review`,
+`in-cad`).
+
+**Factories** (`factories.json`) are the teams a reference is distributed to:
+
+```jsonc
+{ "id": "crownring-mtl", "name": "CrownRing Atelier — Montréal", "type": "in-house" }
+```
+
+New customer submissions get these workflow fields stamped on at creation time
+(`createSubmission`): status `new`, unassigned, unpriced, with the next
+sequential reference/quote numbers.
 
 Valid enum values (keep fixtures in sync with the form):
 

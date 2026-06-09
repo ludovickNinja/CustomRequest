@@ -8,7 +8,9 @@
       "accountName": "Robbins Brothers",
       "contactName": "Dana Whitfield",
       "email": "dana.whitfield@robbinsbrothers.com",
-      "cc": ["orders@robbinsbrothers.com"],
+      "cc": [
+        "orders@robbinsbrothers.com"
+      ],
       "poReference": "RB-48217",
       "phoneCountry": "US",
       "phone": "(310) 555-0142",
@@ -23,12 +25,16 @@
     },
     "designs": [
       {
-        "skus": ["CR-ENG-1182"],
+        "skus": [
+          "CR-ENG-1182"
+        ],
         "metal": {
           "tone": "single",
           "karat": "14K",
           "karatOther": "",
-          "colors": ["white-gold"]
+          "colors": [
+            "white-gold"
+          ]
         },
         "fingerSize": "6.5",
         "fingerSizeSystem": "US",
@@ -52,7 +58,16 @@
         },
         "notes": "Cathedral setting, hidden halo if it fits the budget.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50001",
+        "quoteNo": "Q80001",
+        "status": "new",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": []
       }
     ],
     "comments": [
@@ -62,7 +77,8 @@
         "body": "Customer would love to see CAD before we commit to the halo.",
         "createdAt": "2026-05-12T16:05:00.000Z"
       }
-    ]
+    ],
+    "salesPerson": "Emma Laurent"
   },
   {
     "id": "REQ-2026-0518-BE2",
@@ -73,7 +89,10 @@
       "accountName": "Brilliant Earth — San Francisco",
       "contactName": "Marcus Lindqvist",
       "email": "m.lindqvist@brilliantearth.com",
-      "cc": ["sf-studio@brilliantearth.com", "design@brilliantearth.com"],
+      "cc": [
+        "sf-studio@brilliantearth.com",
+        "design@brilliantearth.com"
+      ],
       "poReference": "BE-SF-2291",
       "phoneCountry": "US",
       "phone": "(415) 555-0199",
@@ -88,12 +107,17 @@
     },
     "designs": [
       {
-        "skus": ["NC-WB-204", "NC-WB-204M"],
+        "skus": [
+          "NC-WB-204",
+          "NC-WB-204M"
+        ],
         "metal": {
           "tone": "single",
           "karat": "18K",
           "karatOther": "",
-          "colors": ["yellow-gold"]
+          "colors": [
+            "yellow-gold"
+          ]
         },
         "fingerSize": "7",
         "fingerSizeSystem": "US",
@@ -117,15 +141,36 @@
         },
         "notes": "Women's band — 2.5mm, shared-prong diamonds halfway around.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50002",
+        "quoteNo": "Q80002",
+        "status": "in-review",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50002-1",
+            "author": "Marcus Lindqvist",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-05-18T19:10:00.000Z"
+          }
+        ]
       },
       {
-        "skus": ["NC-WB-205M"],
+        "skus": [
+          "NC-WB-205M"
+        ],
         "metal": {
           "tone": "single",
           "karat": "18K",
           "karatOther": "",
-          "colors": ["yellow-gold"]
+          "colors": [
+            "yellow-gold"
+          ]
         },
         "fingerSize": "10.5",
         "fingerSizeSystem": "US",
@@ -149,10 +194,28 @@
         },
         "notes": "Men's band — 6mm, brushed center with polished milgrain edges.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50003",
+        "quoteNo": "Q80003",
+        "status": "quoted",
+        "factoryId": null,
+        "currency": "USD",
+        "price": 2075,
+        "pricePublished": true,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50003-1",
+            "author": "Marcus Lindqvist",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-05-18T19:10:00.000Z"
+          }
+        ]
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Daniel Cho"
   },
   {
     "id": "REQ-2026-0521-DD3",
@@ -183,7 +246,9 @@
           "tone": "two-tone",
           "karat": "18K / Platinum",
           "karatOther": "",
-          "colors": ["rose-gold"]
+          "colors": [
+            "rose-gold"
+          ]
         },
         "fingerSize": "5.75",
         "fingerSizeSystem": "US",
@@ -207,7 +272,24 @@
         },
         "notes": "Art-deco inspired, geometric shoulders, milgrain throughout.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50004",
+        "quoteNo": "Q80004",
+        "status": "in-cad",
+        "factoryId": "artisan-la",
+        "currency": "USD",
+        "price": 2200,
+        "pricePublished": false,
+        "assets": [
+          {
+            "id": "a-R50004-1",
+            "name": "R50004-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Sophia Martin",
+            "uploadedAt": "2026-05-21T13:25:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
     "comments": [
@@ -223,7 +305,8 @@
         "body": "Customer prefers a bezel over prongs given the chip. Please confirm feasibility.",
         "createdAt": "2026-05-22T09:18:00.000Z"
       }
-    ]
+    ],
+    "salesPerson": "Sophia Martin"
   },
   {
     "id": "REQ-2026-0527-BB4",
@@ -234,7 +317,9 @@
       "accountName": "Ben Bridge Jeweler",
       "contactName": "Sofia Alvarez",
       "email": "sofia.alvarez@benbridge.com",
-      "cc": ["custom@benbridge.com"],
+      "cc": [
+        "custom@benbridge.com"
+      ],
       "poReference": "BB-99012",
       "phoneCountry": "US",
       "phone": "(206) 555-0123",
@@ -249,12 +334,16 @@
     },
     "designs": [
       {
-        "skus": ["MC-ANN-330"],
+        "skus": [
+          "MC-ANN-330"
+        ],
         "metal": {
           "tone": "single",
           "karat": "Platinum",
           "karatOther": "",
-          "colors": ["white-gold"]
+          "colors": [
+            "white-gold"
+          ]
         },
         "fingerSize": "M",
         "fingerSizeSystem": "UK",
@@ -278,10 +367,28 @@
         },
         "notes": "Three-stone trellis, tapered baguette accents.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50005",
+        "quoteNo": "Q80005",
+        "status": "in-production",
+        "factoryId": "crownring-mtl",
+        "currency": "USD",
+        "price": 2350,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50005-1",
+            "name": "R50005-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Liam O’Brien",
+            "uploadedAt": "2026-05-27T17:48:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Liam O’Brien"
   },
   {
     "id": "REQ-2026-0601-RB5",
@@ -292,7 +399,9 @@
       "accountName": "Robbins Brothers",
       "contactName": "Dana Whitfield",
       "email": "dana.whitfield@robbinsbrothers.com",
-      "cc": ["orders@robbinsbrothers.com"],
+      "cc": [
+        "orders@robbinsbrothers.com"
+      ],
       "poReference": "RB-48390",
       "phoneCountry": "US",
       "phone": "(310) 555-0142",
@@ -307,12 +416,17 @@
     },
     "designs": [
       {
-        "skus": ["CR-WB-0044"],
+        "skus": [
+          "CR-WB-0044"
+        ],
         "metal": {
           "tone": "two-tone",
           "karat": "14K",
           "karatOther": "",
-          "colors": ["yellow-gold", "white-gold"]
+          "colors": [
+            "yellow-gold",
+            "white-gold"
+          ]
         },
         "fingerSize": "9",
         "fingerSizeSystem": "US",
@@ -336,10 +450,28 @@
         },
         "notes": "6mm comfort fit, yellow-gold center stripe with white-gold rails.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50006",
+        "quoteNo": "Q80006",
+        "status": "shipped",
+        "factoryId": "goldworks-ny",
+        "currency": "USD",
+        "price": 2475,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50006-1",
+            "name": "R50006-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Emma Laurent",
+            "uploadedAt": "2026-06-01T20:33:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Emma Laurent"
   },
   {
     "id": "REQ-2026-0605-MTL6",
@@ -350,7 +482,9 @@
       "accountName": "Bijouterie Lacroix — Montréal",
       "contactName": "Élise Tremblay",
       "email": "elise@bijouterielacroix.ca",
-      "cc": ["atelier@bijouterielacroix.ca"],
+      "cc": [
+        "atelier@bijouterielacroix.ca"
+      ],
       "poReference": "BL-MTL-1185",
       "phoneCountry": "CA",
       "phone": "(514) 555-0188",
@@ -370,7 +504,9 @@
           "tone": "two-tone",
           "karat": "14K / Platinum",
           "karatOther": "",
-          "colors": ["rose-gold"]
+          "colors": [
+            "rose-gold"
+          ]
         },
         "fingerSize": "52",
         "fingerSizeSystem": "EU",
@@ -394,7 +530,16 @@
         },
         "notes": "East-west emerald cut, rose-gold basket on a platinum shank.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50007",
+        "quoteNo": "Q80007",
+        "status": "new",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": []
       }
     ],
     "comments": [
@@ -404,7 +549,8 @@
         "body": "Confirmed the appointment for the 15th at 10:30. Merci!",
         "createdAt": "2026-06-05T14:20:00.000Z"
       }
-    ]
+    ],
+    "salesPerson": "Daniel Cho"
   },
   {
     "id": "REQ-2026-0420-RB7",
@@ -415,7 +561,9 @@
       "accountName": "Robbins Brothers",
       "contactName": "Dana Whitfield",
       "email": "dana.whitfield@robbinsbrothers.com",
-      "cc": ["orders@robbinsbrothers.com"],
+      "cc": [
+        "orders@robbinsbrothers.com"
+      ],
       "poReference": "RB-47980",
       "phoneCountry": "US",
       "phone": "(310) 555-0142",
@@ -430,55 +578,167 @@
     },
     "designs": [
       {
-        "skus": ["NC-ENG-512"],
-        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "NC-ENG-512"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "6",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "1.50", "caratUnit": "ct", "color": "F", "clarity": "VS1",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": "GIA preferred."
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "1.50",
+          "caratUnit": "ct",
+          "color": "F",
+          "clarity": "VS1",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "GIA preferred."
         },
         "notes": "Hidden halo, cathedral setting.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50008",
+        "quoteNo": "Q80008",
+        "status": "in-review",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50008-1",
+            "author": "Dana Whitfield",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-04-20T18:05:00.000Z"
+          }
+        ]
       },
       {
-        "skus": ["NC-WB-512W"],
-        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "NC-WB-512W"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "6",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Curved band, contoured to nest with the engagement ring.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50009",
+        "quoteNo": "Q80009",
+        "status": "quoted",
+        "factoryId": null,
+        "currency": "USD",
+        "price": 2900,
+        "pricePublished": true,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50009-1",
+            "author": "Dana Whitfield",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-04-20T18:05:00.000Z"
+          }
+        ]
       },
       {
-        "skus": ["NC-WB-513M"],
-        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "NC-WB-513M"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "9.5",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Men's band — 6mm, satin finish with polished bevels.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50010",
+        "quoteNo": "Q80010",
+        "status": "in-cad",
+        "factoryId": "goldworks-ny",
+        "currency": "USD",
+        "price": 3025,
+        "pricePublished": false,
+        "assets": [
+          {
+            "id": "a-R50010-1",
+            "name": "R50010-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Sophia Martin",
+            "uploadedAt": "2026-04-20T18:05:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Sophia Martin"
   },
   {
     "id": "REQ-2026-0508-RB8",
@@ -489,7 +749,9 @@
       "accountName": "Robbins Brothers",
       "contactName": "Dana Whitfield",
       "email": "dana.whitfield@robbinsbrothers.com",
-      "cc": ["orders@robbinsbrothers.com"],
+      "cc": [
+        "orders@robbinsbrothers.com"
+      ],
       "poReference": "RB-48155",
       "phoneCountry": "US",
       "phone": "(310) 555-0142",
@@ -504,23 +766,62 @@
     },
     "designs": [
       {
-        "skus": ["CR-WB-0098"],
-        "metal": { "tone": "two-tone", "karat": "14K", "karatOther": "", "colors": ["yellow-gold", "rose-gold"] },
+        "skus": [
+          "CR-WB-0098"
+        ],
+        "metal": {
+          "tone": "two-tone",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold",
+            "rose-gold"
+          ]
+        },
         "fingerSize": "8",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "5mm comfort fit, rose-gold center rail between yellow-gold edges.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50011",
+        "quoteNo": "Q80011",
+        "status": "in-production",
+        "factoryId": "lumina-cad",
+        "currency": "USD",
+        "price": 3175,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50011-1",
+            "name": "R50011-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Liam O’Brien",
+            "uploadedAt": "2026-05-08T16:40:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Liam O’Brien"
   },
   {
     "id": "REQ-2026-0425-BE7",
@@ -531,7 +832,10 @@
       "accountName": "Brilliant Earth — San Francisco",
       "contactName": "Marcus Lindqvist",
       "email": "m.lindqvist@brilliantearth.com",
-      "cc": ["sf-studio@brilliantearth.com", "design@brilliantearth.com"],
+      "cc": [
+        "sf-studio@brilliantearth.com",
+        "design@brilliantearth.com"
+      ],
       "poReference": "BE-SF-2240",
       "phoneCountry": "US",
       "phone": "(415) 555-0199",
@@ -547,67 +851,199 @@
     "designs": [
       {
         "skus": [],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["yellow-gold"] },
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold"
+          ]
+        },
         "fingerSize": "6.5",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Oval", "shapeOther": "",
-          "carat": "2.00", "caratUnit": "ct", "color": "E", "clarity": "VVS2",
-          "length": "9.0", "width": "6.5", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": "IGI certified."
+          "type": "Lab-Grown Diamond",
+          "typeOther": "",
+          "shape": "Oval",
+          "shapeOther": "",
+          "carat": "2.00",
+          "caratUnit": "ct",
+          "color": "E",
+          "clarity": "VVS2",
+          "length": "9.0",
+          "width": "6.5",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "IGI certified."
         },
         "notes": "Oval solitaire, thin pavé band.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50012",
+        "quoteNo": "Q80012",
+        "status": "shipped",
+        "factoryId": "artisan-la",
+        "currency": "USD",
+        "price": 3300,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50012-1",
+            "name": "R50012-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Emma Laurent",
+            "uploadedAt": "2026-04-25T21:15:00.000Z"
+          }
+        ],
+        "messages": []
       },
       {
         "skus": [],
-        "metal": { "tone": "single", "karat": "Platinum", "karatOther": "", "colors": ["white-gold"] },
+        "metal": {
+          "tone": "single",
+          "karat": "Platinum",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "6.5",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "1.00", "caratUnit": "ct", "color": "F", "clarity": "VS1",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Lab-Grown Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "1.00",
+          "caratUnit": "ct",
+          "color": "F",
+          "clarity": "VS1",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Three-stone, tapered baguette sides.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50013",
+        "quoteNo": "Q80013",
+        "status": "new",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": []
       },
       {
         "skus": [],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "6.5",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Full pavé eternity band, ~1.5mm stones.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50014",
+        "quoteNo": "Q80014",
+        "status": "in-review",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50014-1",
+            "author": "Marcus Lindqvist",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-04-25T21:15:00.000Z"
+          }
+        ]
       },
       {
         "skus": [],
-        "metal": { "tone": "two-tone", "karat": "14K / Platinum", "karatOther": "", "colors": ["yellow-gold"] },
+        "metal": {
+          "tone": "two-tone",
+          "karat": "14K / Platinum",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold"
+          ]
+        },
         "fingerSize": "10",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Men's band — platinum shank with a yellow-gold inlay.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50015",
+        "quoteNo": "Q80015",
+        "status": "quoted",
+        "factoryId": null,
+        "currency": "USD",
+        "price": 3725,
+        "pricePublished": true,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50015-1",
+            "author": "Marcus Lindqvist",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-04-25T21:15:00.000Z"
+          }
+        ]
       }
     ],
     "comments": [
@@ -617,7 +1053,8 @@
         "body": "If timelines allow, we'd love renders of all four together for the trunk show deck.",
         "createdAt": "2026-04-26T15:40:00.000Z"
       }
-    ]
+    ],
+    "salesPerson": "Emma Laurent"
   },
   {
     "id": "REQ-2026-0514-BE8",
@@ -628,7 +1065,9 @@
       "accountName": "Brilliant Earth — San Francisco",
       "contactName": "Marcus Lindqvist",
       "email": "m.lindqvist@brilliantearth.com",
-      "cc": ["sf-studio@brilliantearth.com"],
+      "cc": [
+        "sf-studio@brilliantearth.com"
+      ],
       "poReference": "BE-SF-2305",
       "phoneCountry": "US",
       "phone": "(415) 555-0199",
@@ -643,23 +1082,61 @@
     },
     "designs": [
       {
-        "skus": ["MC-ENG-220"],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["rose-gold"] },
+        "skus": [
+          "MC-ENG-220"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "rose-gold"
+          ]
+        },
         "fingerSize": "5.5",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Cushion", "shapeOther": "",
-          "carat": "1.75", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Lab-Grown Diamond",
+          "typeOther": "",
+          "shape": "Cushion",
+          "shapeOther": "",
+          "carat": "1.75",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Cushion solitaire, hidden halo, thin band.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50016",
+        "quoteNo": "Q80016",
+        "status": "in-cad",
+        "factoryId": "artisan-la",
+        "currency": "USD",
+        "price": 3850,
+        "pricePublished": false,
+        "assets": [
+          {
+            "id": "a-R50016-1",
+            "name": "R50016-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Daniel Cho",
+            "uploadedAt": "2026-05-14T17:22:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Daniel Cho"
   },
   {
     "id": "REQ-2026-0529-BE9",
@@ -670,7 +1147,9 @@
       "accountName": "Brilliant Earth — San Francisco",
       "contactName": "Marcus Lindqvist",
       "email": "m.lindqvist@brilliantearth.com",
-      "cc": ["sf-studio@brilliantearth.com"],
+      "cc": [
+        "sf-studio@brilliantearth.com"
+      ],
       "poReference": "BE-SF-2358",
       "phoneCountry": "US",
       "phone": "(415) 555-0199",
@@ -685,39 +1164,114 @@
     },
     "designs": [
       {
-        "skus": ["NC-ENG-330"],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["yellow-gold"] },
+        "skus": [
+          "NC-ENG-330"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold"
+          ]
+        },
         "fingerSize": "7",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Pear", "shapeOther": "",
-          "carat": "1.30", "caratUnit": "ct", "color": "G", "clarity": "VS1",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Pear",
+          "shapeOther": "",
+          "carat": "1.30",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS1",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Pear solitaire, point facing up, claw prongs.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50017",
+        "quoteNo": "Q80017",
+        "status": "in-production",
+        "factoryId": "crownring-mtl",
+        "currency": "USD",
+        "price": 4000,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50017-1",
+            "name": "R50017-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Sophia Martin",
+            "uploadedAt": "2026-05-29T15:48:00.000Z"
+          }
+        ],
+        "messages": []
       },
       {
-        "skus": ["NC-WB-331"],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["yellow-gold"] },
+        "skus": [
+          "NC-WB-331"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold"
+          ]
+        },
         "fingerSize": "7",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Contoured band with a notch for the pear point.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50018",
+        "quoteNo": "Q80018",
+        "status": "shipped",
+        "factoryId": "goldworks-ny",
+        "currency": "USD",
+        "price": 4125,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50018-1",
+            "name": "R50018-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Sophia Martin",
+            "uploadedAt": "2026-05-29T15:48:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Sophia Martin"
   },
   {
     "id": "REQ-2026-0430-DD7",
@@ -743,39 +1297,106 @@
     },
     "designs": [
       {
-        "skus": ["CR-FR-712"],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "CR-FR-712"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "6",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Moissanite", "typeOther": "", "shape": "Marquise", "shapeOther": "",
-          "carat": "1.00", "caratUnit": "ct", "color": "", "clarity": "",
-          "length": "10.0", "width": "5.0", "depth": "",
-          "provideStone": "yes", "certified": "no", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Moissanite",
+          "typeOther": "",
+          "shape": "Marquise",
+          "shapeOther": "",
+          "carat": "1.00",
+          "caratUnit": "ct",
+          "color": "",
+          "clarity": "",
+          "length": "10.0",
+          "width": "5.0",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "no",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "East-west marquise, bezel set.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50019",
+        "quoteNo": "Q80019",
+        "status": "new",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": []
       },
       {
-        "skus": ["CR-FR-712B"],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "CR-FR-712B"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "6",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Thin 1.5mm companion band, plain.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50020",
+        "quoteNo": "Q80020",
+        "status": "in-review",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50020-1",
+            "author": "Priya Raman",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-04-30T14:12:00.000Z"
+          }
+        ]
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Liam O’Brien"
   },
   {
     "id": "REQ-2026-0603-DD8",
@@ -802,19 +1423,54 @@
     "designs": [
       {
         "skus": [],
-        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["yellow-gold"] },
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold"
+          ]
+        },
         "fingerSize": "6.25",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Gemstone", "typeOther": "Emerald", "shape": "Emerald", "shapeOther": "",
-          "carat": "1.80", "caratUnit": "ct", "color": "", "clarity": "",
-          "length": "8.0", "width": "6.0", "depth": "4.0",
-          "provideStone": "no", "certified": "no", "setStone": "yes",
-          "uploads": [], "notes": "Customer-supplied Colombian emerald — handle with extra care, it's included."
+          "type": "Gemstone",
+          "typeOther": "Emerald",
+          "shape": "Emerald",
+          "shapeOther": "",
+          "carat": "1.80",
+          "caratUnit": "ct",
+          "color": "",
+          "clarity": "",
+          "length": "8.0",
+          "width": "6.0",
+          "depth": "4.0",
+          "provideStone": "no",
+          "certified": "no",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "Customer-supplied Colombian emerald — handle with extra care, it's included."
         },
         "notes": "Vintage diamond halo, milgrain gallery.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50021",
+        "quoteNo": "Q80021",
+        "status": "quoted",
+        "factoryId": null,
+        "currency": "USD",
+        "price": 4550,
+        "pricePublished": true,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50021-1",
+            "author": "Priya Raman",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-06-03T19:30:00.000Z"
+          }
+        ]
       }
     ],
     "comments": [
@@ -824,7 +1480,8 @@
         "body": "Emerald is fragile — please confirm whether you can set it or if it should be sent loose for us to set.",
         "createdAt": "2026-06-04T13:05:00.000Z"
       }
-    ]
+    ],
+    "salesPerson": "Emma Laurent"
   },
   {
     "id": "REQ-2026-0418-BB7",
@@ -835,7 +1492,9 @@
       "accountName": "Ben Bridge Jeweler",
       "contactName": "Sofia Alvarez",
       "email": "sofia.alvarez@benbridge.com",
-      "cc": ["custom@benbridge.com"],
+      "cc": [
+        "custom@benbridge.com"
+      ],
       "poReference": "BB-98770",
       "phoneCountry": "US",
       "phone": "(206) 555-0123",
@@ -850,23 +1509,61 @@
     },
     "designs": [
       {
-        "skus": ["MC-ANN-410"],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "MC-ANN-410"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "N",
         "fingerSizeSystem": "UK",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "H", "clarity": "SI1",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "H",
+          "clarity": "SI1",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Alternating diamonds and blue sapphires halfway around.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50022",
+        "quoteNo": "Q80022",
+        "status": "in-cad",
+        "factoryId": "goldworks-ny",
+        "currency": "USD",
+        "price": 4675,
+        "pricePublished": false,
+        "assets": [
+          {
+            "id": "a-R50022-1",
+            "name": "R50022-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Daniel Cho",
+            "uploadedAt": "2026-04-18T16:55:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Daniel Cho"
   },
   {
     "id": "REQ-2026-0506-BB8",
@@ -877,7 +1574,9 @@
       "accountName": "Ben Bridge Jeweler",
       "contactName": "Sofia Alvarez",
       "email": "sofia.alvarez@benbridge.com",
-      "cc": ["custom@benbridge.com"],
+      "cc": [
+        "custom@benbridge.com"
+      ],
       "poReference": "BB-98910",
       "phoneCountry": "US",
       "phone": "(206) 555-0123",
@@ -892,52 +1591,155 @@
     },
     "designs": [
       {
-        "skus": ["NC-ENG-720"],
-        "metal": { "tone": "two-tone", "karat": "18K / Platinum", "karatOther": "", "colors": ["yellow-gold"] },
+        "skus": [
+          "NC-ENG-720"
+        ],
+        "metal": {
+          "tone": "two-tone",
+          "karat": "18K / Platinum",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold"
+          ]
+        },
         "fingerSize": "6.75",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Oval", "shapeOther": "",
-          "carat": "2.20", "caratUnit": "ct", "color": "E", "clarity": "VS1",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": "GIA certified."
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Oval",
+          "shapeOther": "",
+          "carat": "2.20",
+          "caratUnit": "ct",
+          "color": "E",
+          "clarity": "VS1",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "GIA certified."
         },
         "notes": "Oval, yellow-gold basket on a platinum shank.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50023",
+        "quoteNo": "Q80023",
+        "status": "in-production",
+        "factoryId": "lumina-cad",
+        "currency": "USD",
+        "price": 4825,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50023-1",
+            "name": "R50023-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Sophia Martin",
+            "uploadedAt": "2026-05-06T20:10:00.000Z"
+          }
+        ],
+        "messages": []
       },
       {
-        "skus": ["NC-WB-721W"],
-        "metal": { "tone": "single", "karat": "Platinum", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "NC-WB-721W"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "Platinum",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "6.75",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Her band — half-eternity, shared prong.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50024",
+        "quoteNo": "Q80024",
+        "status": "shipped",
+        "factoryId": "artisan-la",
+        "currency": "USD",
+        "price": 4950,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50024-1",
+            "name": "R50024-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Sophia Martin",
+            "uploadedAt": "2026-05-06T20:10:00.000Z"
+          }
+        ],
+        "messages": []
       },
       {
-        "skus": ["NC-WB-722M"],
-        "metal": { "tone": "single", "karat": "Platinum", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "NC-WB-722M"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "Platinum",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "10",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "His band — 6mm, hammered finish.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50025",
+        "quoteNo": "Q80025",
+        "status": "new",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": []
       }
     ],
     "comments": [
@@ -947,7 +1749,8 @@
         "body": "Confirmed the in-store review for June 12 at 2pm. Please have CAD for all three pieces.",
         "createdAt": "2026-05-06T20:25:00.000Z"
       }
-    ]
+    ],
+    "salesPerson": "Sophia Martin"
   },
   {
     "id": "REQ-2026-0531-BB9",
@@ -958,7 +1761,9 @@
       "accountName": "Ben Bridge Jeweler",
       "contactName": "Sofia Alvarez",
       "email": "sofia.alvarez@benbridge.com",
-      "cc": ["custom@benbridge.com"],
+      "cc": [
+        "custom@benbridge.com"
+      ],
       "poReference": "BB-99055",
       "phoneCountry": "US",
       "phone": "(206) 555-0123",
@@ -973,23 +1778,61 @@
     },
     "designs": [
       {
-        "skus": ["CR-FR-880"],
-        "metal": { "tone": "single", "karat": "10K", "karatOther": "", "colors": ["yellow-gold"] },
+        "skus": [
+          "CR-FR-880"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "10K",
+          "karatOther": "",
+          "colors": [
+            "yellow-gold"
+          ]
+        },
         "fingerSize": "7.5",
         "fingerSizeSystem": "US",
         "centerStone": {
-          "type": "Moissanite", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "1.50", "caratUnit": "ct", "color": "", "clarity": "",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "no", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Moissanite",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "1.50",
+          "caratUnit": "ct",
+          "color": "",
+          "clarity": "",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "no",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Solitaire, four-prong, plain band.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50026",
+        "quoteNo": "Q80026",
+        "status": "in-review",
+        "factoryId": null,
+        "currency": "USD",
+        "price": null,
+        "pricePublished": false,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50026-1",
+            "author": "Sofia Alvarez",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-05-31T18:18:00.000Z"
+          }
+        ]
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Liam O’Brien"
   },
   {
     "id": "REQ-2026-0422-MTL7",
@@ -1000,7 +1843,9 @@
       "accountName": "Bijouterie Lacroix — Montréal",
       "contactName": "Élise Tremblay",
       "email": "elise@bijouterielacroix.ca",
-      "cc": ["atelier@bijouterielacroix.ca"],
+      "cc": [
+        "atelier@bijouterielacroix.ca"
+      ],
       "poReference": "BL-MTL-1120",
       "phoneCountry": "CA",
       "phone": "(514) 555-0188",
@@ -1016,38 +1861,109 @@
     "designs": [
       {
         "skus": [],
-        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["rose-gold"] },
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": [
+            "rose-gold"
+          ]
+        },
         "fingerSize": "54",
         "fingerSizeSystem": "EU",
         "centerStone": {
-          "type": "Lab-Grown Diamond", "typeOther": "", "shape": "Radiant", "shapeOther": "",
-          "carat": "2.50", "caratUnit": "ct", "color": "F", "clarity": "VVS2",
-          "length": "8.5", "width": "6.5", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": "IGI certified."
+          "type": "Lab-Grown Diamond",
+          "typeOther": "",
+          "shape": "Radiant",
+          "shapeOther": "",
+          "carat": "2.50",
+          "caratUnit": "ct",
+          "color": "F",
+          "clarity": "VVS2",
+          "length": "8.5",
+          "width": "6.5",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": "IGI certified."
         },
         "notes": "Radiant solitaire, thin rose-gold band.",
         "uploads": [],
-        "includeCenterStone": true
+        "includeCenterStone": true,
+        "referenceNo": "R50027",
+        "quoteNo": "Q80027",
+        "status": "quoted",
+        "factoryId": null,
+        "currency": "USD",
+        "price": 5350,
+        "pricePublished": true,
+        "assets": [],
+        "messages": [
+          {
+            "id": "m-R50027-1",
+            "author": "Élise Tremblay",
+            "role": "customer",
+            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "createdAt": "2026-04-22T13:40:00.000Z"
+          }
+        ]
       },
       {
         "skus": [],
-        "metal": { "tone": "single", "karat": "18K", "karatOther": "", "colors": ["rose-gold"] },
+        "metal": {
+          "tone": "single",
+          "karat": "18K",
+          "karatOther": "",
+          "colors": [
+            "rose-gold"
+          ]
+        },
         "fingerSize": "54",
         "fingerSizeSystem": "EU",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "Diamond wrap/jacket that frames the solitaire.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50028",
+        "quoteNo": "Q80028",
+        "status": "in-cad",
+        "factoryId": "artisan-la",
+        "currency": "USD",
+        "price": 5500,
+        "pricePublished": false,
+        "assets": [
+          {
+            "id": "a-R50028-1",
+            "name": "R50028-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Emma Laurent",
+            "uploadedAt": "2026-04-22T13:40:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Emma Laurent"
   },
   {
     "id": "REQ-2026-0607-MTL8",
@@ -1058,7 +1974,9 @@
       "accountName": "Bijouterie Lacroix — Montréal",
       "contactName": "Élise Tremblay",
       "email": "elise@bijouterielacroix.ca",
-      "cc": ["atelier@bijouterielacroix.ca"],
+      "cc": [
+        "atelier@bijouterielacroix.ca"
+      ],
       "poReference": "BL-MTL-1203",
       "phoneCountry": "CA",
       "phone": "(514) 555-0188",
@@ -1073,22 +1991,60 @@
     },
     "designs": [
       {
-        "skus": ["NC-WB-905"],
-        "metal": { "tone": "single", "karat": "14K", "karatOther": "", "colors": ["white-gold"] },
+        "skus": [
+          "NC-WB-905"
+        ],
+        "metal": {
+          "tone": "single",
+          "karat": "14K",
+          "karatOther": "",
+          "colors": [
+            "white-gold"
+          ]
+        },
         "fingerSize": "50",
         "fingerSizeSystem": "EU",
         "centerStone": {
-          "type": "Diamond", "typeOther": "", "shape": "Round", "shapeOther": "",
-          "carat": "", "caratUnit": "ct", "color": "G", "clarity": "VS2",
-          "length": "", "width": "", "depth": "",
-          "provideStone": "yes", "certified": "yes", "setStone": "yes",
-          "uploads": [], "notes": ""
+          "type": "Diamond",
+          "typeOther": "",
+          "shape": "Round",
+          "shapeOther": "",
+          "carat": "",
+          "caratUnit": "ct",
+          "color": "G",
+          "clarity": "VS2",
+          "length": "",
+          "width": "",
+          "depth": "",
+          "provideStone": "yes",
+          "certified": "yes",
+          "setStone": "yes",
+          "uploads": [],
+          "notes": ""
         },
         "notes": "2mm, marquise-and-round diamond pattern halfway around.",
         "uploads": [],
-        "includeCenterStone": false
+        "includeCenterStone": false,
+        "referenceNo": "R50029",
+        "quoteNo": "Q80029",
+        "status": "in-production",
+        "factoryId": "crownring-mtl",
+        "currency": "USD",
+        "price": 5625,
+        "pricePublished": true,
+        "assets": [
+          {
+            "id": "a-R50029-1",
+            "name": "R50029-cad-v1.png",
+            "kind": "rendering",
+            "uploadedBy": "Daniel Cho",
+            "uploadedAt": "2026-06-07T11:05:00.000Z"
+          }
+        ],
+        "messages": []
       }
     ],
-    "comments": []
+    "comments": [],
+    "salesPerson": "Daniel Cho"
   }
 ]
