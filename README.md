@@ -152,12 +152,15 @@ need to be re-attached after a refresh.
 
 ### Ongoing requests
 
-- **List** (`/requests`). Every locally stored submission, with a search box
+- **List** (`/requests`). The current store's submissions, with a search box
   (PO / reference / account / contact / email / collection) and a sort
   dropdown (Newest / Oldest / PO A→Z / Account A→Z).
-- **Detail** (`/requests/:id`). Submission summary, one card per design, a
-  Comments thread the customer can post into, and a sticky Quote sidebar
-  that currently shows a "Pending review" placeholder.
+- **Detail** (`/requests/:id`). Contact info and one card per design; each
+  card links to that design's reference page.
+- **Reference** (`/requests/reference/:referenceNo`). The per-design detail:
+  a pricing breakdown and factory renderings (read-only, filled in by
+  admin/factory), plus the design's own discussion thread. The same pricing
+  / renderings / discussion sections power the admin reference page.
 
 ## Local development
 

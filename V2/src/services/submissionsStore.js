@@ -41,7 +41,7 @@ const STORAGE_KEY = 'customrequest:submissions';
  * source of truth, localStorage is just a working copy for the session.)
  */
 const SEED_VERSION_KEY = 'customrequest:seedVersion';
-const SEED_VERSION = '2026-06-09-references';
+const SEED_VERSION = '2026-06-09-design-detail';
 
 /**
  * Demo/mock-up seeding. Copies the shared fixtures from
@@ -193,7 +193,8 @@ function stampWorkflow(design, seq) {
     price: design.price ?? null,
     pricePublished: design.pricePublished ?? false,
     currency: design.currency || 'USD',
-    assets: design.assets || [],
+    pricing: design.pricing ?? null,
+    renderings: design.renderings || { model: null, angles: [], specSheet: null },
     messages: design.messages || [],
   };
 }
@@ -265,7 +266,7 @@ function toReferenceRow(submission, design, designIndex) {
     price: design.price ?? null,
     pricePublished: !!design.pricePublished,
     currency: design.currency || 'USD',
-    assetsCount: (design.assets || []).length,
+    hasRenderings: !!(design.renderings && (design.renderings.model || (design.renderings.angles || []).length)),
     messagesCount: (design.messages || []).length,
     // Parent request context, denormalized for the table.
     submissionId: submission.id,
@@ -369,18 +370,23 @@ export function updateReference(referenceNo, patch = {}) {
   return result ? getReference(referenceNo) : null;
 }
 
-/** Attach a rendering/asset to a reference. Returns the new asset, or null. */
-export function addReferenceAsset(referenceNo, { name, kind = 'rendering', uploadedBy = 'Admin' }) {
-  if (!name || !name.trim()) return null;
-  const asset = {
+/**
+ * Add an angle render to a reference's renderings (admin/factory uploads).
+ * The file name becomes the render's label. Returns the new render, or null.
+ */
+export function addRendering(referenceNo, { label, uploadedBy = 'Admin' }) {
+  if (!label || !label.trim()) return null;
+  const render = {
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
-    name: name.trim(),
-    kind,
+    label: label.trim(),
     uploadedBy,
     uploadedAt: new Date().toISOString(),
   };
-  const result = commitDesign(referenceNo, (d) => ({ ...d, assets: [...(d.assets || []), asset] }));
-  return result ? asset : null;
+  const result = commitDesign(referenceNo, (d) => {
+    const renderings = d.renderings || { model: null, angles: [], specSheet: null };
+    return { ...d, renderings: { ...renderings, angles: [...(renderings.angles || []), render] } };
+  });
+  return result ? render : null;
 }
 
 /**
