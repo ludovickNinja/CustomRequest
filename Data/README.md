@@ -115,11 +115,19 @@ renderings and can post to the discussion.
 }
 ```
 
-**Status pipeline** (`V2/src/data/statuses.js`):
-`new` → `in-review` → `quoted` → `in-cad` → `in-production` → `shipped`.
-The "needing attention" count on the admin page is the number of references
-sitting in a status that's waiting on internal action (`new`, `in-review`,
-`in-cad`).
+**Status pipeline** (`V2/src/data/statuses.js`). This is a quote-request
+dispatch flow, not ring production:
+`pending` (came in) → `assigned` (admin dispatched to an in-house/external
+resource) → `in-progress` (resource confirmed) → `uploaded` (resource filled
+in its part) → `in-review` (admin reviewing) → `sent` (quote sent to customer)
+→ `adjustment-needed` (sent back to the resource) → `approved` / `cancelled`
+(customer's decision). The "needing attention" count on the admin page is the
+number of references waiting on the In House team (`pending`, `uploaded`,
+`in-review`).
+
+Who sets what: admin dispatches (`assigned`) and reviews (`in-review` →
+`sent` / `adjustment-needed`); the factory confirms (`in-progress`) and uploads
+(`uploaded`); the customer decides (`approved` / `cancelled`).
 
 **Factories** (`factories.json`) are the teams a reference is distributed to:
 

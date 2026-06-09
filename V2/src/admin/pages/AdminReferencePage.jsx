@@ -60,7 +60,11 @@ export default function AdminReferencePage() {
     refresh();
   }
   function handleFactory(e) {
-    updateReference(decoded, { factoryId: e.target.value || null });
+    const factoryId = e.target.value || null;
+    // Dispatching to a factory advances a still-pending reference to Assigned.
+    const patch = { factoryId };
+    if (factoryId && reference.status === 'pending') patch.status = 'assigned';
+    updateReference(decoded, patch);
     refresh();
   }
   function handlePublish() {

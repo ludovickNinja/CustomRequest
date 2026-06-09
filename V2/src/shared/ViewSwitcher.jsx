@@ -5,7 +5,7 @@
  *
  *   - Customer — the request form and the customer's ongoing projects.
  *   - Admin    — the In House view (every account's requests).
- *   - Factory  — the production queue.
+ *   - Factory  — an in-house / external resource's assigned work.
  *
  * Roles are URL-gated today (no auth), so "switching" is just navigation:
  * Customer → "/", Admin → "/admin", Factory → "/factory". When real auth
@@ -121,7 +121,7 @@ export default function ViewSwitcher() {
           <MenuItem
             Icon={Factory}
             label="Factory"
-            hint="Production queue"
+            hint="Assigned work"
             active={role === 'factory'}
             onClick={() => go('/factory')}
           />

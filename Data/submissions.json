@@ -61,7 +61,7 @@
         "includeCenterStone": true,
         "referenceNo": "R50001",
         "quoteNo": "Q80001",
-        "status": "new",
+        "status": "pending",
         "factoryId": null,
         "currency": "USD",
         "price": null,
@@ -149,20 +149,12 @@
         "includeCenterStone": false,
         "referenceNo": "R50002",
         "quoteNo": "Q80002",
-        "status": "in-review",
-        "factoryId": null,
+        "status": "assigned",
+        "factoryId": "goldworks-ny",
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "messages": [
-          {
-            "id": "m-R50002-1",
-            "author": "Marcus Lindqvist",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-05-18T19:10:00.000Z"
-          }
-        ],
+        "messages": [],
         "pricing": null,
         "renderings": {
           "model": null,
@@ -207,27 +199,13 @@
         "includeCenterStone": false,
         "referenceNo": "R50003",
         "quoteNo": "Q80003",
-        "status": "quoted",
-        "factoryId": null,
+        "status": "in-progress",
+        "factoryId": "lumina-cad",
         "currency": "USD",
-        "price": 2075,
-        "pricePublished": true,
-        "messages": [
-          {
-            "id": "m-R50003-1",
-            "author": "Marcus Lindqvist",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-05-18T19:10:00.000Z"
-          }
-        ],
-        "pricing": {
-          "gramWeight": "7.4g",
-          "metalKarat": "18K",
-          "diamondSummary": "Band — accent diamonds only",
-          "estimateValidDays": 7,
-          "deliveryDays": 7
-        },
+        "price": null,
+        "pricePublished": false,
+        "messages": [],
+        "pricing": null,
         "renderings": {
           "model": null,
           "angles": [],
@@ -296,7 +274,7 @@
         "includeCenterStone": true,
         "referenceNo": "R50004",
         "quoteNo": "Q80004",
-        "status": "in-cad",
+        "status": "uploaded",
         "factoryId": "artisan-la",
         "currency": "USD",
         "price": 2200,
@@ -420,12 +398,20 @@
         "includeCenterStone": true,
         "referenceNo": "R50005",
         "quoteNo": "Q80005",
-        "status": "in-production",
+        "status": "in-review",
         "factoryId": "crownring-mtl",
         "currency": "USD",
         "price": 2350,
-        "pricePublished": true,
-        "messages": [],
+        "pricePublished": false,
+        "messages": [
+          {
+            "id": "m-R50005-1",
+            "author": "Sofia Alvarez",
+            "role": "customer",
+            "body": "Looks great — keen to see the final quote. Let us know if you need anything.",
+            "createdAt": "2026-05-27T17:48:00.000Z"
+          }
+        ],
         "pricing": {
           "gramWeight": "8.8g",
           "metalKarat": "Platinum",
@@ -532,12 +518,20 @@
         "includeCenterStone": false,
         "referenceNo": "R50006",
         "quoteNo": "Q80006",
-        "status": "shipped",
+        "status": "sent",
         "factoryId": "goldworks-ny",
         "currency": "USD",
         "price": 2475,
         "pricePublished": true,
-        "messages": [],
+        "messages": [
+          {
+            "id": "m-R50006-1",
+            "author": "Dana Whitfield",
+            "role": "customer",
+            "body": "Looks great — keen to see the final quote. Let us know if you need anything.",
+            "createdAt": "2026-06-01T20:33:00.000Z"
+          }
+        ],
         "pricing": {
           "gramWeight": "9.5g",
           "metalKarat": "14K",
@@ -641,17 +635,57 @@
         "includeCenterStone": true,
         "referenceNo": "R50007",
         "quoteNo": "Q80007",
-        "status": "new",
-        "factoryId": null,
+        "status": "adjustment-needed",
+        "factoryId": "lumina-cad",
         "currency": "USD",
-        "price": null,
-        "pricePublished": false,
-        "messages": [],
-        "pricing": null,
+        "price": 2625,
+        "pricePublished": true,
+        "messages": [
+          {
+            "id": "m-R50007-1",
+            "author": "Élise Tremblay",
+            "role": "customer",
+            "body": "Could we make the band a touch wider before we approve? Thank you!",
+            "createdAt": "2026-06-05T14:07:00.000Z"
+          }
+        ],
+        "pricing": {
+          "gramWeight": "10.2g",
+          "metalKarat": "14K / Platinum",
+          "diamondSummary": "1 Emerald = 2.00ct VVS2 / E",
+          "estimateValidDays": 7,
+          "deliveryDays": 5
+        },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50007.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50007-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50007-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50007-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50007-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50007-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50007_spec_sheet.pdf"
+          }
         }
       }
     ],
@@ -727,25 +761,49 @@
         "includeCenterStone": true,
         "referenceNo": "R50008",
         "quoteNo": "Q80008",
-        "status": "in-review",
-        "factoryId": null,
+        "status": "approved",
+        "factoryId": "artisan-la",
         "currency": "USD",
-        "price": null,
-        "pricePublished": false,
-        "messages": [
-          {
-            "id": "m-R50008-1",
-            "author": "Dana Whitfield",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-04-20T18:05:00.000Z"
-          }
-        ],
-        "pricing": null,
+        "price": 2750,
+        "pricePublished": true,
+        "messages": [],
+        "pricing": {
+          "gramWeight": "10.9g",
+          "metalKarat": "18K",
+          "diamondSummary": "1 Round = 1.50ct VS1 / F",
+          "estimateValidDays": 7,
+          "deliveryDays": 6
+        },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50008.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50008-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50008-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50008-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50008-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50008-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50008_spec_sheet.pdf"
+          }
         }
       },
       {
@@ -785,20 +843,12 @@
         "includeCenterStone": false,
         "referenceNo": "R50009",
         "quoteNo": "Q80009",
-        "status": "quoted",
-        "factoryId": null,
+        "status": "cancelled",
+        "factoryId": "crownring-mtl",
         "currency": "USD",
         "price": 2900,
         "pricePublished": true,
-        "messages": [
-          {
-            "id": "m-R50009-1",
-            "author": "Dana Whitfield",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-04-20T18:05:00.000Z"
-          }
-        ],
+        "messages": [],
         "pricing": {
           "gramWeight": "11.6g",
           "metalKarat": "18K",
@@ -807,9 +857,35 @@
           "deliveryDays": 7
         },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50009.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50009-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50009-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50009-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50009-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50009-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50009_spec_sheet.pdf"
+          }
         }
       },
       {
@@ -849,49 +925,17 @@
         "includeCenterStone": false,
         "referenceNo": "R50010",
         "quoteNo": "Q80010",
-        "status": "in-cad",
-        "factoryId": "goldworks-ny",
+        "status": "pending",
+        "factoryId": null,
         "currency": "USD",
-        "price": 3025,
+        "price": null,
         "pricePublished": false,
         "messages": [],
-        "pricing": {
-          "gramWeight": "12.3g",
-          "metalKarat": "18K",
-          "diamondSummary": "Band — accent diamonds only",
-          "estimateValidDays": 7,
-          "deliveryDays": 8
-        },
+        "pricing": null,
         "renderings": {
-          "model": {
-            "name": "R50010.glb",
-            "label": "3D Viewer"
-          },
-          "angles": [
-            {
-              "id": "ar-R50010-0",
-              "label": "Perspective View"
-            },
-            {
-              "id": "ar-R50010-1",
-              "label": "Detail View"
-            },
-            {
-              "id": "ar-R50010-2",
-              "label": "Top View"
-            },
-            {
-              "id": "ar-R50010-3",
-              "label": "Side Profile"
-            },
-            {
-              "id": "ar-R50010-4",
-              "label": "Macro"
-            }
-          ],
-          "specSheet": {
-            "name": "r50010_spec_sheet.pdf"
-          }
+          "model": null,
+          "angles": [],
+          "specSheet": null
         }
       }
     ],
@@ -961,49 +1005,17 @@
         "includeCenterStone": false,
         "referenceNo": "R50011",
         "quoteNo": "Q80011",
-        "status": "in-production",
+        "status": "assigned",
         "factoryId": "lumina-cad",
         "currency": "USD",
-        "price": 3175,
-        "pricePublished": true,
+        "price": null,
+        "pricePublished": false,
         "messages": [],
-        "pricing": {
-          "gramWeight": "13.0g",
-          "metalKarat": "14K",
-          "diamondSummary": "Band — accent diamonds only",
-          "estimateValidDays": 7,
-          "deliveryDays": 9
-        },
+        "pricing": null,
         "renderings": {
-          "model": {
-            "name": "R50011.glb",
-            "label": "3D Viewer"
-          },
-          "angles": [
-            {
-              "id": "ar-R50011-0",
-              "label": "Perspective View"
-            },
-            {
-              "id": "ar-R50011-1",
-              "label": "Detail View"
-            },
-            {
-              "id": "ar-R50011-2",
-              "label": "Top View"
-            },
-            {
-              "id": "ar-R50011-3",
-              "label": "Side Profile"
-            },
-            {
-              "id": "ar-R50011-4",
-              "label": "Macro"
-            }
-          ],
-          "specSheet": {
-            "name": "r50011_spec_sheet.pdf"
-          }
+          "model": null,
+          "angles": [],
+          "specSheet": null
         }
       }
     ],
@@ -1071,49 +1083,17 @@
         "includeCenterStone": true,
         "referenceNo": "R50012",
         "quoteNo": "Q80012",
-        "status": "shipped",
+        "status": "in-progress",
         "factoryId": "artisan-la",
         "currency": "USD",
-        "price": 3300,
-        "pricePublished": true,
+        "price": null,
+        "pricePublished": false,
         "messages": [],
-        "pricing": {
-          "gramWeight": "13.7g",
-          "metalKarat": "14K",
-          "diamondSummary": "1 Oval = 2.00ct VVS2 / E",
-          "estimateValidDays": 7,
-          "deliveryDays": 10
-        },
+        "pricing": null,
         "renderings": {
-          "model": {
-            "name": "R50012.glb",
-            "label": "3D Viewer"
-          },
-          "angles": [
-            {
-              "id": "ar-R50012-0",
-              "label": "Perspective View"
-            },
-            {
-              "id": "ar-R50012-1",
-              "label": "Detail View"
-            },
-            {
-              "id": "ar-R50012-2",
-              "label": "Top View"
-            },
-            {
-              "id": "ar-R50012-3",
-              "label": "Side Profile"
-            },
-            {
-              "id": "ar-R50012-4",
-              "label": "Macro"
-            }
-          ],
-          "specSheet": {
-            "name": "r50012_spec_sheet.pdf"
-          }
+          "model": null,
+          "angles": [],
+          "specSheet": null
         }
       },
       {
@@ -1151,17 +1131,49 @@
         "includeCenterStone": true,
         "referenceNo": "R50013",
         "quoteNo": "Q80013",
-        "status": "new",
-        "factoryId": null,
+        "status": "uploaded",
+        "factoryId": "crownring-mtl",
         "currency": "USD",
-        "price": null,
+        "price": 3450,
         "pricePublished": false,
         "messages": [],
-        "pricing": null,
+        "pricing": {
+          "gramWeight": "6.4g",
+          "metalKarat": "Platinum",
+          "diamondSummary": "1 Round = 1.00ct VS1 / F",
+          "estimateValidDays": 7,
+          "deliveryDays": 5
+        },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50013.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50013-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50013-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50013-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50013-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50013-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50013_spec_sheet.pdf"
+          }
         }
       },
       {
@@ -1200,24 +1212,56 @@
         "referenceNo": "R50014",
         "quoteNo": "Q80014",
         "status": "in-review",
-        "factoryId": null,
+        "factoryId": "goldworks-ny",
         "currency": "USD",
-        "price": null,
+        "price": 3575,
         "pricePublished": false,
         "messages": [
           {
             "id": "m-R50014-1",
             "author": "Marcus Lindqvist",
             "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "body": "Looks great — keen to see the final quote. Let us know if you need anything.",
             "createdAt": "2026-04-25T21:15:00.000Z"
           }
         ],
-        "pricing": null,
+        "pricing": {
+          "gramWeight": "7.1g",
+          "metalKarat": "14K",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 6
+        },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50014.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50014-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50014-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50014-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50014-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50014-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50014_spec_sheet.pdf"
+          }
         }
       },
       {
@@ -1255,8 +1299,8 @@
         "includeCenterStone": false,
         "referenceNo": "R50015",
         "quoteNo": "Q80015",
-        "status": "quoted",
-        "factoryId": null,
+        "status": "sent",
+        "factoryId": "lumina-cad",
         "currency": "USD",
         "price": 3725,
         "pricePublished": true,
@@ -1265,7 +1309,7 @@
             "id": "m-R50015-1",
             "author": "Marcus Lindqvist",
             "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
+            "body": "Looks great — keen to see the final quote. Let us know if you need anything.",
             "createdAt": "2026-04-25T21:15:00.000Z"
           }
         ],
@@ -1277,9 +1321,35 @@
           "deliveryDays": 7
         },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50015.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50015-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50015-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50015-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50015-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50015-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50015_spec_sheet.pdf"
+          }
         }
       }
     ],
@@ -1355,12 +1425,20 @@
         "includeCenterStone": true,
         "referenceNo": "R50016",
         "quoteNo": "Q80016",
-        "status": "in-cad",
+        "status": "adjustment-needed",
         "factoryId": "artisan-la",
         "currency": "USD",
         "price": 3850,
-        "pricePublished": false,
-        "messages": [],
+        "pricePublished": true,
+        "messages": [
+          {
+            "id": "m-R50016-1",
+            "author": "Marcus Lindqvist",
+            "role": "customer",
+            "body": "Could we make the band a touch wider before we approve? Thank you!",
+            "createdAt": "2026-05-14T17:22:00.000Z"
+          }
+        ],
         "pricing": {
           "gramWeight": "8.5g",
           "metalKarat": "14K",
@@ -1466,7 +1544,7 @@
         "includeCenterStone": true,
         "referenceNo": "R50017",
         "quoteNo": "Q80017",
-        "status": "in-production",
+        "status": "approved",
         "factoryId": "crownring-mtl",
         "currency": "USD",
         "price": 4000,
@@ -1548,7 +1626,7 @@
         "includeCenterStone": false,
         "referenceNo": "R50018",
         "quoteNo": "Q80018",
-        "status": "shipped",
+        "status": "cancelled",
         "factoryId": "goldworks-ny",
         "currency": "USD",
         "price": 4125,
@@ -1657,7 +1735,7 @@
         "includeCenterStone": true,
         "referenceNo": "R50019",
         "quoteNo": "Q80019",
-        "status": "new",
+        "status": "pending",
         "factoryId": null,
         "currency": "USD",
         "price": null,
@@ -1707,20 +1785,12 @@
         "includeCenterStone": false,
         "referenceNo": "R50020",
         "quoteNo": "Q80020",
-        "status": "in-review",
-        "factoryId": null,
+        "status": "assigned",
+        "factoryId": "artisan-la",
         "currency": "USD",
         "price": null,
         "pricePublished": false,
-        "messages": [
-          {
-            "id": "m-R50020-1",
-            "author": "Priya Raman",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-04-30T14:12:00.000Z"
-          }
-        ],
+        "messages": [],
         "pricing": null,
         "renderings": {
           "model": null,
@@ -1790,27 +1860,13 @@
         "includeCenterStone": true,
         "referenceNo": "R50021",
         "quoteNo": "Q80021",
-        "status": "quoted",
-        "factoryId": null,
+        "status": "in-progress",
+        "factoryId": "crownring-mtl",
         "currency": "USD",
-        "price": 4550,
-        "pricePublished": true,
-        "messages": [
-          {
-            "id": "m-R50021-1",
-            "author": "Priya Raman",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-06-03T19:30:00.000Z"
-          }
-        ],
-        "pricing": {
-          "gramWeight": "12.0g",
-          "metalKarat": "18K",
-          "diamondSummary": "1 Emerald = 1.80ct",
-          "estimateValidDays": 7,
-          "deliveryDays": 7
-        },
+        "price": null,
+        "pricePublished": false,
+        "messages": [],
+        "pricing": null,
         "renderings": {
           "model": null,
           "angles": [],
@@ -1890,7 +1946,7 @@
         "includeCenterStone": false,
         "referenceNo": "R50022",
         "quoteNo": "Q80022",
-        "status": "in-cad",
+        "status": "uploaded",
         "factoryId": "goldworks-ny",
         "currency": "USD",
         "price": 4675,
@@ -2001,12 +2057,20 @@
         "includeCenterStone": true,
         "referenceNo": "R50023",
         "quoteNo": "Q80023",
-        "status": "in-production",
+        "status": "in-review",
         "factoryId": "lumina-cad",
         "currency": "USD",
         "price": 4825,
-        "pricePublished": true,
-        "messages": [],
+        "pricePublished": false,
+        "messages": [
+          {
+            "id": "m-R50023-1",
+            "author": "Sofia Alvarez",
+            "role": "customer",
+            "body": "Looks great — keen to see the final quote. Let us know if you need anything.",
+            "createdAt": "2026-05-06T20:10:00.000Z"
+          }
+        ],
         "pricing": {
           "gramWeight": "13.4g",
           "metalKarat": "18K / Platinum",
@@ -2083,12 +2147,20 @@
         "includeCenterStone": false,
         "referenceNo": "R50024",
         "quoteNo": "Q80024",
-        "status": "shipped",
+        "status": "sent",
         "factoryId": "artisan-la",
         "currency": "USD",
         "price": 4950,
         "pricePublished": true,
-        "messages": [],
+        "messages": [
+          {
+            "id": "m-R50024-1",
+            "author": "Sofia Alvarez",
+            "role": "customer",
+            "body": "Looks great — keen to see the final quote. Let us know if you need anything.",
+            "createdAt": "2026-05-06T20:10:00.000Z"
+          }
+        ],
         "pricing": {
           "gramWeight": "6.1g",
           "metalKarat": "Platinum",
@@ -2165,17 +2237,57 @@
         "includeCenterStone": false,
         "referenceNo": "R50025",
         "quoteNo": "Q80025",
-        "status": "new",
-        "factoryId": null,
+        "status": "adjustment-needed",
+        "factoryId": "crownring-mtl",
         "currency": "USD",
-        "price": null,
-        "pricePublished": false,
-        "messages": [],
-        "pricing": null,
+        "price": 5100,
+        "pricePublished": true,
+        "messages": [
+          {
+            "id": "m-R50025-1",
+            "author": "Sofia Alvarez",
+            "role": "customer",
+            "body": "Could we make the band a touch wider before we approve? Thank you!",
+            "createdAt": "2026-05-06T20:10:00.000Z"
+          }
+        ],
+        "pricing": {
+          "gramWeight": "6.8g",
+          "metalKarat": "Platinum",
+          "diamondSummary": "Band — accent diamonds only",
+          "estimateValidDays": 7,
+          "deliveryDays": 5
+        },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50025.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50025-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50025-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50025-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50025-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50025-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50025_spec_sheet.pdf"
+          }
         }
       }
     ],
@@ -2251,25 +2363,49 @@
         "includeCenterStone": true,
         "referenceNo": "R50026",
         "quoteNo": "Q80026",
-        "status": "in-review",
-        "factoryId": null,
+        "status": "approved",
+        "factoryId": "goldworks-ny",
         "currency": "USD",
-        "price": null,
-        "pricePublished": false,
-        "messages": [
-          {
-            "id": "m-R50026-1",
-            "author": "Sofia Alvarez",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-05-31T18:18:00.000Z"
-          }
-        ],
-        "pricing": null,
+        "price": 5225,
+        "pricePublished": true,
+        "messages": [],
+        "pricing": {
+          "gramWeight": "7.5g",
+          "metalKarat": "10K",
+          "diamondSummary": "1 Round = 1.50ct",
+          "estimateValidDays": 7,
+          "deliveryDays": 6
+        },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50026.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50026-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50026-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50026-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50026-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50026-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50026_spec_sheet.pdf"
+          }
         }
       }
     ],
@@ -2336,20 +2472,12 @@
         "includeCenterStone": true,
         "referenceNo": "R50027",
         "quoteNo": "Q80027",
-        "status": "quoted",
-        "factoryId": null,
+        "status": "cancelled",
+        "factoryId": "lumina-cad",
         "currency": "USD",
         "price": 5350,
         "pricePublished": true,
-        "messages": [
-          {
-            "id": "m-R50027-1",
-            "author": "Élise Tremblay",
-            "role": "customer",
-            "body": "Could we see a rendering before we approve the quote? Thanks!",
-            "createdAt": "2026-04-22T13:40:00.000Z"
-          }
-        ],
+        "messages": [],
         "pricing": {
           "gramWeight": "8.2g",
           "metalKarat": "18K",
@@ -2358,9 +2486,35 @@
           "deliveryDays": 7
         },
         "renderings": {
-          "model": null,
-          "angles": [],
-          "specSheet": null
+          "model": {
+            "name": "R50027.glb",
+            "label": "3D Viewer"
+          },
+          "angles": [
+            {
+              "id": "ar-R50027-0",
+              "label": "Perspective View"
+            },
+            {
+              "id": "ar-R50027-1",
+              "label": "Detail View"
+            },
+            {
+              "id": "ar-R50027-2",
+              "label": "Top View"
+            },
+            {
+              "id": "ar-R50027-3",
+              "label": "Side Profile"
+            },
+            {
+              "id": "ar-R50027-4",
+              "label": "Macro"
+            }
+          ],
+          "specSheet": {
+            "name": "r50027_spec_sheet.pdf"
+          }
         }
       },
       {
@@ -2398,49 +2552,17 @@
         "includeCenterStone": false,
         "referenceNo": "R50028",
         "quoteNo": "Q80028",
-        "status": "in-cad",
-        "factoryId": "artisan-la",
+        "status": "pending",
+        "factoryId": null,
         "currency": "USD",
-        "price": 5500,
+        "price": null,
         "pricePublished": false,
         "messages": [],
-        "pricing": {
-          "gramWeight": "8.9g",
-          "metalKarat": "18K",
-          "diamondSummary": "Band — accent diamonds only",
-          "estimateValidDays": 7,
-          "deliveryDays": 8
-        },
+        "pricing": null,
         "renderings": {
-          "model": {
-            "name": "R50028.glb",
-            "label": "3D Viewer"
-          },
-          "angles": [
-            {
-              "id": "ar-R50028-0",
-              "label": "Perspective View"
-            },
-            {
-              "id": "ar-R50028-1",
-              "label": "Detail View"
-            },
-            {
-              "id": "ar-R50028-2",
-              "label": "Top View"
-            },
-            {
-              "id": "ar-R50028-3",
-              "label": "Side Profile"
-            },
-            {
-              "id": "ar-R50028-4",
-              "label": "Macro"
-            }
-          ],
-          "specSheet": {
-            "name": "r50028_spec_sheet.pdf"
-          }
+          "model": null,
+          "angles": [],
+          "specSheet": null
         }
       }
     ],
@@ -2509,49 +2631,17 @@
         "includeCenterStone": false,
         "referenceNo": "R50029",
         "quoteNo": "Q80029",
-        "status": "in-production",
+        "status": "assigned",
         "factoryId": "crownring-mtl",
         "currency": "USD",
-        "price": 5625,
-        "pricePublished": true,
+        "price": null,
+        "pricePublished": false,
         "messages": [],
-        "pricing": {
-          "gramWeight": "9.6g",
-          "metalKarat": "14K",
-          "diamondSummary": "Band — accent diamonds only",
-          "estimateValidDays": 7,
-          "deliveryDays": 9
-        },
+        "pricing": null,
         "renderings": {
-          "model": {
-            "name": "R50029.glb",
-            "label": "3D Viewer"
-          },
-          "angles": [
-            {
-              "id": "ar-R50029-0",
-              "label": "Perspective View"
-            },
-            {
-              "id": "ar-R50029-1",
-              "label": "Detail View"
-            },
-            {
-              "id": "ar-R50029-2",
-              "label": "Top View"
-            },
-            {
-              "id": "ar-R50029-3",
-              "label": "Side Profile"
-            },
-            {
-              "id": "ar-R50029-4",
-              "label": "Macro"
-            }
-          ],
-          "specSheet": {
-            "name": "r50029_spec_sheet.pdf"
-          }
+          "model": null,
+          "angles": [],
+          "specSheet": null
         }
       }
     ],

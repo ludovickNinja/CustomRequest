@@ -42,7 +42,7 @@ const STORAGE_KEY = 'customrequest:submissions';
  * source of truth, localStorage is just a working copy for the session.)
  */
 const SEED_VERSION_KEY = 'customrequest:seedVersion';
-const SEED_VERSION = '2026-06-09-design-detail';
+const SEED_VERSION = '2026-06-09-status-lifecycle';
 
 /**
  * Demo/mock-up seeding. Copies the shared fixtures from
@@ -181,15 +181,15 @@ function maxRefSeq(items) {
 /**
  * Stamp the per-reference workflow fields onto a design that doesn't have
  * them yet (i.e. one a customer just submitted). `seq` is the reference
- * sequence number to assign. New references always start at status "new",
- * unassigned to a factory and unpriced.
+ * sequence number to assign. New references always start at status
+ * "pending", unassigned to a factory and unpriced.
  */
 function stampWorkflow(design, seq) {
   return {
     ...design,
     referenceNo: design.referenceNo || `R${seq}`,
     quoteNo: design.quoteNo || `Q${30000 + seq}`,
-    status: design.status || 'new',
+    status: design.status || 'pending',
     factoryId: design.factoryId ?? null,
     price: design.price ?? null,
     pricePublished: design.pricePublished ?? false,
@@ -262,7 +262,7 @@ function toReferenceRow(submission, design, designIndex) {
   return {
     referenceNo: design.referenceNo,
     quoteNo: design.quoteNo,
-    status: design.status || 'new',
+    status: design.status || 'pending',
     factoryId: design.factoryId ?? null,
     price: design.price ?? null,
     pricePublished: !!design.pricePublished,

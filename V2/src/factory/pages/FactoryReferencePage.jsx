@@ -1,23 +1,29 @@
 /**
- * Factory reference detail — what one factory does to a job assigned to it:
- * read the specs, update production status, and upload renderings / finished
- * work. Scoped to the current factory; a factory can only open references
- * assigned to it.
+ * Factory reference detail — what one resource does to a job dispatched to
+ * it: read the specs, confirm it's working on it, upload its part, and mark
+ * it uploaded. Scoped to the current factory; a factory can only open
+ * references assigned to it.
  *
  * No pricing here (that's between the customer and the In House team) and no
- * customer discussion — the factory's job is specs, status, and renderings.
+ * customer discussion — the factory's job is specs, progress, and uploads.
  */
 import { useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Upload } from 'lucide-react';
+import { ArrowLeft, Upload, Check } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
 import StatusBadge from '../../shared/StatusBadge.jsx';
 import RenderingsSection from '../../shared/reference/RenderingsSection.jsx';
 import { metalSummary } from '../../customer/components/design/MetalSection.jsx';
 import { findCollection } from '../../data/collections.js';
-import { STATUSES } from '../../data/statuses.js';
 import { getReference, updateReference, addRendering } from '../../services/submissionsStore.js';
 import { useFactory } from '../../state/FactoryContext.jsx';
+
+/** The next action a factory can take, given the reference's status. */
+function factoryAction(status) {
+  if (status === 'assigned') return { to: 'in-progress', label: 'Confirm & start work' };
+  if (status === 'in-progress' || status === 'adjustment-needed') return { to: 'uploaded', label: 'Mark as uploaded' };
+  return null;
+}
 
 function Row({ label, value }) {
   if (!value && value !== 0) return null;
@@ -43,12 +49,13 @@ export default function FactoryReferencePage() {
 
   const design = reference.design;
   const cs = design.centerStone;
+  const action = factoryAction(reference.status);
 
   function refresh() {
     setReference(getReference(decoded));
   }
-  function handleStatus(e) {
-    updateReference(decoded, { status: e.target.value });
+  function advance(to) {
+    updateReference(decoded, { status: to });
     refresh();
   }
   function handleUpload(e) {
@@ -109,16 +116,25 @@ export default function FactoryReferencePage() {
 
           <aside className="lg:sticky lg:top-20 lg:self-start">
             <section className="card-panel space-y-5 p-5">
-              <h2 className="font-serif text-lg text-stone-900">Production</h2>
+              <h2 className="font-serif text-lg text-stone-900">Your part</h2>
 
               <div>
                 <label className="label-base">Status</label>
-                <select value={reference.status} onChange={handleStatus} className="input-base mt-1 appearance-none">
-                  {STATUSES.map((s) => (
-                    <option key={s.id} value={s.id}>{s.label}</option>
-                  ))}
-                </select>
-                <p className="mt-1 text-[11px] text-stone-400">Update as the job moves through production.</p>
+                <div className="mt-1"><StatusBadge status={reference.status} /></div>
+                {action ? (
+                  <button
+                    type="button"
+                    onClick={() => advance(action.to)}
+                    className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-xs font-medium text-gold-100 hover:bg-neutral-800"
+                  >
+                    <Check className="h-3.5 w-3.5" />
+                    {action.label}
+                  </button>
+                ) : (
+                  <p className="mt-2 text-[11px] text-stone-400">
+                    Nothing to do right now — this reference is with the In House team or the customer.
+                  </p>
+                )}
               </div>
 
               <div>
@@ -128,7 +144,9 @@ export default function FactoryReferencePage() {
                   Upload file
                   <input type="file" className="hidden" onChange={handleUpload} />
                 </label>
-                <p className="mt-1 text-[11px] text-stone-400">Uploads appear in the renderings section.</p>
+                <p className="mt-1 text-[11px] text-stone-400">
+                  Upload your part, then mark the reference as uploaded.
+                </p>
               </div>
             </section>
           </aside>

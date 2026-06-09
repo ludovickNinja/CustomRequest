@@ -1,10 +1,10 @@
 /**
- * Factory Workspace — the production team's view.
+ * Factory Workspace — an in-house or external resource's view.
  *
- * Scoped to the current factory: it shows only the references assigned to
+ * Scoped to the current factory: it shows only the references dispatched to
  * that team (via the FactorySwitcher in the top-right). This is where a
- * factory picks up the work it's been sent; opening a reference shows the
- * specs and lets the team update production status and upload renderings.
+ * resource picks up the work it's been sent; opening a reference shows the
+ * specs and lets the team confirm progress and upload its part.
  *
  * Reads through `submissionsStore.listReferences({ factoryId })`.
  */
@@ -53,9 +53,9 @@ export default function FactoryHomePage() {
           <p className="eyebrow">Factory</p>
           <h1 className="mt-2 font-serif text-4xl text-stone-900">Factory Workspace</h1>
           <p className="mt-2 max-w-2xl text-sm text-stone-500">
-            Pick up the work assigned to{' '}
-            <span className="font-medium text-stone-700">{currentFactory?.name || 'your team'}</span>, update
-            production status, and upload renderings.
+            Pick up the work dispatched to{' '}
+            <span className="font-medium text-stone-700">{currentFactory?.name || 'your team'}</span>, confirm
+            progress, and upload your part.
           </p>
           <p className="mt-3 text-sm text-stone-500">
             {filtering ? (
