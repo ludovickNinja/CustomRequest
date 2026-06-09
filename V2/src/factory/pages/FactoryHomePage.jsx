@@ -1,18 +1,20 @@
 /**
- * Factory Workspace — the production team's view.
+ * Factory Workspace — an in-house or external resource's view.
  *
- * Scoped to the current factory: it shows only the references assigned to
+ * Scoped to the current factory: it shows only the references dispatched to
  * that team (via the FactorySwitcher in the top-right). This is where a
- * factory picks up the work it's been sent; opening a reference shows the
- * specs and lets the team update production status and upload renderings.
+ * resource picks up the work it's been sent; opening a reference shows the
+ * specs and lets the team confirm progress and upload its part.
  *
  * Reads through `submissionsStore.listReferences({ factoryId })`.
  */
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, X, ChevronRight, Hammer } from 'lucide-react';
+import { Search, X, ChevronRight, Hammer, AlertTriangle } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
 import StatusBadge from '../../shared/StatusBadge.jsx';
+import SortHeader, { nextSort } from '../../shared/SortHeader.jsx';
+import { isStale, relativeTime } from '../../shared/staleness.js';
 import { listReferences } from '../../services/submissionsStore.js';
 import { STATUSES } from '../../data/statuses.js';
 import { findCollection } from '../../data/collections.js';
@@ -27,15 +29,19 @@ export default function FactoryHomePage() {
   const { currentFactory, currentFactoryId } = useFactory();
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('all');
+  const [sort, setSort] = useState({ key: 'submittedAt', dir: 'desc' });
+  const onSort = (key) => setSort((prev) => nextSort(prev, key));
 
   const rows = useMemo(
-    () => listReferences({ search, status, factoryId: currentFactoryId }),
-    [search, status, currentFactoryId]
+    () => listReferences({ search, status, factoryId: currentFactoryId, sort }),
+    [search, status, currentFactoryId, sort]
   );
-  const total = useMemo(
-    () => listReferences({ factoryId: currentFactoryId }).length,
+  const assigned = useMemo(
+    () => listReferences({ factoryId: currentFactoryId }),
     [currentFactoryId]
   );
+  const total = assigned.length;
+  const stale = useMemo(() => assigned.filter(isStale).length, [assigned]);
 
   const filtering = search.trim() || status !== 'all';
   function clearFilters() {
@@ -50,9 +56,9 @@ export default function FactoryHomePage() {
           <p className="eyebrow">Factory</p>
           <h1 className="mt-2 font-serif text-4xl text-stone-900">Factory Workspace</h1>
           <p className="mt-2 max-w-2xl text-sm text-stone-500">
-            Pick up the work assigned to{' '}
-            <span className="font-medium text-stone-700">{currentFactory?.name || 'your team'}</span>, update
-            production status, and upload renderings.
+            Pick up the work dispatched to{' '}
+            <span className="font-medium text-stone-700">{currentFactory?.name || 'your team'}</span>, confirm
+            progress, and upload your part.
           </p>
           <p className="mt-3 text-sm text-stone-500">
             {filtering ? (
@@ -65,6 +71,11 @@ export default function FactoryHomePage() {
               </>
             )}{' '}
             assigned reference{total === 1 ? '' : 's'}
+            {stale > 0 && (
+              <>
+                {' '}· <span className="font-semibold text-rose-600">{stale}</span> falling behind
+              </>
+            )}
           </p>
         </header>
 
@@ -121,17 +132,20 @@ export default function FactoryHomePage() {
               <table className="w-full min-w-[720px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-stone-200 text-[11px] uppercase tracking-wider text-stone-500">
-                    <th className="px-3 py-2 font-medium">Reference</th>
-                    <th className="px-3 py-2 font-medium">Quote</th>
-                    <th className="px-3 py-2 font-medium">Customer Request</th>
-                    <th className="px-3 py-2 font-medium">Collection</th>
-                    <th className="px-3 py-2 font-medium">Status</th>
+                    <SortHeader label="Reference" sortKey="referenceNo" sort={sort} onSort={onSort} />
+                    <SortHeader label="Quote" sortKey="quoteNo" sort={sort} onSort={onSort} />
+                    <SortHeader label="Customer Request" sortKey="poReference" sort={sort} onSort={onSort} />
+                    <SortHeader label="Collection" sortKey="collection" sort={sort} onSort={onSort} />
+                    <SortHeader label="Status" sortKey="status" sort={sort} onSort={onSort} />
+                    <SortHeader label="Updated" sortKey="updatedAt" sort={sort} onSort={onSort} />
                     <th className="px-3 py-2" />
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
-                  {rows.map((r) => (
-                    <tr key={r.referenceNo} className="group hover:bg-stone-50">
+                  {rows.map((r) => {
+                    const stale = isStale(r);
+                    return (
+                    <tr key={r.referenceNo} className={'group hover:bg-stone-50' + (stale ? ' bg-rose-50/40' : '')}>
                       <td className="px-3 py-3">
                         <Link
                           to={`/factory/reference/${encodeURIComponent(r.referenceNo)}`}
@@ -149,6 +163,12 @@ export default function FactoryHomePage() {
                       <td className="px-3 py-3 text-stone-700">{r.poReference || '—'}</td>
                       <td className="px-3 py-3 text-stone-600">{collectionLabel(r.collection)}</td>
                       <td className="px-3 py-3"><StatusBadge status={r.status} /></td>
+                      <td className="px-3 py-3">
+                        <span className={'inline-flex items-center gap-1 ' + (stale ? 'font-medium text-rose-600' : 'text-stone-500')}>
+                          {stale && <AlertTriangle className="h-3.5 w-3.5" />}
+                          {relativeTime(r.updatedAt)}
+                        </span>
+                      </td>
                       <td className="px-3 py-3 text-right">
                         <Link
                           to={`/factory/reference/${encodeURIComponent(r.referenceNo)}`}
@@ -159,7 +179,8 @@ export default function FactoryHomePage() {
                         </Link>
                       </td>
                     </tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
             )}

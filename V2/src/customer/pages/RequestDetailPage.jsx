@@ -13,6 +13,7 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import { Clock, ChevronRight } from 'lucide-react';
 import TopBar from '../../shared/TopBar.jsx';
 import PageFooter from '../../shared/PageFooter.jsx';
+import StatusBadge from '../../shared/StatusBadge.jsx';
 import { findCollection } from '../../data/collections.js';
 import { getSubmission } from '../../services/submissionsStore.js';
 import { metalSummary } from '../components/design/MetalSection.jsx';
@@ -46,14 +47,12 @@ function DesignCard({ design, index }) {
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="font-serif text-xl text-stone-900">Design {index + 1}</h3>
           <span className="text-xs text-stone-400">{design.referenceNo}</span>
-          <span
-            className={
-              'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ' +
-              (priced ? 'bg-emerald-50 text-emerald-700' : 'bg-amber-50 text-amber-800')
-            }
-          >
-            {priced ? `Quoted · ${formatMoney(design.price, design.currency)}` : 'Quote in progress'}
-          </span>
+          <StatusBadge status={design.status} />
+          {priced && (
+            <span className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">
+              {formatMoney(design.price, design.currency)}
+            </span>
+          )}
         </div>
         <p className="mt-1 text-sm text-stone-600">{metalSummary(design.metal)}</p>
         <p className="mt-0.5 text-xs text-stone-400">

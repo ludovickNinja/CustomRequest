@@ -12,9 +12,11 @@
  */
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, X, ChevronRight, Inbox } from 'lucide-react';
+import { Search, X, ChevronRight, Inbox, AlertTriangle } from 'lucide-react';
 import PageFooter from '../../shared/PageFooter.jsx';
 import StatusBadge from '../../shared/StatusBadge.jsx';
+import SortHeader, { nextSort } from '../../shared/SortHeader.jsx';
+import { isStale, relativeTime } from '../../shared/staleness.js';
 import { listReferences, referenceStats } from '../../services/submissionsStore.js';
 import { STATUSES } from '../../data/statuses.js';
 import { factories, factoryName } from '../../data/factories.js';
@@ -37,10 +39,12 @@ export default function AdminHomePage() {
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('all');
   const [factoryId, setFactoryId] = useState('all');
+  const [sort, setSort] = useState({ key: 'submittedAt', dir: 'desc' });
+  const onSort = (key) => setSort((prev) => nextSort(prev, key));
 
   const rows = useMemo(
-    () => listReferences({ search, status, factoryId }),
-    [search, status, factoryId]
+    () => listReferences({ search, status, factoryId, sort }),
+    [search, status, factoryId, sort]
   );
   // Unfiltered totals for the summary line.
   const stats = useMemo(() => referenceStats(), []);
@@ -59,7 +63,7 @@ export default function AdminHomePage() {
           <p className="eyebrow">In House</p>
           <h1 className="mt-2 font-serif text-4xl text-stone-900">Admin Operations</h1>
           <p className="mt-2 max-w-2xl text-sm text-stone-500">
-            Monitor requests, upload renderings, answer messages, and publish pricing.
+            Dispatch incoming requests, review uploaded work, and send quotes to customers.
           </p>
           <p className="mt-3 text-sm text-stone-500">
             {filtering ? (
@@ -74,6 +78,11 @@ export default function AdminHomePage() {
               </>
             )}{' '}
             · <span className="font-semibold text-amber-700">{stats.attention}</span> needing attention
+            {stats.stale > 0 && (
+              <>
+                {' '}· <span className="font-semibold text-rose-600">{stats.stale}</span> falling behind
+              </>
+            )}
           </p>
         </header>
 
@@ -136,19 +145,22 @@ export default function AdminHomePage() {
               <table className="w-full min-w-[860px] border-collapse text-left text-sm">
                 <thead>
                   <tr className="border-b border-stone-200 text-[11px] uppercase tracking-wider text-stone-500">
-                    <th className="px-3 py-2 font-medium">Quote</th>
-                    <th className="px-3 py-2 font-medium">Reference</th>
-                    <th className="px-3 py-2 font-medium">Customer Request</th>
-                    <th className="px-3 py-2 font-medium">Account</th>
-                    <th className="px-3 py-2 font-medium">Sales Person</th>
-                    <th className="px-3 py-2 font-medium">Status</th>
-                    <th className="px-3 py-2 font-medium">Factory</th>
+                    <SortHeader label="Quote" sortKey="quoteNo" sort={sort} onSort={onSort} />
+                    <SortHeader label="Reference" sortKey="referenceNo" sort={sort} onSort={onSort} />
+                    <SortHeader label="Customer Request" sortKey="poReference" sort={sort} onSort={onSort} />
+                    <SortHeader label="Account" sortKey="accountName" sort={sort} onSort={onSort} />
+                    <SortHeader label="Sales Person" sortKey="salesPerson" sort={sort} onSort={onSort} />
+                    <SortHeader label="Status" sortKey="status" sort={sort} onSort={onSort} />
+                    <SortHeader label="Factory" sortKey="factory" sort={sort} onSort={onSort} />
+                    <SortHeader label="Updated" sortKey="updatedAt" sort={sort} onSort={onSort} />
                     <th className="px-3 py-2" />
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-stone-100">
-                  {rows.map((r) => (
-                    <tr key={r.referenceNo} className="group hover:bg-stone-50">
+                  {rows.map((r) => {
+                    const stale = isStale(r);
+                    return (
+                    <tr key={r.referenceNo} className={'group hover:bg-stone-50' + (stale ? ' bg-rose-50/40' : '')}>
                       <td className="px-3 py-3">
                         <Link
                           to={`/admin/reference/${encodeURIComponent(r.referenceNo)}`}
@@ -173,6 +185,12 @@ export default function AdminHomePage() {
                       <td className="px-3 py-3 text-stone-700">{r.salesPerson || '—'}</td>
                       <td className="px-3 py-3"><StatusBadge status={r.status} /></td>
                       <td className="px-3 py-3 text-stone-600">{r.factoryId ? factoryName(r.factoryId) : <span className="text-stone-400">Unassigned</span>}</td>
+                      <td className="px-3 py-3">
+                        <span className={'inline-flex items-center gap-1 ' + (stale ? 'font-medium text-rose-600' : 'text-stone-500')}>
+                          {stale && <AlertTriangle className="h-3.5 w-3.5" />}
+                          {relativeTime(r.updatedAt)}
+                        </span>
+                      </td>
                       <td className="px-3 py-3 text-right">
                         <Link
                           to={`/admin/reference/${encodeURIComponent(r.referenceNo)}`}
@@ -183,7 +201,8 @@ export default function AdminHomePage() {
                         </Link>
                       </td>
                     </tr>
-                  ))}
+                    );
+                  })}
                 </tbody>
               </table>
             )}

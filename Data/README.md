@@ -109,17 +109,36 @@ renderings and can post to the discussion.
       },
       "messages": [                        // per-reference discussion thread
         { "id": "...", "author": "...", "role": "customer", "body": "...", "createdAt": "..." }
+      ],
+      "updatedAt": "2026-06-08T12:00:00.000Z", // last time the reference was touched
+      "activity": [                        // running log of what happened, when
+        { "at": "...", "type": "created" },
+        { "at": "...", "type": "status", "to": "assigned" }
       ]
     }
   ]
 }
 ```
 
-**Status pipeline** (`V2/src/data/statuses.js`):
-`new` → `in-review` → `quoted` → `in-cad` → `in-production` → `shipped`.
-The "needing attention" count on the admin page is the number of references
-sitting in a status that's waiting on internal action (`new`, `in-review`,
-`in-cad`).
+Every mutation (`updateReference`, `addRendering`, `addReferenceMessage`) bumps
+`updatedAt` and appends an `activity` entry. The admin and factory tables show
+"Updated …" and **highlight references that are falling behind** — in flight
+(non-terminal) and untouched for at least `STALE_AFTER_DAYS`
+(`V2/src/shared/staleness.js`). Each reference page shows the full activity log.
+
+**Status pipeline** (`V2/src/data/statuses.js`). This is a quote-request
+dispatch flow, not ring production:
+`pending` (came in) → `assigned` (admin dispatched to an in-house/external
+resource) → `in-progress` (resource confirmed) → `uploaded` (resource filled
+in its part) → `in-review` (admin reviewing) → `sent` (quote sent to customer)
+→ `adjustment-needed` (sent back to the resource) → `approved` / `cancelled`
+(customer's decision). The "needing attention" count on the admin page is the
+number of references waiting on the In House team (`pending`, `uploaded`,
+`in-review`).
+
+Who sets what: admin dispatches (`assigned`) and reviews (`in-review` →
+`sent` / `adjustment-needed`); the factory confirms (`in-progress`) and uploads
+(`uploaded`); the customer decides (`approved` / `cancelled`).
 
 **Factories** (`factories.json`) are the teams a reference is distributed to:
 
