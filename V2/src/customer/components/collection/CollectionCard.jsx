@@ -8,7 +8,7 @@ export default function CollectionCard({ collection, onChoose }) {
       onClick={() => onChoose?.(collection.id)}
       className="card-panel group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-gold-500/40"
     >
-      <div className="relative aspect-[310/380] w-full overflow-hidden bg-stone-100">
+      <div className="relative aspect-collection w-full overflow-hidden bg-stone-100">
         <img
           src={collection.image}
           alt=""
