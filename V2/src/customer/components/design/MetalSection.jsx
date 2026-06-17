@@ -136,14 +136,17 @@ function InfoTooltip({ text, label = 'More information' }) {
   );
 }
 
-function SubsectionHeader({ letter, title, helper, tooltip }) {
+function SubsectionHeader({ letter, title, helper, tooltip, required }) {
   return (
     <div className="mb-3">
       <div className="flex items-center gap-2">
         <span className="flex h-6 w-6 items-center justify-center rounded-full border border-gold-400 text-xs font-semibold text-gold-700">
           {letter}
         </span>
-        <p className="text-sm font-semibold text-stone-900">{title}</p>
+        <p className="text-sm font-semibold text-stone-900">
+          {title}
+          {required && <span className="text-gold-700"> *</span>}
+        </p>
         {tooltip && <InfoTooltip text={tooltip} label={`${title} info`} />}
       </div>
       {helper && <p className="ml-8 mt-0.5 text-xs text-stone-500">{helper}</p>}
@@ -237,6 +240,7 @@ export default function MetalSection({ value, onChange, error }) {
           letter="A"
           title="Tone"
           helper="Is this a single metal or a combination of two?"
+          required
         />
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {TONES.map((t) => {
@@ -280,6 +284,7 @@ export default function MetalSection({ value, onChange, error }) {
           title="Karat"
           helper="Select the metal grade."
           tooltip={tone === 'two-tone' ? TWO_TONE_ORDER_TIP : undefined}
+          required
         />
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-6">
           {karats.map((k) => {
@@ -320,6 +325,7 @@ export default function MetalSection({ value, onChange, error }) {
           title="Colors"
           helper={colorsHelperText(tone, needed)}
           tooltip={tone === 'two-tone' ? TWO_TONE_ORDER_TIP : undefined}
+          required={needed > 0}
         />
         {needed === 0 ? (
           <div className="rounded-2xl border border-dashed border-stone-300 bg-stone-50 px-4 py-6 text-center text-sm text-stone-500">
