@@ -129,7 +129,7 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
         )}
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <FieldRow label="Stone Type" error={errors.type}>
+        <FieldRow label="Stone Type" required error={errors.type}>
           <Select field="type" value={value.type} options={STONE_TYPES} onChange={onChange} error={errors.type} />
           {value.type === 'Gemstone' && (
             <input
@@ -142,7 +142,7 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
             />
           )}
         </FieldRow>
-        <FieldRow label="Shape" error={errors.shape}>
+        <FieldRow label="Shape" required error={errors.shape}>
           <Select field="shape" value={value.shape} options={SHAPES} onChange={onChange} error={errors.shape} />
           {value.shape === 'Other' && (
             <input
@@ -155,7 +155,7 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
             />
           )}
         </FieldRow>
-        <FieldRow label="Carat Weight" error={errors.carat}>
+        <FieldRow label="Carat Weight" required error={errors.carat}>
           <div className="flex gap-2">
             <input
               type="number"
@@ -176,15 +176,18 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
             </select>
           </div>
         </FieldRow>
-        <FieldRow label="Color" error={errors.color}>
+        <FieldRow label="Color" required error={errors.color}>
           <Select field="color" value={value.color} options={COLORS} onChange={onChange} error={errors.color} />
         </FieldRow>
-        <FieldRow label="Clarity" error={errors.clarity} className="sm:col-span-2">
+        <FieldRow label="Clarity" required error={errors.clarity} className="sm:col-span-2">
           <Select field="clarity" value={value.clarity} options={CLARITIES} onChange={onChange} error={errors.clarity} />
         </FieldRow>
         {value.provideStone === 'no' && (
           <div className="sm:col-span-3">
-            <p className="label-base">Measurements</p>
+            <p className="label-base">
+              Measurements
+              <span className="text-gold-700"> *</span>
+            </p>
             <div className="grid grid-cols-3 gap-3">
               {[
                 { id: 'length', label: 'Length (mm)' },

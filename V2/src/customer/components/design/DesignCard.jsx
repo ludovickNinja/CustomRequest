@@ -118,7 +118,7 @@ export default function DesignCard({
 
       {isExpanded && (
         <div className="space-y-6 p-6">
-          <NumberedSection number={1} title="SKU(s)" helper="Add one or more SKUs related to this design.">
+          <NumberedSection number={1} title="SKU(s)" helper="Add one or more SKUs related to this design." required>
             <SkuChipInput
               value={design.skus}
               onChange={(v) => onUpdate({ skus: v })}
@@ -126,7 +126,7 @@ export default function DesignCard({
             />
           </NumberedSection>
 
-          <NumberedSection number={2} title="Metal" helper="Choose the tone, karat, and color for your ring.">
+          <NumberedSection number={2} title="Metal" helper="Choose the tone, karat, and color for your ring." required>
             <MetalSection
               value={design.metal}
               onChange={(patch) => onUpdate({ metal: { ...design.metal, ...patch } })}
@@ -134,7 +134,7 @@ export default function DesignCard({
             />
           </NumberedSection>
 
-          <NumberedSection number={3} title="Finger Size" helper="Select the ring size.">
+          <NumberedSection number={3} title="Finger Size" helper="Select the ring size." required>
             <FingerSizeField
               system={design.fingerSizeSystem}
               size={design.fingerSize}
@@ -144,7 +144,7 @@ export default function DesignCard({
             />
           </NumberedSection>
 
-          <NumberedSection number={4} title="Center Stone">
+          <NumberedSection number={4} title="Center Stone" required={centerStoneRequired}>
             {centerStoneRequired ? (
               <CenterStoneSection
                 value={design.centerStone}
