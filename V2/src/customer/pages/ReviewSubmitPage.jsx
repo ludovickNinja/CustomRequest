@@ -188,7 +188,7 @@ export default function ReviewSubmitPage() {
   const designs = state.designs;
   const centerStoneRequired = !contact.projectType || contact.projectType === 'Engagement Ring';
 
-  const designIncomplete = designs.some((d) => !d.skus.length || !d.fingerSize);
+  const designIncomplete = designs.some((d) => !d.skus.length);
   const incomplete = !contact.email || !contact.contactName || !contact.poReference || designIncomplete;
 
   function submit() {

@@ -42,7 +42,6 @@ function validateDesign(design, projectType) {
       ? 'Choose the gold color.'
       : 'Choose a color.';
   }
-  if (!design.fingerSize) e.fingerSize = 'Required.';
 
   if (includeCenterStone) {
     const cs = design.centerStone;
@@ -54,11 +53,6 @@ function validateDesign(design, projectType) {
     if (!cs.carat || parseFloat(cs.carat) <= 0) csErrors.carat = 'Required.';
     if (!cs.color) csErrors.color = 'Required.';
     if (!cs.clarity) csErrors.clarity = 'Required.';
-    if (cs.provideStone === 'no') {
-      if (!cs.length || parseFloat(cs.length) <= 0) csErrors.length = 'Required.';
-      if (!cs.width || parseFloat(cs.width) <= 0) csErrors.width = 'Required.';
-      if (!cs.depth || parseFloat(cs.depth) <= 0) csErrors.depth = 'Required.';
-    }
     if (Object.keys(csErrors).length) e.centerStone = csErrors;
   }
 
