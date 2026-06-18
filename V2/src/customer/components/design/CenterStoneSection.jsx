@@ -184,10 +184,7 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
         </FieldRow>
         {value.provideStone === 'no' && (
           <div className="sm:col-span-3">
-            <p className="label-base">
-              Measurements
-              <span className="text-gold-700"> *</span>
-            </p>
+            <p className="label-base">Measurements (Optional)</p>
             <div className="grid grid-cols-3 gap-3">
               {[
                 { id: 'length', label: 'Length (mm)' },
@@ -202,15 +199,12 @@ export default function CenterStoneSection({ value, onChange, errors = {} }) {
                     value={value[m.id]}
                     onChange={(e) => onChange({ [m.id]: e.target.value })}
                     placeholder="6.50"
-                    className={'input-base ' + (errors[m.id] ? 'input-error' : '')}
+                    className="input-base"
                   />
                   <p className="mt-1 text-center text-xs text-stone-500">{m.label}</p>
                 </div>
               ))}
             </div>
-            {(errors.length || errors.width || errors.depth) && (
-              <p className="mt-2 text-xs text-red-600">All measurements required.</p>
-            )}
           </div>
         )}
       </div>

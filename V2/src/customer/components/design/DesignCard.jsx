@@ -134,7 +134,7 @@ export default function DesignCard({
             />
           </NumberedSection>
 
-          <NumberedSection number={3} title="Finger Size" helper="Select the ring size." required>
+          <NumberedSection number={3} title="Finger Size" helper="Select the ring size.">
             <FingerSizeField
               system={design.fingerSizeSystem}
               size={design.fingerSize}
