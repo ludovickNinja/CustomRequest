@@ -1,12 +1,11 @@
-import { useState, useRef } from 'react';
-import { X, Plus, Info } from 'lucide-react';
+import { useState } from 'react';
+import { X, Info } from 'lucide-react';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function CcChipInput({ value, onChange, maxRecipients = 10 }) {
   const [input, setInput] = useState('');
   const [error, setError] = useState('');
-  const ref = useRef(null);
 
   function addEmail(raw) {
     const email = raw.trim().replace(/,$/, '');
@@ -71,7 +70,6 @@ export default function CcChipInput({ value, onChange, maxRecipients = 10 }) {
           </div>
         )}
         <input
-          ref={ref}
           type="email"
           value={input}
           onChange={(e) => { setInput(e.target.value); setError(''); }}
@@ -81,14 +79,6 @@ export default function CcChipInput({ value, onChange, maxRecipients = 10 }) {
           className="w-full bg-transparent px-2 py-1.5 text-sm outline-none placeholder:text-stone-400"
         />
       </div>
-      <button
-        type="button"
-        onClick={() => ref.current?.focus()}
-        className="mt-2 flex w-full items-center justify-center gap-2 rounded-lg border border-dashed border-gold-300 px-3 py-2 text-sm font-medium text-gold-700 hover:bg-gold-50"
-      >
-        <Plus className="h-4 w-4" />
-        Add another recipient
-      </button>
       {error && <p className="mt-1 text-xs text-red-600">{error}</p>}
     </div>
   );
