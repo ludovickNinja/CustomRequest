@@ -10,7 +10,7 @@
  * yell at the user before they've actually visited a field, but block
  * the "Continue" button until everything required is filled in.
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Building2, User, Mail, Hash, ArrowLeft, ArrowRight } from 'lucide-react';
 import FieldRow from '../../../shared/FieldRow.jsx';
@@ -18,7 +18,7 @@ import CcChipInput from './CcChipInput.jsx';
 import PhoneInput from './PhoneInput.jsx';
 import QuoteTypeCards from './QuoteTypeCards.jsx';
 import AppointmentSection from './AppointmentSection.jsx';
-import ProjectTypeSelect from './ProjectTypeSelect.jsx';
+import ProjectTypeSelect, { typesForCollection } from './ProjectTypeSelect.jsx';
 import NotesTextarea from './NotesTextarea.jsx';
 import { useCustomRequest } from '../../../state/CustomRequestContext.jsx';
 
@@ -48,6 +48,15 @@ export default function ContactInfoForm() {
   const contact = state.contact;
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
+
+  // If the chosen collection doesn't allow the currently selected project
+  // type (e.g. the customer picked one, went back, and switched collections),
+  // clear it so we never store a disallowed value.
+  useEffect(() => {
+    if (contact.projectType && !typesForCollection(collection).includes(contact.projectType)) {
+      setContact({ projectType: '', projectTypeOther: '' });
+    }
+  }, [collection, contact.projectType, setContact]);
 
   function touch(field) { setTouched((t) => ({ ...t, [field]: true })); }
   function update(field, value) {
@@ -215,6 +224,7 @@ export default function ContactInfoForm() {
           ))}
         </div>
         <ProjectTypeSelect
+          collection={collection}
           value={contact.projectType}
           onChange={(v) => update('projectType', v)}
           otherValue={contact.projectTypeOther}

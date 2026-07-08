@@ -1,6 +1,7 @@
 import { Gem } from 'lucide-react';
 
-const TYPES = [
+/** Every project type the app knows about, in display order. */
+const ALL_TYPES = [
   'Engagement Ring',
   'Wedding Band',
   'Anniversary Ring',
@@ -8,7 +9,28 @@ const TYPES = [
   'Other',
 ];
 
-export default function ProjectTypeSelect({ value, onChange, otherValue, onOtherChange }) {
+/**
+ * Per-collection restrictions on which project types may be selected.
+ *
+ * Keys are collection ids (see `data/collections.js`). A collection not
+ * listed here falls back to `ALL_TYPES` (e.g. Noam Carver and Full Custom
+ * keep the complete list). Restricted lists are filtered against
+ * `ALL_TYPES` so ordering stays consistent.
+ */
+const COLLECTION_TYPES = {
+  crownring: ['Wedding Band', 'Anniversary Ring', 'Other'],
+  'mia-my-caroline': ['Wedding Band', 'Anniversary Ring', 'Other'],
+};
+
+export function typesForCollection(collection) {
+  const allowed = COLLECTION_TYPES[collection];
+  if (!allowed) return ALL_TYPES;
+  return ALL_TYPES.filter((t) => allowed.includes(t));
+}
+
+export default function ProjectTypeSelect({ collection, value, onChange, otherValue, onOtherChange }) {
+  const types = typesForCollection(collection);
+
   return (
     <div>
       <p className="eyebrow mb-1.5">Project Type</p>
@@ -20,7 +42,7 @@ export default function ProjectTypeSelect({ value, onChange, otherValue, onOther
           className="input-base pl-9 appearance-none"
         >
           <option value="">Select project type</option>
-          {TYPES.map((t) => (
+          {types.map((t) => (
             <option key={t} value={t}>{t}</option>
           ))}
         </select>
